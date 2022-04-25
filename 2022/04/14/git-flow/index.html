@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="LicenseSesame is Free software, and may be redistributed under the terms of specified in the LICENSE file. 오픈소스 프로젝트에서 가장 중요한 License는 내가 만들 때에도, 배포할 때에도 가장 신경써야 하는 일 중 하나입니다.가장 많이 사용하는 License는 다음과 같">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git-flow">
+<meta property="og:url" content="https://sacultang.github.io/2022/04/14/git-flow/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="LicenseSesame is Free software, and may be redistributed under the terms of specified in the LICENSE file. 오픈소스 프로젝트에서 가장 중요한 License는 내가 만들 때에도, 배포할 때에도 가장 신경써야 하는 일 중 하나입니다.가장 많이 사용하는 License는 다음과 같">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-14T14:00:02.000Z">
+<meta property="article:modified_time" content="2022-04-23T12:39:33.099Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="git flow">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/04/14/git-flow/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>git-flow | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/14/git-flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git-flow
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-14 23:00:02" itemprop="dateCreated datePublished" datetime="2022-04-14T23:00:02+09:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/14/git-flow/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/14/git-flow/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p>Sesame is Free software, and may be redistributed under the terms of specified in the <a href="">LICENSE</a> file.</p>
+<p>오픈소스 프로젝트에서 가장 중요한 License는 내가 만들 때에도, 배포할 때에도 가장 신경써<br>야 하는 일 중 하나입니다.<br>가장 많이 사용하는 License는 다음과 같습니다.</p>
+<ul>
+<li>MIT License<ul>
+<li>MIT에서 만든 라이센스로, 모든 행동에 제약이 없으며, 저작권자는 소프트웨어와<br>관련한 책임에서 자유롭습니다.</li>
+</ul>
+</li>
+<li>Apache License 2.0<ul>
+<li>Apache 재단이 만든 라이센스로, 특허권 관련 내용이 포함되어 있습니다.</li>
+</ul>
+</li>
+<li>GNU General Public License v3.0<ul>
+<li>가장 많이 알려져있으며, 의무사항(해당 라이센스가 적용된 소스코드 사용시 GPL을 따라야 함)이 존재합니다.<span id="more"></span>
+<h2 id="git-bash-명령어"><a href="#git-bash-명령어" class="headerlink" title="git bash 명령어"></a>git bash 명령어</h2></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>파일 이름 수정</p>
+<ul>
+<li>git에서는 파일이름을 수정하면 기존거는 삭제되고 바뀐이름의 파일이 추가된걸로 인식됨</li>
+<li>git을 붙이면 변경된 이름으로 추적함<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> hello.py helloworld.py -&gt; worst</span><br><span class="line">$ git <span class="built_in">mv</span> hello.py helloworld.py -&gt; good</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>커밋을 잘못하였을때 최신의(HEAD) 커밋단계로 파일을 되돌림</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git restore [file name]</span><br></pre></td></tr></table></figure></li>
+<li><p>git add 후 다시 되돌릴 때</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD [file name]</span><br></pre></td></tr></table></figure></li>
+<li><p>git commit 메시지 작성 되돌리기</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --ammend</span><br></pre></td></tr></table></figure></li>
+<li><p>commit 다중 파일 되돌리기<br>  HEAD: 최신, ~3: 3개의 파일을, ..: 순차적으로</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git revert -no-commit HEAD~3..</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="새로운-Branch-만들기"><a href="#새로운-Branch-만들기" class="headerlink" title="새로운 Branch 만들기"></a>새로운 Branch 만들기</h2><p>Branch 만들기</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch [new branch]</span><br></pre></td></tr></table></figure>
+<p>Branch 바꾸기</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git switch [new branch]</span><br></pre></td></tr></table></figure>
+<p>Branch 병합</p>
+<ul>
+<li>새 브랜치를 디폴트브랜치로 땡겨온다는 개념<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge [new branch]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Branch 삭제</p>
+<ul>
+<li>브랜치 라이프사이클이 끝나면 바로 삭제 해주는게 좋다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D [branch name]</span><br></pre></td></tr></table></figure>
+Branch 병합시 문제<br><br>브랜치 양쪽에서 같은 파일을 수정 할시 에러 발생</li>
+<li>파일을 잘 수정해야함</li>
+</ul>
+<h2 id="git-flow"><a href="#git-flow" class="headerlink" title="git-flow"></a>git-flow</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow init</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Fatal: Working tree contains unstaged changes Aborting 이 발생했을 경우 -&gt; git flow는 변경된 파일이 없는 상태에서 초기화 해주어야 하므로 git stash(변경된 기능 임시 저장) 후에 git flow init 명령어 다시 입력.</li>
+</ul>
+<p>새로운 브랜치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow feature start [new branch]</span><br></pre></td></tr></table></figure>
+
+<p>release 시작</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow release start [base v]</span><br></pre></td></tr></table></figure>
+
+<p>release finish</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow release finish</span><br></pre></td></tr></table></figure>
+
+<p>git push</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin [new branch]</span><br></pre></td></tr></table></figure>
+
+<p>tag push</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --tags</span><br></pre></td></tr></table></figure>
+
+<h2 id="TEAM-PROJECT"><a href="#TEAM-PROJECT" class="headerlink" title="TEAM-PROJECT"></a>TEAM-PROJECT</h2><ul>
+<li>team 단위 git-flow 전략<h3 id="팀장-flow"><a href="#팀장-flow" class="headerlink" title="팀장 flow"></a>팀장 flow</h3></li>
+</ul>
+<ol>
+<li>팀장이 git repository를 생성 후 디렉토리에 git clone 해온다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [git주소]</span><br></pre></td></tr></table></figure></li>
+<li>flow init 하면 develop branch가 생성 됨  <ul>
+<li>파일 생성 (ex:main.js)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow init</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">touch</span> main.js</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>git add 후 commit 해준다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add main.js</span><br><span class="line">$ git commit</span><br></pre></td></tr></table></figure></li>
+<li>develop에서 처음 push 함으로 -u upstream<ul>
+<li><a target="_blank" rel="noopener" href="https://pers0n4.io/github-remote-repository-and-upstream/">https://pers0n4.io/github-remote-repository-and-upstream/</a><br>upstream &amp; downstream 이해하기</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin develop</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>팀원에게 깃 주소 전달</li>
+</ol>
+<hr>
+<h3 id="팀원-flow"><a href="#팀원-flow" class="headerlink" title="팀원 flow"></a>팀원 flow</h3><ol>
+<li>Issues 작성<ul>
+<li>팀장 레포에서만 이슈가 있음</li>
+<li>다른 사람과 작업이 겹치지 않기 위해 작성</li>
+</ul>
+</li>
+<li>Fork 를 함<ul>
+<li>자신의 권한이 된 레포가 본인 깃에 생성됨</li>
+</ul>
+</li>
+<li>자신의 깃에 있는 레포를 clone 해온다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [fork해온 git 주소]</span><br></pre></td></tr></table></figure></li>
+<li>git flow init<ul>
+<li>develop 브랜치 생성됨</li>
+<li>팀장이 생성한 파일 (main.js)도 같이 생성 된다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow init</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>기능 개발할때는 feature start<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow feature start [new branch name]</span><br></pre></td></tr></table></figure></li>
+<li>file(main.js)에서 작업 후 add, commit<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add main.js</span><br><span class="line">$ git commit</span><br></pre></td></tr></table></figure></li>
+<li>개발 종료후 feature finish</li>
+</ol>
+<ul>
+<li>develop 브랜치로 작업내역이 들어간다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git flow feature finish [new branch name]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="8">
+<li>push<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin develop</span><br></pre></td></tr></table></figure></li>
+<li>github 으로 이동<ol>
+<li>ompare &amp; pull request 버튼 활성화 눌러줌  </li>
+<li>branch 확인 중요</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>open된 pull request에서 팀원이 추가 작업 후 push를 하게 되면<br>열려 있는 pull request의 하위로 내역이 들어 오게 된다.<br>(작업내역이 섞여버릴 우려가 있음)</p>
+<h2 id="Git-prefix"><a href="#Git-prefix" class="headerlink" title="Git prefix"></a>Git prefix</h2><p>feat: 기능 개발 관련<br><br>fix: 오류 개선 혹은 버그 패치<br><br>docs: 문서화 작업. <br><br>test: test 관련. <br><br>conf: 환경설정 관련.<br><br>build: 빌드 관련.<br><br>ci: Continuous Integration 관련.<br></p>
+<hr>
+<p>feat: Add server.py.<br><br>fix: Fix Typo server.py.<br><br>docs: Add README.md, LICENSE.<br><br>conf: Create .env, .gitignore, dockerfile.<br><br>BREAKING CHANGE: Drop Support &#x2F;api&#x2F;v1.<br><br>refactor: Refactor user classes.<br></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/git-flow/" rel="tag"># git flow</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/14/vue3-naver-clone/" rel="prev" title="vue3 naver-clone">
+      <i class="fa fa-chevron-left"></i> vue3 naver-clone
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/16/JS-This/" rel="next" title="JS-This">
+      JS-This <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#License"><span class="nav-number">1.</span> <span class="nav-text">License</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-bash-%EB%AA%85%EB%A0%B9%EC%96%B4"><span class="nav-number"></span> <span class="nav-text">git bash 명령어</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%88%EB%A1%9C%EC%9A%B4-Branch-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text">새로운 Branch 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow"><span class="nav-number"></span> <span class="nav-text">git-flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TEAM-PROJECT"><span class="nav-number"></span> <span class="nav-text">TEAM-PROJECT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%80%EC%9E%A5-flow"><span class="nav-number">1.</span> <span class="nav-text">팀장 flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%80%EC%9B%90-flow"><span class="nav-number">2.</span> <span class="nav-text">팀원 flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-prefix"><span class="nav-number"></span> <span class="nav-text">Git prefix</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/04/14/git-flow/";
+    this.page.identifier = "2022/04/14/git-flow/";
+    this.page.title = "git-flow";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

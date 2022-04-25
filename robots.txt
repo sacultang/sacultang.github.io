@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sacultang.github.io/sitemap.xml

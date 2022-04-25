@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="% , $  : 명령을 받을 준비가 되어있다는 특수문자 ~ : 특별한 권한을 갖지 않고도 명령을 수행할수 있는 문자 oyeongjae@oyeongjaeui-MacBookAir ~ % &#x3D; [USER]@[USER’s COMPUTER] ~ %">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo CLI">
+<meta property="og:url" content="https://sacultang.github.io/2022/04/13/Hexo-CLI/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="% , $  : 명령을 받을 준비가 되어있다는 특수문자 ~ : 특별한 권한을 갖지 않고도 명령을 수행할수 있는 문자 oyeongjae@oyeongjaeui-MacBookAir ~ % &#x3D; [USER]@[USER’s COMPUTER] ~ %">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-13T11:24:46.000Z">
+<meta property="article:modified_time" content="2022-04-23T12:39:33.099Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="CLI">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/04/13/Hexo-CLI/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>Hexo CLI | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/13/Hexo-CLI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo CLI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-13 20:24:46" itemprop="dateCreated datePublished" datetime="2022-04-13T20:24:46+09:00">2022-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/13/Hexo-CLI/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/13/Hexo-CLI/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>% , $  : 명령을 받을 준비가 되어있다는 특수문자</p>
+<p>~ : 특별한 권한을 갖지 않고도 명령을 수행할수 있는 문자</p>
+<p>oyeongjae@oyeongjaeui-MacBookAir ~ % &#x3D; [USER]@[USER’s COMPUTER] ~ %</p>
+<span id="more"></span>
+<h2 id="디렉토리-조회"><a href="#디렉토리-조회" class="headerlink" title="디렉토리 조회"></a>디렉토리 조회</h2><p>ls → list</p>
+<p>ls -a → 숨김파일 까지 보임</p>
+<p>ls -l → 상세 정보까지 보기 line by line</p>
+<p>ls -al → 숨김파일 상세 정보까지 보기 all files line by line</p>
+<h2 id="디렉토리-생성-amp-삭제"><a href="#디렉토리-생성-amp-삭제" class="headerlink" title="디렉토리 생성&amp;삭제"></a>디렉토리 생성&amp;삭제</h2><p>mkdir [폴더명] → 폴더 생성</p>
+<p>rmdir [폴더명] → 폴더 삭제</p>
+<p>rm -r [폴더명]  →  폴더에 있는 파일들 삭제하고 나와서 폴더까지 삭제</p>
+<h2 id="파일-생성-amp-삭제-amp-이동-amp-복사-copy-사본"><a href="#파일-생성-amp-삭제-amp-이동-amp-복사-copy-사본" class="headerlink" title="파일 생성&amp;삭제&amp;이동&amp;복사(copy 사본)"></a>파일 생성&amp;삭제&amp;이동&amp;복사(copy 사본)</h2><p>touch [파일명] → 파일 생성</p>
+<p>mv [파일명] [이동할폴더명] → 현재위치에서 파일 이동</p>
+<p>mv ..&#x2F;[파일명] .&#x2F; → 상위 폴더에서 파일 땡겨 오기</p>
+<p>cp [파일명] [폴더명] →  폴더에 사본 만들기</p>
+<p>cp [파일명] [.&#x2F;새로운파일명] → 새로운 이름으로 사본 만들기 .&#x2F;는 현재 폴더</p>
+<p>특수문자 * 는 와일드 카드</p>
+<p>ex) mv ..&#x2F;server.* .&#x2F; </p>
+<p> → 상위폴더에 server 이름의 파일을 현재폴더로 이동</p>
+<p>rm [파일명]  → 파일 삭제</p>
+<p>mv [파일명] [새로운파일명]  → 이름 변경</p>
+<h2 id="vim-파일-실행"><a href="#vim-파일-실행" class="headerlink" title="vim 파일 실행"></a>vim 파일 실행</h2><p>[응용프로그램명] [파일명]  ex) vim lear-markdown.md</p>
+<p>vim 첫 실행하면 normal모드</p>
+<p>소문자 i 누르면 insert 모드로 전환</p>
+<h3 id="명령어"><a href="#명령어" class="headerlink" title="명령어"></a>명령어</h3><p>i : 편집모드</p>
+<p>o : 현재 커서 아래줄에서 편집모드</p>
+<p>esc : normal mode</p>
+<p>: → command mode</p>
+<p>:q → 나가기</p>
+<p>:wq → 저장하고 나가기</p>
+<p>:q! → 저장 안하고 나가기</p>
+<p>:set number → 라인 숫자 표시</p>
+<h2 id="git-objects"><a href="#git-objects" class="headerlink" title="git objects"></a>git objects</h2><p>Blob:파일 하나의 내용에 대한 정보</p>
+<p>Tree: Blob이나 subtress의 메타디어(디렉토리 위치, 속성, 이름 등)</p>
+<p>commit : 커밋 순간의 스냅샷</p>
+<h2 id="HEXO"><a href="#HEXO" class="headerlink" title="HEXO"></a>HEXO</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/ko/">https://hexo.io/ko/</a></p>
+<h3 id="헥소-커맨드라인-설치"><a href="#헥소-커맨드라인-설치" class="headerlink" title="헥소 커맨드라인 설치"></a>헥소 커맨드라인 설치</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="헥소-초기설정"><a href="#헥소-초기설정" class="headerlink" title="헥소 초기설정"></a>헥소 초기설정</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line"></span><br><span class="line">$ npm i</span><br><span class="line"></span><br><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="New-Post"><a href="#New-Post" class="headerlink" title="New Post"></a>New Post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>헥소 디플로이어 개발의존성으로 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i hexo-deployer-git -D</span><br></pre></td></tr></table></figure>
+
+<p>글 작성후에는 정적사이트기때문에 clean으로 지워주고 다시 generate 해줘야함</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; generate</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="헥소-로컬-서버-열기"><a href="#헥소-로컬-서버-열기" class="headerlink" title="헥소 로컬 서버 열기"></a>헥소 로컬 서버 열기</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server </span><br></pre></td></tr></table></figure>
+
+
+<p>github에서 new repo</p>
+<p>username.github.io 로 생성</p>
+<h3 id="config-yml-에서-수정"><a href="#config-yml-에서-수정" class="headerlink" title="_config.yml 에서 수정"></a>_config.yml 에서 수정</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml </span><br></pre></td></tr></table></figure>
+
+
+<p>url : <a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io</a>  → 끝에 &#x2F; 붙으면 Error</p>
+<p>theme : next → 설치한 Theme 이름</p>
+<p>deploy: </p>
+<p>  type: git → type: 뒤에 띄어쓰기 해야함</p>
+<p>  repo: Git repository 주소 (<a target="_blank" rel="noopener" href="https://github.com/sacultang/sacultang.github.io.git">https://github.com/sacultang/sacultang.github.io.git</a>)</p>
+<p>  branch: main</p>
+<h2 id="HEXO-Deploy"><a href="#HEXO-Deploy" class="headerlink" title="HEXO Deploy"></a>HEXO Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>→ <a href="https://sacultang.github.io/">https://sacultang.github.io/</a> 블로그 주소</p>
+<h2 id="HEXO-THEME"><a href="#HEXO-THEME" class="headerlink" title="HEXO THEME"></a>HEXO THEME</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i hexo-theme-next -D</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/CLI/" rel="tag"># CLI</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/13/vue3-swiper/" rel="next" title="vue3 swiper">
+      vue3 swiper <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EC%A1%B0%ED%9A%8C"><span class="nav-number">1.</span> <span class="nav-text">디렉토리 조회</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EC%83%9D%EC%84%B1-amp-%EC%82%AD%EC%A0%9C"><span class="nav-number">2.</span> <span class="nav-text">디렉토리 생성&amp;삭제</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1-amp-%EC%82%AD%EC%A0%9C-amp-%EC%9D%B4%EB%8F%99-amp-%EB%B3%B5%EC%82%AC-copy-%EC%82%AC%EB%B3%B8"><span class="nav-number">3.</span> <span class="nav-text">파일 생성&amp;삭제&amp;이동&amp;복사(copy 사본)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-%ED%8C%8C%EC%9D%BC-%EC%8B%A4%ED%96%89"><span class="nav-number">4.</span> <span class="nav-text">vim 파일 실행</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%AA%85%EB%A0%B9%EC%96%B4"><span class="nav-number">4.1.</span> <span class="nav-text">명령어</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-objects"><span class="nav-number">5.</span> <span class="nav-text">git objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXO"><span class="nav-number">6.</span> <span class="nav-text">HEXO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%97%A5%EC%86%8C-%EC%BB%A4%EB%A7%A8%EB%93%9C%EB%9D%BC%EC%9D%B8-%EC%84%A4%EC%B9%98"><span class="nav-number">6.1.</span> <span class="nav-text">헥소 커맨드라인 설치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%97%A5%EC%86%8C-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95"><span class="nav-number">6.2.</span> <span class="nav-text">헥소 초기설정</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#New-Post"><span class="nav-number">6.3.</span> <span class="nav-text">New Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%97%A5%EC%86%8C-%EB%A1%9C%EC%BB%AC-%EC%84%9C%EB%B2%84-%EC%97%B4%EA%B8%B0"><span class="nav-number">6.4.</span> <span class="nav-text">헥소 로컬 서버 열기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config-yml-%EC%97%90%EC%84%9C-%EC%88%98%EC%A0%95"><span class="nav-number">6.5.</span> <span class="nav-text">_config.yml 에서 수정</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXO-Deploy"><span class="nav-number">7.</span> <span class="nav-text">HEXO Deploy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXO-THEME"><span class="nav-number">8.</span> <span class="nav-text">HEXO THEME</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/04/13/Hexo-CLI/";
+    this.page.identifier = "2022/04/13/Hexo-CLI/";
+    this.page.title = "Hexo CLI";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
