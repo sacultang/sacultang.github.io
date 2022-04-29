@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="없는 숫자 더하기문제 0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.  제한 사항 1 ≤ numbers의 길이 ≤ 9 0 ≤ numbers의 모든 원소 ≤ 9 numbers의 모든">
+<meta property="og:type" content="article">
+<meta property="og:title" content="없는 숫자 더하기">
+<meta property="og:url" content="https://sacultang.github.io/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="없는 숫자 더하기문제 0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.  제한 사항 1 ≤ numbers의 길이 ≤ 9 0 ≤ numbers의 모든 원소 ≤ 9 numbers의 모든">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-29T14:02:03.000Z">
+<meta property="article:modified_time" content="2022-04-29T14:41:37.113Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>없는 숫자 더하기 | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          없는 숫자 더하기
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-04-29 23:02:03 / Modified: 23:41:37" itemprop="dateCreated datePublished" datetime="2022-04-29T23:02:03+09:00">2022-04-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/29/없는-숫자-더하기/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="없는-숫자-더하기"><a href="#없는-숫자-더하기" class="headerlink" title="없는 숫자 더하기"></a>없는 숫자 더하기</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><blockquote>
+<p>0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. <br><br>numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.</p>
+</blockquote>
+<h2 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h2><ul>
+<li>1 ≤ numbers의 길이 ≤ 9<ul>
+<li>0 ≤ numbers의 모든 원소 ≤ 9</li>
+<li>numbers의 모든 원소는 서로 다릅니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h2><table>
+<thead>
+<tr>
+<th align="center">numbers</th>
+<th align="center">result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[1,2,3,4,6,7,8,0]</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">[5,8,4,0,6,7,9]</td>
+<td align="center">6</td>
+</tr>
+</tbody></table>
+<h2 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h2><ul>
+<li><p>입출력 예 #1</p>
+<ul>
+<li>5, 9가 numbers에 없으므로, 5 + 9 &#x3D; 14를 return 해야 합니다.</li>
+</ul>
+</li>
+<li><p>입출력 예 #2</p>
+<ul>
+<li>1, 2, 3이 numbers에 없으므로, 1 + 2 + 3 &#x3D; 6을 return 해야 합니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ol>
+<li>0부터 9까지의 합을 구한다</li>
+<li>주어진 numbers의 합을 구한다</li>
+<li>0부터 9까지의 합에서 numbers의 합을 뺀다</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">numbers</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> allSum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> numbSum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i &lt;=<span class="number">9</span>; i++)&#123;</span><br><span class="line">    allSum += i</span><br><span class="line">  &#125;</span><br><span class="line">  numbers.<span class="title function_">forEach</span>(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">    numbSum += el</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> allSum - numbSum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="다른-사람의-풀이를-보자"><a href="#다른-사람의-풀이를-보자" class="headerlink" title="다른 사람의 풀이를 보자.."></a>다른 사람의 풀이를 보자..</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">numbers</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">45</span> - numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> acc + cur, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>깔끔쓰..<br>0부터9까지합 로직은 그렇다 쳐도<br>reduce는 생각도 못했다</p>
+<p>reduce()에 대해 알아보자..</p>
+<h2 id="Array-reduce"><a href="#Array-reduce" class="headerlink" title="Array.reduce()"></a>Array.reduce()</h2><blockquote>
+<p>배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행하고, 하나의 결과값을 반환한다</p>
+</blockquote>
+<p>말이 어렵다..</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">reduce</span>(callback[, initialValue])</span><br></pre></td></tr></table></figure>
+
+<h3 id="사용-방법"><a href="#사용-방법" class="headerlink" title="사용 방법"></a>사용 방법</h3><p>reduce()에는 누산기가 포함되어 있기 때문에, 배열의 각 요소에 대해 함수를 실행하고 누적된 값을 출력할때 용이하다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+<p>예제에서 initialValue 를 0 으로 주었기 때문에 초기값이 0부터 시작해서 하나씩 누적 시켜 나간다<br>0+1+2+3+4+5 &#x3D; 15</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">10</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
+<p>initialValue 를 10 으로 주었기 때문에 초기값이 10부터 시작해서 하나씩 누적 시켜 나간다<br>10+1+2+3+4+5 &#x3D; 15</p>
+<h3 id="reduce-의-콜백-함수는-4가지-인수를-받는다"><a href="#reduce-의-콜백-함수는-4가지-인수를-받는다" class="headerlink" title="reduce()의 콜백 함수는 4가지 인수를 받는다"></a>reduce()의 콜백 함수는 4가지 인수를 받는다</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. accumulator</span><br><span class="line">    - 누산기, 콜백의 반환값을 누적시킨다. initialValue를 제공했을때는 initialValue의 값이다</span><br><span class="line">2. currentValue</span><br><span class="line">  - 처리할 현재 요소</span><br><span class="line">3. currentIndex (optional)</span><br><span class="line">    - 처리할 현재 요소의 인덱스 </span><br><span class="line">4. array (optional)</span><br><span class="line">  - reduce()를 호출한 배열</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/28/React-%EA%B8%B0%EC%B4%88/" rel="prev" title="React 기초">
+      <i class="fa fa-chevron-left"></i> React 기초
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">없는 숫자 더하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C"><span class="nav-number">1.1.</span> <span class="nav-text">문제</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C%ED%95%9C-%EC%82%AC%ED%95%AD"><span class="nav-number">1.2.</span> <span class="nav-text">제한 사항</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88"><span class="nav-number">1.3.</span> <span class="nav-text">입출력 예</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9E%85%EC%B6%9C%EB%A0%A5-%EC%98%88-%EC%84%A4%EB%AA%85"><span class="nav-number">1.4.</span> <span class="nav-text">입출력 예 설명</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">1.5.</span> <span class="nav-text">solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%8B%A4%EB%A5%B8-%EC%82%AC%EB%9E%8C%EC%9D%98-%ED%92%80%EC%9D%B4%EB%A5%BC-%EB%B3%B4%EC%9E%90"><span class="nav-number">1.5.1.</span> <span class="nav-text">다른 사람의 풀이를 보자..</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-reduce"><span class="nav-number">1.6.</span> <span class="nav-text">Array.reduce()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">사용 방법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-%EC%9D%98-%EC%BD%9C%EB%B0%B1-%ED%95%A8%EC%88%98%EB%8A%94-4%EA%B0%80%EC%A7%80-%EC%9D%B8%EC%88%98%EB%A5%BC-%EB%B0%9B%EB%8A%94%EB%8B%A4"><span class="nav-number">1.6.2.</span> <span class="nav-text">reduce()의 콜백 함수는 4가지 인수를 받는다</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/";
+    this.page.identifier = "2022/04/29/없는-숫자-더하기/";
+    this.page.title = "없는 숫자 더하기";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
