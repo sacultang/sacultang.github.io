@@ -9,7 +9,7 @@
     <atom:link href="https://sacultang.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 30 Apr 2022 08:26:11 GMT</pubDate>
+    <pubDate>Sat, 30 Apr 2022 08:28:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -30,11 +30,9 @@
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/JavaScript/">JavaScript</category>
+      <category domain="https://sacultang.github.io/categories/Web/TIL/">TIL</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/JavaScript/TIL/">TIL</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/JavaScript/TIL/2022-04/">2022.04</category>
+      <category domain="https://sacultang.github.io/categories/Web/TIL/2022-04/">2022.04</category>
       
       
       <category domain="https://sacultang.github.io/tags/JavaScript/">JavaScript</category>
