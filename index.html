@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-04-30 17:37:22 / Modified: 21:30:41" itemprop="dateCreated datePublished" datetime="2022-04-30T17:37:22+09:00">2022-04-30</time>
+              <time title="Created: 2022-04-30 17:37:22 / Modified: 21:31:44" itemprop="dateCreated datePublished" datetime="2022-04-30T17:37:22+09:00">2022-04-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,40 +242,14 @@
 
 <p>.eslintrc.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 다양한 옵션들 설정 가능</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2021</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: <span class="string">&#x27;eslint:recommended&#x27;</span>,</span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="string">&#x27;latest&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123; <span class="comment">// 룰을 추가해 줄 수있다</span></span><br><span class="line">    <span class="attr">semi</span>: [<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;always&#x27;</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="create-react-app으로-만든-리액트-프로젝트-안에서는-package-json-안에-eslintConfig가-있다"><a href="#create-react-app으로-만든-리액트-프로젝트-안에서는-package-json-안에-eslintConfig가-있다" class="headerlink" title="create-react-app으로 만든 리액트 프로젝트 안에서는 package.json 안에 eslintConfig가 있다"></a>create-react-app으로 만든 리액트 프로젝트 안에서는 package.json 안에 eslintConfig가 있다</h3><ul>
-<li>따로 설치할 필요가 없다</li>
-<li>추천되는 리액트앱의 설정을 상속 받는다</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;eslintConfig&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;react-app&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;react-app/jest&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 룰을 추가 해 줄 수 있다</span></span><br><span class="line">      <span class="attr">&quot;semi&quot;</span><span class="punctuation">:</span> <span class="string">&quot;off&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Husky"><a href="#Husky" class="headerlink" title="Husky"></a>Husky</h2><p>Git hooks made easy<br>husky는 git hook을 손쉽게 제어하도록 도와주는 매니저 이다.<br>git을 쓰다가 특정 이벤트(커밋할 때, 푸시할 때 등등)가 벌어졌을 때,<br>그 순간에 갈고리를 걸어서 특정 스크립트가 실행되도록 도와주는게 git hook이다.</p>
-<ul>
-<li>허스키 모듈 설치전에 git init 해야한다<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i husky -D</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>husky의 git hook 활성화  </p>
-<ul>
-<li>.husky 폴더가 생성된다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npx husky install</span><br><span class="line">-&gt; husky - Git hooks installed</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>eslint나 prettier로 커밋전에 점검을 해 볼수 있다</p>
-</li>
-</ul>
-<h3 id="lint-staged"><a href="#lint-staged" class="headerlink" title="lint-staged"></a>lint-staged</h3><p>husky 와 Eslint, prettier를 연결해서 사용하면 git commit 을 하기전에 Eslint와 prettier로 staged된 파일들을 점검 할 수 있다.</p>
-<ul>
-<li>prepare<ul>
-<li>prepare 스크립트를 추가해 놓으면 다른곳에서 package.json 으로 모듈을 설치할 때 자동으로 husky가 적용된다<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">package.json</span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prepare&quot;</span><span class="punctuation">:</span><span class="string">&quot;husky install&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>lint-staged 설치<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i lint-staged -D</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 커밋을 하기 직전에 lint-staged가 실행 된다</span><br><span class="line"></span><br><span class="line">$ npx husky add .husky/pre-commit <span class="string">&quot;npx lint-staged&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>lint-staged 설정 추가<br>package.json에 추가해준다<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;lint-staged&quot;</span> <span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// 모든 폴더에서 js 확장 자를 가진 파일을</span></span><br><span class="line">  <span class="attr">&quot;**/*.js&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> </span><br><span class="line">    <span class="string">&quot;eslint --fix&quot;</span><span class="punctuation">,</span> <span class="comment">// 실행문을 적는다</span></span><br><span class="line">    <span class="string">&quot;git add&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-git add 후 커밋을 하면 eslint 규칙을 체크해 준다, 그리고 prettier 룰에 맞게 수정해준다<br><img src="/./images/lint-01.png"><br><img src="/./images/lint-02.png"><br><img src="/./images/lint-03.png"></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/30/create-react-app/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
