@@ -160,6 +160,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/21/duplicate-text/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/21/duplicate-text/" class="post-title-link" itemprop="url">중복단어제거</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-21 21:45:05" itemprop="dateCreated datePublished" datetime="2022-04-21T21:45:05+09:00">2022-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/21/duplicate-text/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/21/duplicate-text/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="중복-단어-제거"><a href="#중복-단어-제거" class="headerlink" title="중복 단어 제거"></a>중복 단어 제거</h1><h3 id="n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다"><a href="#n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다" class="headerlink" title="n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다"></a>n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> textArr = [<span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;time&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;student&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;bye&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">t</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> ans = t.<span class="title function_">filter</span>(<span class="function">(<span class="params">text, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> textArr.<span class="title function_">indexOf</span>(text) === index</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solution</span>(textArr)</span><br></pre></td></tr></table></figure>
+
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><ul>
+<li>배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환한다.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf</a></p>
+<h3 id="filter-element-index-source-x3D-gt"><a href="#filter-element-index-source-x3D-gt" class="headerlink" title="filter((element, index, source) &#x3D;&gt; {})"></a>filter((element, index, source) &#x3D;&gt; {})</h3><ul>
+<li>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환한다.</li>
+</ul>
+<p>element : 요소값<br>index(optional) : 요소의 인덱스<br>source(optional) : 순회되는 배열 객체</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/21/JS-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%B3%80%EC%84%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1144,113 +1250,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/14/git-flow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/git-flow/" class="post-title-link" itemprop="url">git-flow</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-04-14 23:00:02" itemprop="dateCreated datePublished" datetime="2022-04-14T23:00:02+09:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/14/git-flow/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/14/git-flow/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p>Sesame is Free software, and may be redistributed under the terms of specified in the <a href="">LICENSE</a> file.</p>
-<p>오픈소스 프로젝트에서 가장 중요한 License는 내가 만들 때에도, 배포할 때에도 가장 신경써<br>야 하는 일 중 하나입니다.<br>가장 많이 사용하는 License는 다음과 같습니다.</p>
-<ul>
-<li>MIT License<ul>
-<li>MIT에서 만든 라이센스로, 모든 행동에 제약이 없으며, 저작권자는 소프트웨어와<br>관련한 책임에서 자유롭습니다.</li>
-</ul>
-</li>
-<li>Apache License 2.0<ul>
-<li>Apache 재단이 만든 라이센스로, 특허권 관련 내용이 포함되어 있습니다.</li>
-</ul>
-</li>
-<li>GNU General Public License v3.0<ul>
-<li>가장 많이 알려져있으며, 의무사항(해당 라이센스가 적용된 소스코드 사용시 GPL을 따라야 함)이 존재합니다.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/14/git-flow/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1320,14 +1319,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

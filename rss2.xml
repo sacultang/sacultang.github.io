@@ -9,8 +9,40 @@
     <atom:link href="https://sacultang.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 30 Apr 2022 14:53:46 GMT</pubDate>
+    <pubDate>Sun, 01 May 2022 06:38:32 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>2022-05-01-TIL</title>
+      <link>https://sacultang.github.io/2022/05/01/2022-05-01-TIL/</link>
+      <guid>https://sacultang.github.io/2022/05/01/2022-05-01-TIL/</guid>
+      <pubDate>Sun, 01 May 2022 06:36:08 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;Object-is&quot;&gt;&lt;a href=&quot;#Object-is&quot; class=&quot;headerlink&quot; title=&quot;Object.is()&quot;&gt;&lt;/a&gt;Object.is()&lt;/h1&gt;&lt;p&gt;Object.is()는 인자로 받는 두 값이 같은지 확인해서 bool</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h1><p>Object.is()는 인자로 받는 두 값이 같은지 확인해서 boolean으로 반환한다</p><h2 id="구문"><a href="#구문" class="headerlink" title="구문"></a>구문</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(value1, value2)</span><br><span class="line"></span><br><span class="line"><span class="comment">// true or false</span></span><br></pre></td></tr></table></figure><h2 id="예제"><a href="#예제" class="headerlink" title="예제"></a>예제</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>);     <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="variable language_">window</span>, <span class="variable language_">window</span>);   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>);     <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>([], []);           <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(test, test);       <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="literal">null</span>, <span class="literal">null</span>);       <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 특별한 경우</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="number">0</span>, -<span class="number">0</span>);            <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(-<span class="number">0</span>, -<span class="number">0</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, <span class="number">0</span>/<span class="number">0</span>);         <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is</a></p></blockquote>]]></content:encoded>
+      
+      
+      <category domain="https://sacultang.github.io/categories/Web/">Web</category>
+      
+      <category domain="https://sacultang.github.io/categories/Web/TIL/">TIL</category>
+      
+      <category domain="https://sacultang.github.io/categories/Web/TIL/2022-05/">2022.05</category>
+      
+      
+      <category domain="https://sacultang.github.io/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="https://sacultang.github.io/tags/Object/">Object</category>
+      
+      
+      <comments>https://sacultang.github.io/2022/05/01/2022-05-01-TIL/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>create-react-app</title>
@@ -342,38 +374,6 @@
       
       
       <comments>https://sacultang.github.io/2022/04/23/Game-WORDLE-1/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>중복단어제거</title>
-      <link>https://sacultang.github.io/2022/04/21/duplicate-text/</link>
-      <guid>https://sacultang.github.io/2022/04/21/duplicate-text/</guid>
-      <pubDate>Thu, 21 Apr 2022 12:45:05 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h1 id=&quot;중복-단어-제거&quot;&gt;&lt;a href=&quot;#중복-단어-제거&quot; class=&quot;headerlink&quot; title=&quot;중복 단어 제거&quot;&gt;&lt;/a&gt;중복 단어 제거&lt;/h1&gt;&lt;h3 id=&quot;n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다&quot;&gt;&lt;a href</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1 id="중복-단어-제거"><a href="#중복-단어-제거" class="headerlink" title="중복 단어 제거"></a>중복 단어 제거</h1><h3 id="n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다"><a href="#n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다" class="headerlink" title="n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다"></a>n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> textArr = [<span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;time&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;student&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;bye&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">t</span>) &#123;</span><br><span class="line"><span class="keyword">const</span> ans = t.<span class="title function_">filter</span>(<span class="function">(<span class="params">text, index</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> textArr.<span class="title function_">indexOf</span>(text) === index</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solution</span>(textArr)</span><br></pre></td></tr></table></figure><h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><ul><li>배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환한다.</li></ul><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf</a></p><h3 id="filter-element-index-source-x3D-gt"><a href="#filter-element-index-source-x3D-gt" class="headerlink" title="filter((element, index, source) &#x3D;&gt; {})"></a>filter((element, index, source) &#x3D;&gt; {})</h3><ul><li>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환한다.</li></ul><p>element : 요소값<br>index(optional) : 요소의 인덱스<br>source(optional) : 순회되는 배열 객체</p><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</a></p>]]></content:encoded>
-      
-      
-      <category domain="https://sacultang.github.io/categories/Web/">Web</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/JavaScript/">JavaScript</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/JavaScript/algorithm/">algorithm</category>
-      
-      
-      <category domain="https://sacultang.github.io/tags/JavaScript/">JavaScript</category>
-      
-      <category domain="https://sacultang.github.io/tags/algorithm/">algorithm</category>
-      
-      
-      <comments>https://sacultang.github.io/2022/04/21/duplicate-text/#disqus_thread</comments>
       
     </item>
     
