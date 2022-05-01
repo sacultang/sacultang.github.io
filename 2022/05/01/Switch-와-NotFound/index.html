@@ -22,20 +22,23 @@
     var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Array.reduce() 배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행하고, 하나의 결과값을 반환한다  말이 어렵다.. 1arr.reduce(callback[, initialValue])  reduce()의 콜백 함수는 4가지 인수를 받는다123456781. accumulator    - 누산기, 콜백의 반환값을 누적시킨다. initia">
+  <meta name="description" content="Switch 여러 route 중 순서대로 먼저 맞는 하나만 보여준다 exact를 뺄 수 있는 로직을 만들 수 있다 가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다  12345678910111213141516171819202122import &amp;#123; BrowserRouter, Route">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2022-04-29 TIL">
-<meta property="og:url" content="https://sacultang.github.io/2022/04/29/2022-04-29-TIL/index.html">
+<meta property="og:title" content="Switch 와 NotFound">
+<meta property="og:url" content="https://sacultang.github.io/2022/05/01/Switch-%EC%99%80-NotFound/index.html">
 <meta property="og:site_name" content="ㅇㅇㅈ Blog">
-<meta property="og:description" content="Array.reduce() 배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행하고, 하나의 결과값을 반환한다  말이 어렵다.. 1arr.reduce(callback[, initialValue])  reduce()의 콜백 함수는 4가지 인수를 받는다123456781. accumulator    - 누산기, 콜백의 반환값을 누적시킨다. initia">
+<meta property="og:description" content="Switch 여러 route 중 순서대로 먼저 맞는 하나만 보여준다 exact를 뺄 수 있는 로직을 만들 수 있다 가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다  12345678910111213141516171819202122import &amp;#123; BrowserRouter, Route">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-29T14:43:21.000Z">
-<meta property="article:modified_time" content="2022-04-29T14:47:47.362Z">
+<meta property="og:image" content="https://sacultang.github.io/images/switch/notfound.png">
+<meta property="article:published_time" content="2022-05-01T12:22:10.000Z">
+<meta property="article:modified_time" content="2022-05-01T12:36:36.214Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/images/switch/notfound.png">
 
-<link rel="canonical" href="https://sacultang.github.io/2022/04/29/2022-04-29-TIL/">
+<link rel="canonical" href="https://sacultang.github.io/2022/05/01/Switch-%EC%99%80-NotFound/">
 
 
 <script id="page-configurations">
@@ -50,7 +53,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
      crossorigin="anonymous"></script>
 <meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
-  <title>2022-04-29 TIL | ㅇㅇㅈ Blog</title>
+  <title>Switch 와 NotFound | ㅇㅇㅈ Blog</title>
   
 
 
@@ -166,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/29/2022-04-29-TIL/">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/Switch-%EC%99%80-NotFound/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -179,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2022-04-29 TIL
+          Switch 와 NotFound
         </h1>
 
         <div class="post-meta">
@@ -190,7 +193,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-04-29 23:43:21 / Modified: 23:47:47" itemprop="dateCreated datePublished" datetime="2022-04-29T23:43:21+09:00">2022-04-29</time>
+              <time title="Created: 2022-05-01 21:22:10 / Modified: 21:36:36" itemprop="dateCreated datePublished" datetime="2022-05-01T21:22:10+09:00">2022-05-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,11 +205,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-04/" itemprop="url" rel="index"><span itemprop="name">2022.04</span></a>
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
                 </span>
             </span>
 
@@ -219,8 +218,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/04/29/2022-04-29-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/29/2022-04-29-TIL/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/01/Switch-%EC%99%80-NotFound/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/Switch-와-NotFound/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -235,20 +234,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Array-reduce"><a href="#Array-reduce" class="headerlink" title="Array.reduce()"></a>Array.reduce()</h2><blockquote>
-<p>배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행하고, 하나의 결과값을 반환한다</p>
-</blockquote>
-<p>말이 어렵다..</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">reduce</span>(callback[, initialValue])</span><br></pre></td></tr></table></figure>
-
-<h3 id="reduce-의-콜백-함수는-4가지-인수를-받는다"><a href="#reduce-의-콜백-함수는-4가지-인수를-받는다" class="headerlink" title="reduce()의 콜백 함수는 4가지 인수를 받는다"></a>reduce()의 콜백 함수는 4가지 인수를 받는다</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. accumulator</span><br><span class="line">    - 누산기, 콜백의 반환값을 누적시킨다. initialValue를 제공했을때는 initialValue의 값이다</span><br><span class="line">2. currentValue</span><br><span class="line">  - 처리할 현재 요소</span><br><span class="line">3. currentIndex (optional)</span><br><span class="line">    - 처리할 현재 요소의 인덱스 </span><br><span class="line">4. array (optional)</span><br><span class="line">  - reduce()를 호출한 배열</span><br></pre></td></tr></table></figure>
-
-<h3 id="사용-방법"><a href="#사용-방법" class="headerlink" title="사용 방법"></a>사용 방법</h3><p>reduce()에는 누산기가 포함되어 있기 때문에, 배열의 각 요소에 대해 함수를 실행하고 누적된 값을 출력할때 용이하다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
-<p>예제에서 initialValue 를 0 으로 주었기 때문에 초기값이 0부터 시작해서 하나씩 누적 시켜 나간다<br>0+1+2+3+4+5 &#x3D; 15</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">10</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
-<p>initialValue 를 10 으로 주었기 때문에 초기값이 10부터 시작해서 하나씩 누적 시켜 나간다<br>10+1+2+3+4+5 &#x3D; 15</p>
-<p>reduce()로 많은 것을 할 수 있다는데.. 아직 더해서 누적 시키는 정도 밖에 이해가 되질 않는다</p>
+        <h1 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h1><ul>
+<li>여러 route 중 순서대로 먼저 맞는 하나만 보여준다</li>
+<li>exact를 뺄 수 있는 로직을 만들 수 있다</li>
+<li>가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span>, <span class="title class_">Route</span>, <span class="title class_">Switch</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Profile</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Profile&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/About&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NotFound</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/NotFound&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile/:id&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Profile&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Profile&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/about&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/&#x27;</span> <span class="attr">exact</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;/* Not Found */&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">component</span>=<span class="string">&#123;NotFound&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Path의 순서를 조정해준다</p>
+<ul>
+<li>루트경로인 ‘&#x2F;‘은 모든 경로에 포함되어 있기 때문이다</li>
+<li>루트경로인 ‘&#x2F;‘은 exact 여야 한다</li>
+<li>profile과 profile&#x2F;:id 는 porfile이 겹치는 범주이기 때문에 exact를 쓰지 않고 표현할려면 순서를 조정해야 한다</li>
+</ul>
+</li>
+<li><p>NotFound 페이지는 path를 지정하지 않고 컴포넌트를 지정해준다</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> 페이지를 찾을 수 없습니다 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/./images/switch/notfound.png"><br>없는 주소일 경우 notfound 컴포넌트를 출력한다</p>
 
     </div>
 
@@ -259,6 +263,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/React/" rel="tag"># React</a>
           </div>
 
         
@@ -267,13 +272,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/29/%EC%97%86%EB%8A%94-%EC%88%AB%EC%9E%90-%EB%8D%94%ED%95%98%EA%B8%B0/" rel="prev" title="없는 숫자 더하기">
-      <i class="fa fa-chevron-left"></i> 없는 숫자 더하기
+    <a href="/2022/05/01/React-router-dom/" rel="prev" title="React-router-dom">
+      <i class="fa fa-chevron-left"></i> React-router-dom
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/30/2022-04-30-TIL/" rel="next" title="2022-04-30 TIL">
-      2022-04-30 TIL <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -339,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-reduce"><span class="nav-number">1.</span> <span class="nav-text">Array.reduce()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-%EC%9D%98-%EC%BD%9C%EB%B0%B1-%ED%95%A8%EC%88%98%EB%8A%94-4%EA%B0%80%EC%A7%80-%EC%9D%B8%EC%88%98%EB%A5%BC-%EB%B0%9B%EB%8A%94%EB%8B%A4"><span class="nav-number">1.1.</span> <span class="nav-text">reduce()의 콜백 함수는 4가지 인수를 받는다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.2.</span> <span class="nav-text">사용 방법</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Switch"><span class="nav-number">1.</span> <span class="nav-text">Switch</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -471,9 +473,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://sacultang.github.io/2022/04/29/2022-04-29-TIL/";
-    this.page.identifier = "2022/04/29/2022-04-29-TIL/";
-    this.page.title = "2022-04-29 TIL";
+    this.page.url = "https://sacultang.github.io/2022/05/01/Switch-%EC%99%80-NotFound/";
+    this.page.identifier = "2022/05/01/Switch-와-NotFound/";
+    this.page.title = "Switch 와 NotFound";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
