@@ -160,6 +160,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/react-side-effect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/03/react-side-effect/" class="post-title-link" itemprop="url">react-side-effect</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-03 20:12:10 / Modified: 20:54:26" itemprop="dateCreated datePublished" datetime="2022-05-03T20:12:10+09:00">2022-05-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/03/react-side-effect/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/react-side-effect/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;&#125;, [deps])</span><br><span class="line"><span class="comment">// function : 수행하고자 하는 작업</span></span><br><span class="line"><span class="comment">// deps : 배열 형태이며 배열 안에는 감시하고자 하는 특정 값 or 빈 배열</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>배열을 생략하면 렌더링이 발생할때 마다 실행된다</li>
+<li>컴포넌트가 화면에 가장 처음 렌더링 될때 한번만 실행하고 싶을 떄는 deps 위치에 빈 배열을 넣는다</li>
+<li>배열안에 값이 있으면 특정 값이 바뀔때만 실행된다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;렌더링 될때마다 실행&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;마운트 될 때만 실행된다&#x27;</span>)</span><br><span class="line">&#125;, [])</span><br><span class="line"></span><br><span class="line"><span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;state가 변경 될때만 실행된다&#x27;</span>)</span><br><span class="line">&#125;, [state,state])</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/react-event-handler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,7 +276,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-05-03 16:52:55 / Modified: 20:09:57" itemprop="dateCreated datePublished" datetime="2022-05-03T16:52:55+09:00">2022-05-03</time>
+              <time title="Created: 2022-05-03 16:52:55 / Modified: 20:33:26" itemprop="dateCreated datePublished" datetime="2022-05-03T16:52:55+09:00">2022-05-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,6 +326,9 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const [state,setState] = React.useState(state)</span><br><span class="line">// [상태 값 저장 변수,상태 갱신 함수] = React.useState(상태 초기값)</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Btn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [keyword, setKeyword] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> [typing, setTyping] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">const</span> [result, setResult] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleChange</span>(<span class="params">e</span>) &#123;</span><br><span class="line">      <span class="title function_">setKeyword</span>(<span class="function">(<span class="params">cur</span>) =&gt;</span> cur = e.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">      <span class="title function_">setTyping</span>(<span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">setTyping</span>(<span class="literal">false</span>)</span><br><span class="line">      <span class="title function_">setResult</span>(<span class="function">(<span class="params">cur</span>)=&gt;</span> cur = <span class="string">`we find result of <span class="subst">$&#123;keyword&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleChange&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>search<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;typing ? `Looking for ...$&#123;keyword&#125;` : result&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">Btn</span> /&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
+<p>상태 초기값을 가져올때 딜레이가 걸릴수도 있을경우 함수로 작성해 호출을 보장해 줄 수 있다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [keyword, setKeyword] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="function">() =&gt;</span> <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;keyword&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -1127,97 +1221,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/30/2022-04-30-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/30/2022-04-30-TIL/" class="post-title-link" itemprop="url">2022-04-30 TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-04-30 17:12:32 / Modified: 17:28:31" itemprop="dateCreated datePublished" datetime="2022-04-30T17:12:32+09:00">2022-04-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-04/" itemprop="url" rel="index"><span itemprop="name">2022.04</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/30/2022-04-30-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/30/2022-04-30-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a>Object.entries()</h1><p>Object.entries()는 객체 자체의 열거 가능한 문자열 키를 가진 속성 [key, value] 쌍이 반환되는 객체이다.</p>
-<p>key는 문자열이 된다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span>, <span class="attr">baz</span>: <span class="number">42</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">entries</span>(obj));</span><br><span class="line"> <span class="comment">// [ [&#x27;foo&#x27;, &#x27;bar&#x27;], [&#x27;baz&#x27;, 42] ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;c&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">entries</span>(obj)); </span><br><span class="line"><span class="comment">// [ [&#x27;0&#x27;, &#x27;a&#x27;], [&#x27;1&#x27;, &#x27;b&#x27;], [&#x27;2&#x27;, &#x27;c&#x27;] ]</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1287,7 +1290,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
