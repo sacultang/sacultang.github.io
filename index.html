@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/10/React-%EC%83%81%ED%83%9C-%EB%81%8C%EC%96%B4%EC%98%AC%EB%A6%AC%EA%B8%B0/">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TypeScript-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +174,223 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/05/10/React-%EC%83%81%ED%83%9C-%EB%81%8C%EC%96%B4%EC%98%AC%EB%A6%AC%EA%B8%B0/" class="post-title-link" itemprop="url">React 상태 끌어올리기</a>
+            <a href="/2022/05/12/TypeScript-03/" class="post-title-link" itemprop="url">TypeScript-03</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-12 12:51:36 / Modified: 13:50:53" itemprop="dateCreated datePublished" datetime="2022-05-12T12:51:36+09:00">2022-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/12/TypeScript-03/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/12/TypeScript-03/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="작성자와-사용자의-관점으로-코드-바라보기"><a href="#작성자와-사용자의-관점으로-코드-바라보기" class="headerlink" title="작성자와 사용자의 관점으로 코드 바라보기"></a>작성자와 사용자의 관점으로 코드 바라보기</h1><p>타입이란 해당 변수가 할 수 있는 일을 결정한다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="comment">// f1이라는 함수의 body에서는 a를 사용한다</span></span><br><span class="line"><span class="comment">// a가 할 수 있는 일은 a의 타입이 결정한다</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법을 숙지하지 않은 채, 문자열을 사용하여 함수를 실행</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f2</span>(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f2</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>타입스크립트의 추론에 의지하는 경우</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 타입스크립트 코드지만</span></span><br><span class="line"><span class="comment">// a의 타입을 명시적으로 지정하지 않은 경우이기 때문에 a는 any로 추론된다</span></span><br><span class="line"><span class="comment">// 함수의 리턴타입은 number로 추론된다(NaN도 number이기 때문에)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f3</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 사용자는 a가 any이기 때문에, 사용법에 맞게 문자열을 사용하여 함수를 실행</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="nolmplicitAny-옵션"><a href="#nolmplicitAny-옵션" class="headerlink" title="nolmplicitAny 옵션"></a>nolmplicitAny 옵션</h2><p>타입을 명시적으로 지정하지 않은경우, 타입스크립트가 추론 중 ‘any’라고 판단하게 되면,<br>컴파일 에러를 발생시켜 명시적으로 지정하도록 유도한다</p>
+<h3 id="noImplicitAny-에-의한-방어"><a href="#noImplicitAny-에-의한-방어" class="headerlink" title="noImplicitAny 에 의한 방어"></a>noImplicitAny 에 의한 방어</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error TS7006: Parameter &#x27;a&#x27; implicitly has an &#x27;any&#x27; type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f3</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 사용자의 코드를 실행할 수 없습니다. 컴파일이 정상적으로 마무리 될 수 있도록 수정해야 합니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">lof</span>(<span class="title function_">f3</span>(<span class="number">10</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="string">&#x27;Mark&#x27;</span>) + <span class="number">5</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>number타입으로 추론된 리턴 타입</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입은 명시적으로 지정</span></span><br><span class="line"><span class="comment">// 명시적으로 지정하지 않은 함수의 리턴 타입은 number로 추론된다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f4</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(a&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법에 맞게 숫자형을 사용하여 함수를 실행했습니다.</span></span><br><span class="line"><span class="comment">// 해당 함수의 리턴 타입은 number이기 때문에, 타입에 따르면 연산을 바로 할 수 있다</span></span><br><span class="line"><span class="comment">// 하지만 실제 undefined + 5가 실행되어 NaN이 출력된다</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(<span class="number">5</span>)) <span class="comment">// 190</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(-<span class="number">5</span>) + <span class="number">5</span>) <span class="comment">// NaN</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="strictNullChecks-옵션"><a href="#strictNullChecks-옵션" class="headerlink" title="strictNullChecks 옵션"></a>strictNullChecks 옵션</h2><ul>
+<li>모든 타입에 자동으로 포함되어 있는 ‘null’과 ‘undefined’를 제거해준다</li>
+</ul>
+<h3 id="number-undefined-타입으로-추론된-리턴-타입"><a href="#number-undefined-타입으로-추론된-리턴-타입" class="headerlink" title="number | undefined 타입으로 추론된 리턴 타입"></a>number | undefined 타입으로 추론된 리턴 타입</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입은 명시적으로 지정</span></span><br><span class="line"><span class="comment">// 명시적으로 지정하지 않은 함수의 리턴 타입은 number | undefined로 추론</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f4</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(a&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법에 맞게 숫자형을 사용하여 함수를 실행</span></span><br><span class="line"><span class="comment">// 해당 함수의 리턴 타입은 number | undefined 이기 때문에,</span></span><br><span class="line"><span class="comment">// 타입에 따르면 이어진 연산을 바로 할 수 없다</span></span><br><span class="line"><span class="comment">// 컴파일 에러를 고쳐야하기 때문에 사용자와 작성자가 의논을 해야한다</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(<span class="number">5</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(-<span class="number">5</span>) + <span class="number">5</span>) <span class="comment">// error TS2532: Object is possibly &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>명시적으로 리턴타입을 지정해야 할까?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입과 함수의 리턴 타입을 명시적으로 지정했습니다.</span></span><br><span class="line"><span class="comment">// 실제 함수 구현부의 리턴 타입과 명시적으로 지정한 타입이 일치하지 않아 컴파일 에러가 발생한다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS2366</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f5</span>(<span class="params">a: number</span>): number &#123;</span><br><span class="line">  <span class="keyword">if</span>( a &gt; <span class="number">0</span>)&#123; <span class="comment">// if만 리턴 되기 때문에 if가 아닌 부분에 대한 작업이 필요함</span></span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>noImplicitReturns 옵션을 켜면<ul>
+<li>함수내에서 모든 코드가 값을 리턴하지 않으면, 컴파일 에러를 발생 시킨다</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if가 아닌 경우 return을 직접하지 않고 코드가 종료된다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS7030: Not all code paths return a value.</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f5</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>( a &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="매개변수에-object가-들어오는-경우"><a href="#매개변수에-object가-들어오는-경우" class="headerlink" title="매개변수에 object가 들어오는 경우"></a>매개변수에 object가 들어오는 경우</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f6</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f6</span>(&#123;<span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f6</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// 이름은 undefined이고, 연령대는 NaN대 입니다</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="object-literal-type"><a href="#object-literal-type" class="headerlink" title="object literal type"></a>object literal type</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f7</span>(<span class="params">a: &#123;name: string; age: number&#125;</span>): string &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f7</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>:<span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f7</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// error TS2345 : Argument of type &#x27;string&#x27; is not assignable to parameter of type &#x27;&#123;name: string; age: number;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>매번 이렇게 오브젝트의 타입을 지정해주는건 힘들기 때문에 나만의 타입을 만들 수 있다</p>
+<h3 id="나만의-타입을-만드는-방법"><a href="#나만의-타입을-만드는-방법" class="headerlink" title="나만의 타입을 만드는 방법"></a>나만의 타입을 만드는 방법</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">PersonInterface</span> &#123;</span><br><span class="line">  name : string</span><br><span class="line">  age : number</span><br><span class="line">&#125;</span><br><span class="line">type <span class="title class_">PersonTypeAlias</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">  <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f8</span>(<span class="params">a: PersonInterface</span>): string &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age/<span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f8</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f8</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// error TS2345: Argument of type &#x27;string&#x27; is not assignable to parameter of type &#x27;PersonInterface&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>타입스크립트 코드를 작성하는 사람으로서 어떻게 타입을 표현할 수 있는지가 중요</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/11/React-Extraction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/11/React-Extraction/" class="post-title-link" itemprop="url">React-Extraction</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-11 14:08:51 / Modified: 14:20:07" itemprop="dateCreated datePublished" datetime="2022-05-11T14:08:51+09:00">2022-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/11/React-Extraction/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/11/React-Extraction/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="컴포넌트-추출"><a href="#컴포넌트-추출" class="headerlink" title="컴포넌트 추출"></a>컴포넌트 추출</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">formatDate</span>(<span class="params">date</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> date.<span class="title function_">toLocaleDateString</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Comment</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;Comment&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;UserInfo&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&quot;Avatar&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">             <span class="attr">src</span>=<span class="string">&#123;props.author.avatarUrl&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">             <span class="attr">alt</span>=<span class="string">&#123;props.author.name&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;UserInfo-name&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;props.author.name&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;Comment-text&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;props.text&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;Comment-date&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;formatDate(props.date)&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> comment = &#123;</span><br><span class="line">  <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">  <span class="attr">text</span>: <span class="string">&#x27;I hope you enjoy learning React!&#x27;</span>,</span><br><span class="line">  <span class="attr">author</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Hello Kitty&#x27;</span>,</span><br><span class="line">    <span class="attr">avatarUrl</span>: <span class="string">&#x27;http://placekitten.com/g/64/64&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Comment</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">date</span>=<span class="string">&#123;comment.date&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">text</span>=<span class="string">&#123;comment.text&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">author</span>=<span class="string">&#123;comment.author&#125;</span> /&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>위 컴포넌트는 구성요소들이 모두 중첩 구조로 이루어져 있어서 변경하기 어려울수 있다.</li>
+<li>구성요소를 개별적으로 재사용하기도 힘들다</li>
+<li>구성요소를 컴포넌트로 추출한다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">formatDate</span>(<span class="params">date</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> date.<span class="title function_">toLocaleDateString</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Avatar</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&#x27;Avatar&#x27;</span> <span class="attr">src</span>=<span class="string">&#123;props.user.avatarUrl&#125;</span> <span class="attr">alt</span>=<span class="string">&#123;props.user.name&#125;</span> /&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">UserInfo</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;UserInfo&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Avatar</span> <span class="attr">user</span>=<span class="string">&#123;props.user&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;UserInfo-name&#x27;</span>&gt;</span>&#123;props.user.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Comment</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">UserInfo</span> <span class="attr">user</span>=<span class="string">&#123;props.author&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment-text&#x27;</span>&gt;</span>&#123;props.text&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment-date&#x27;</span>&gt;</span>&#123;formatDate(props.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> comment = &#123;</span><br><span class="line">  <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">  <span class="attr">text</span>: <span class="string">&#x27;I hope you enjoy learning React!&#x27;</span>,</span><br><span class="line">  <span class="attr">author</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Hello Kitty&#x27;</span>,</span><br><span class="line">    <span class="attr">avatarUrl</span>: <span class="string">&#x27;http://placekitten.com/g/64/64&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Extraction</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Comment</span> <span class="attr">date</span>=<span class="string">&#123;comment.date&#125;</span> <span class="attr">text</span>=<span class="string">&#123;comment.text&#125;</span> <span class="attr">author</span>=<span class="string">&#123;comment.author&#125;</span> /&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>props의 흐름을 잘 파악해야한다</li>
+</ul>
+<ol>
+<li>Extraction 컴포넌트에서 Comment 컴포넌트 props로 date,text,author라는 이름으로 넘겨주고 있다</li>
+<li>Comment 컴포넌트에서 user라는 이름으로 {props.author}데이터를 UserInfo 컴포넌트로 props를 넘겨주고있다</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/10/React-%E1%84%89%E1%85%A1%E1%86%BC%E1%84%90%E1%85%A2-%E1%84%81%E1%85%B3%E1%86%AF%E1%84%8B%E1%85%A5%E1%84%8B%E1%85%A9%E1%86%AF%E1%84%85%E1%85%B5%E1%84%80%E1%85%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/10/React-%E1%84%89%E1%85%A1%E1%86%BC%E1%84%90%E1%85%A2-%E1%84%81%E1%85%B3%E1%86%AF%E1%84%8B%E1%85%A5%E1%84%8B%E1%85%A9%E1%86%AF%E1%84%85%E1%85%B5%E1%84%80%E1%85%B5/" class="post-title-link" itemprop="url">React 상태 끌어올리기</a>
         </h2>
 
         <div class="post-meta">
@@ -210,8 +426,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/05/10/React-%EC%83%81%ED%83%9C-%EB%81%8C%EC%96%B4%EC%98%AC%EB%A6%AC%EA%B8%B0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/10/React-상태-끌어올리기/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/10/React-%E1%84%89%E1%85%A1%E1%86%BC%E1%84%90%E1%85%A2-%E1%84%81%E1%85%B3%E1%86%AF%E1%84%8B%E1%85%A5%E1%84%8B%E1%85%A9%E1%86%AF%E1%84%85%E1%85%B5%E1%84%80%E1%85%B5/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/10/React-상태-끌어올리기/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -954,234 +1170,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/2022-05-03-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/03/2022-05-03-TIL/" class="post-title-link" itemprop="url">2022-05-03-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-03 14:23:03 / Modified: 14:24:12" itemprop="dateCreated datePublished" datetime="2022-05-03T14:23:03+09:00">2022-05-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/03/2022-05-03-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/2022-05-03-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>for in 반복문은 객체에서 주로 사용</p>
-<ul>
-<li>객체 자료형에서 ‘열거’ 할 수 있는 자료들을 순회할 수 있도록 해준다</li>
-<li>특정 순서에 따라 인덱스를 반환하는 것을 보장 할 수 없다 (반복되는 순서가 구현에 따라 다르다)</li>
-<li>배열 데이터에서는 인덱스값이 중요하므로 forEach나 for..of를 권장한다</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 예제</span></span><br><span class="line"><span class="keyword">const</span> object = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> property <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;property&#125;</span>: <span class="subst">$&#123;object[property]&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// expected output:</span></span><br><span class="line"><span class="comment">// &quot;a: 1&quot;</span></span><br><span class="line"><span class="comment">// &quot;b: 2&quot;</span></span><br><span class="line"><span class="comment">// &quot;c: 3&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>variable</strong> : 매번 반복마다 객체의 키 값이 variable로 지정된다</p>
-<p><strong>object</strong> : 반복 작업을 수행할 객체 (열거형 속성을 가지고 있는객체 )</p>
-<blockquote>
-<p>객체 데이터는 만들때 개발자가 적은 키:밸류 값만 저장되는게 아닌 그 외 숨겨진 속성 3개가 같이 저장된다</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">숨겨진 속성을 확인해보는 메서드 <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">let</span> book = &#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&quot;자바스크립트 완벽하게 이해하기&quot;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">32000</span>,</span><br><span class="line">        <span class="attr">author</span>: <span class="string">&quot;훈이&quot;</span>,</span><br><span class="line">        <span class="attr">publisher</span>: <span class="string">&quot;자바스크립트짱짱&quot;</span>,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Obejct.getOwnPropertyDescriptor(객체명,&#x27;객체키명&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(book, <span class="string">&quot;title&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>숨겨진 속성들을 이용해 객체데이터의 값을 열거불가,수정불가,삭제불가 등을 할 수있음..</p>
-<p><strong>writable</strong> 이 false 이면 변경불가 → default : true</p>
-<p><strong>enumerable</strong> 이 false 이면 열거 불가 → default : true</p>
-<p><strong>configurable</strong> 이 false 이면 enumerable 및 configurable을 변경 불가 및 삭제 불가 하지만 쓰기 writable은 가능 → default : true</p>
-<p><a target="_blank" rel="noopener" href="https://developer-talk.tistory.com/277">[JavaScript]객체 속성(writable, enumerable, configurable)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/02/React-router-dom-v6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/React-router-dom-v6/" class="post-title-link" itemprop="url">React-router-dom v6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-02 13:13:03 / Modified: 14:19:30" itemprop="dateCreated datePublished" datetime="2022-05-02T13:13:03+09:00">2022-05-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/02/React-router-dom-v6/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/02/React-router-dom-v6/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React-router-dom-v6"><a href="#React-router-dom-v6" class="headerlink" title="React-router-dom v6"></a>React-router-dom v6</h1><p>강의에서는 5버전으로 강의해서 그냥 따라하다가 안돼서 v6으로 버전업해서 진행..</p>
-<h2 id="Routes"><a href="#Routes" class="headerlink" title="Routes"></a>Routes</h2><p>5버전에 있던 Switch가 Routes로 변경되었다<br>그리고 Route를 Routes로 감싸주지 않으면 에러가 발생한다<br><img src="/./images/route/01.png"></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Routes</span>, <span class="title class_">Route</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Profile</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Profile&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/About&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NotFound</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/NotFound&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Links</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Links&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NavLinks</span> <span class="keyword">from</span> <span class="string">&#x27;./components/NavLinks&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Login</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Login&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Links</span>&gt;</span><span class="tag">&lt;/<span class="name">Links</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">NavLinks</span>&gt;</span><span class="tag">&lt;/<span class="name">NavLinks</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Routes</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/login&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">Login</span>&gt;</span><span class="tag">&lt;/<span class="name">Login</span>&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile/:id&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">Profile</span> /&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">Profile</span> /&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/about&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">About</span> /&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">Home</span> /&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;/* Not Found */&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/*&#x27;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">NotFound</span> /&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Routes</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>Route 에서 변경점<ul>
-<li>5에서는 component &#x3D; { Home } 방식으로 연결했다면  </li>
-<li>6에서는 element &#x3D; {&lt;Home &#x2F;&gt;} 처럼 컴포넌트를 연결 해줘야 한다</li>
-</ul>
-</li>
-<li>exact를 통해 복수 라우팅을 방지했는데 exact가 삭제됨<ul>
-<li>여러 라우팅을 매칭하기 위해 ‘*’ 을 붙인다</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Route</span> path=<span class="string">&#x27;/*&#x27;</span> element=&#123;<span class="language-xml"><span class="tag">&lt;<span class="name">NotFound</span> /&gt;</span></span>&#125;&gt;&lt;/<span class="title class_">Route</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="URL-파라미터와-쿼리"><a href="#URL-파라미터와-쿼리" class="headerlink" title="URL 파라미터와 쿼리"></a>URL 파라미터와 쿼리</h2><ul>
-<li>파라미터 : ‘profile&#x2F;1’</li>
-<li>쿼리 : ‘about?name&#x3D;mark’</li>
-</ul>
-<h3 id="URL-파라미터-useParams"><a href="#URL-파라미터-useParams" class="headerlink" title="URL 파라미터 useParams"></a>URL 파라미터 useParams</h3><p>6버전에서는<br>useParams로 파라미터를 조회한다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useParams &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> parmas = <span class="title function_">useParams</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(params)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Profile 페이지 입니다.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      &#123;parmas.id &amp;&amp; <span class="tag">&lt;<span class="name">p</span>&gt;</span>id 는 &#123;parmas.id&#125; 입니다<span class="tag">&lt;/<span class="name">p</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Profile</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>console로 찍어보면 객체데이터로 출력된다<br><img src="/./images/route/02.png"></p>
-<h3 id="URL-쿼리"><a href="#URL-쿼리" class="headerlink" title="URL 쿼리"></a>URL 쿼리</h3><p>useLocation을 사용해 조회한다<br><br>URL 쿼리는 “?name&#x3D;mark”과 같이 문자열로 되어 있고, 특정 값을 읽어 오기 위해서는 문자열을 객체 형태로 반환해야한다. 그 과정에서 qs 라는 라이브러리를 사용한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">&#x27;query-string&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useLocation &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">About</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> search  = <span class="title function_">useLocation</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(search)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>search를 콘솔로 찍어보면 여러 속성이 들어있다 <br><br><img src="/./images/route/03.png"> <br><br>현재 프로젝트에서는 search 부분만 필요하므로 search만 구조분해로 받아온다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">&#x27;query-string&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useLocation &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">About</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; search &#125;  = <span class="title function_">useLocation</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(search)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/./images/route/04.png"></p>
-<p>문자열로 찍힌다<br>qs로 격체 형태로 변환해서 사용 하면 된다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">&#x27;query-string&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useLocation &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">About</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; search &#125; = <span class="title function_">useLocation</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(search)</span><br><span class="line">  <span class="keyword">const</span> query = queryString.<span class="title function_">parse</span>(search)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;query.name &amp;&amp; <span class="tag">&lt;<span class="name">p</span>&gt;</span>name은 &#123;query.name&#125;입니다.<span class="tag">&lt;/<span class="name">p</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="useNavigate"><a href="#useNavigate" class="headerlink" title="useNavigate"></a>useNavigate</h2><p>useNavigate를 통해 사용자를 특정 Url로 리디렉션 한다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useNavigate &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">LoginButton</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> navigate = <span class="title function_">useNavigate</span>()</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">login</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">navigate</span>(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;login&#125;</span>&gt;</span>로그인하기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1251,20 +1239,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
