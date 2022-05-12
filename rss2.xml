@@ -9,8 +9,36 @@
     <atom:link href="https://sacultang.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 12 May 2022 12:08:27 GMT</pubDate>
+    <pubDate>Thu, 12 May 2022 12:40:46 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Typescript-Interface</title>
+      <link>https://sacultang.github.io/2022/05/12/Typescript-Interface/</link>
+      <guid>https://sacultang.github.io/2022/05/12/Typescript-Interface/</guid>
+      <pubDate>Thu, 12 May 2022 12:22:09 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;interface&quot;&gt;&lt;a href=&quot;#interface&quot; class=&quot;headerlink&quot; title=&quot;interface&quot;&gt;&lt;/a&gt;interface&lt;/h1&gt;&lt;figure class=&quot;highlight ts&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td c</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person1</span> &#123;</span><br><span class="line">  <span class="comment">// 컴파일 됐을때는 사라지게 된다</span></span><br><span class="line">  <span class="comment">// 컴파일 타임에만 필요하다</span></span><br><span class="line">  <span class="comment">// 컴파일 타임에 인터페이스를 이용해 관계를 규명해 체크해주는 역할</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello1</span>(<span class="params">person: Person1</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요 <span class="subst">$&#123;person.name&#125;</span>입니다`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p1</span>: <span class="title class_">Person1</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hello1</span>(p1)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="optional-property-1"><a href="#optional-property-1" class="headerlink" title="optional property (1)"></a>optional property (1)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person2</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  age?: <span class="built_in">number</span></span><br><span class="line">  <span class="comment">// 객체에 있을수도 있고 없을수도 있을때 ? 를 뒤에 붙인다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello2</span>(<span class="params">person: Person2</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요 <span class="subst">$&#123;person.name&#125;</span>입니다 `</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hello2</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;)</span><br><span class="line"><span class="title function_">hello2</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Anna&#x27;</span> &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="optional-property-2"><a href="#optional-property-2" class="headerlink" title="optional property (2)"></a>optional property (2)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person3</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  age?: <span class="built_in">number</span></span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">string</span>]: <span class="built_in">any</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello3</span>(<span class="params">person: Person3</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    <span class="string">`안녕하세요 <span class="subst">$&#123;person.name&#125;</span> <span class="subst">$&#123;person.systers&#125;</span> <span class="subst">$&#123;person.father&#125;</span>입니다`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p31</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p32</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Anna&#x27;</span>,</span><br><span class="line">  <span class="attr">systers</span>: [<span class="string">&#x27;sung&#x27;</span>, <span class="string">&#x27;chan&#x27;</span>], <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p33</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Bokdan&#x27;</span>,</span><br><span class="line">  <span class="attr">father</span>: p31, <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">  <span class="attr">mother</span>: p32, <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hello3</span>(p31)</span><br><span class="line"><span class="title function_">hello3</span>(p32)</span><br><span class="line"><span class="title function_">hello3</span>(p33)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      
+      <category domain="https://sacultang.github.io/categories/Web/">Web</category>
+      
+      <category domain="https://sacultang.github.io/categories/Web/TypeScript/">TypeScript</category>
+      
+      
+      <category domain="https://sacultang.github.io/tags/TypeScript/">TypeScript</category>
+      
+      
+      <comments>https://sacultang.github.io/2022/05/12/Typescript-Interface/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>2022-05-12-TIL</title>
@@ -94,10 +122,10 @@
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/categories/Web/TypeScript/">TypeScript</category>
       
       
-      <category domain="https://sacultang.github.io/tags/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/tags/TypeScript/">TypeScript</category>
       
       
       <comments>https://sacultang.github.io/2022/05/12/TS-Compiler-extends/#disqus_thread</comments>
@@ -122,10 +150,10 @@
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/categories/Web/TypeScriprt/">TypeScriprt</category>
       
       
-      <category domain="https://sacultang.github.io/tags/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/tags/TypeScriprt/">TypeScriprt</category>
       
       
       <comments>https://sacultang.github.io/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/#disqus_thread</comments>
@@ -150,10 +178,10 @@
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/categories/Web/TypeScript/">TypeScript</category>
       
       
-      <category domain="https://sacultang.github.io/tags/TypeSciprt/">TypeSciprt</category>
+      <category domain="https://sacultang.github.io/tags/TypeScript/">TypeScript</category>
       
       
       <comments>https://sacultang.github.io/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/#disqus_thread</comments>
@@ -319,34 +347,6 @@
       
       
       <comments>https://sacultang.github.io/2022/05/10/2022-05-10-TIL/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>React ref</title>
-      <link>https://sacultang.github.io/2022/05/04/React-ref/</link>
-      <guid>https://sacultang.github.io/2022/05/04/React-ref/</guid>
-      <pubDate>Wed, 04 May 2022 05:24:08 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h1 id=&quot;React-useRef-hook&quot;&gt;&lt;a href=&quot;#React-useRef-hook&quot; class=&quot;headerlink&quot; title=&quot;React.useRef hook&quot;&gt;&lt;/a&gt;React.useRef hook&lt;/h1&gt;&lt;p&gt;ref로 DOM 다</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1 id="React-useRef-hook"><a href="#React-useRef-hook" class="headerlink" title="React.useRef hook"></a>React.useRef hook</h1><p>ref로 DOM 다루기<br>리액트를 사용하는 프로젝트에서 가끔씩 DOM을 직접 선택해야 하는 상황이 발생한다.<br>그럴때 리액트에서 ref를 사용한다  </p><blockquote><p>Vanilla js -&gt; document.get<del>&#x2F; documnet.query</del><br>React -&gt; useRef &#x2F; ref</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> inputRef = <span class="title class_">React</span>.<span class="title function_">useRef</span>()</span><br><span class="line">    <span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      inputRef.<span class="property">current</span>.<span class="title function_">focus</span>()</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure><ol><li>useRef()를 inputRef 변수에 넣고, 실제 input에다 ref값으로 설정해준다  </li><li>ref객체의 .current 값은 원하는 DOM을 가르키게 된다</li></ol>]]></content:encoded>
-      
-      
-      <category domain="https://sacultang.github.io/categories/Web/">Web</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/React/">React</category>
-      
-      
-      <category domain="https://sacultang.github.io/tags/React/">React</category>
-      
-      
-      <comments>https://sacultang.github.io/2022/05/04/React-ref/#disqus_thread</comments>
       
     </item>
     
