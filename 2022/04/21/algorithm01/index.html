@@ -22,23 +22,21 @@
     var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Switch 여러 route 중 순서대로 먼저 맞는 하나만 보여준다 exact를 뺄 수 있는 로직을 만들 수 있다 가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다  12345678910111213141516171819202122import &amp;#123; BrowserRouter, Route">
+  <meta name="description" content="중복 단어 제거n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다12345678910let textArr &#x3D; [&amp;#x27;5&amp;#x27;, &amp;#x27;good&amp;#x27;, &amp;#x27;time&amp;#x27;, &amp;#x27;good&amp;#x27;, &amp;#x27;student&amp;#x27;, &amp;#x27;5&amp;#x27;, &amp;#x27;hello&amp;#x27;, &amp;#x27;bye&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Switch 와 NotFound">
-<meta property="og:url" content="https://sacultang.github.io/2022/05/01/Switch-NotFound/index.html">
+<meta property="og:title" content="중복단어제거">
+<meta property="og:url" content="https://sacultang.github.io/2022/04/21/algorithm01/index.html">
 <meta property="og:site_name" content="ㅇㅇㅈ Blog">
-<meta property="og:description" content="Switch 여러 route 중 순서대로 먼저 맞는 하나만 보여준다 exact를 뺄 수 있는 로직을 만들 수 있다 가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다  12345678910111213141516171819202122import &amp;#123; BrowserRouter, Route">
+<meta property="og:description" content="중복 단어 제거n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다12345678910let textArr &#x3D; [&amp;#x27;5&amp;#x27;, &amp;#x27;good&amp;#x27;, &amp;#x27;time&amp;#x27;, &amp;#x27;good&amp;#x27;, &amp;#x27;student&amp;#x27;, &amp;#x27;5&amp;#x27;, &amp;#x27;hello&amp;#x27;, &amp;#x27;bye&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://sacultang.github.io/images/switch/notfound.png">
-<meta property="article:published_time" content="2022-05-01T12:22:10.000Z">
-<meta property="article:modified_time" content="2022-05-01T12:36:36.210Z">
+<meta property="article:published_time" content="2022-04-21T12:45:05.000Z">
+<meta property="article:modified_time" content="2022-04-23T12:39:33.090Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sacultang.github.io/images/switch/notfound.png">
 
-<link rel="canonical" href="https://sacultang.github.io/2022/05/01/Switch-NotFound/">
+<link rel="canonical" href="https://sacultang.github.io/2022/04/21/algorithm01/">
 
 
 <script id="page-configurations">
@@ -53,7 +51,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
      crossorigin="anonymous"></script>
 <meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
-  <title>Switch 와 NotFound | ㅇㅇㅈ Blog</title>
+  <title>중복단어제거 | ㅇㅇㅈ Blog</title>
   
 
 
@@ -169,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/Switch-NotFound/">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/21/algorithm01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Switch 와 NotFound
+          중복단어제거
         </h1>
 
         <div class="post-meta">
@@ -191,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-01 21:22:10 / Modified: 21:36:36" itemprop="dateCreated datePublished" datetime="2022-05-01T21:22:10+09:00">2022-05-01</time>
+              <time title="Created: 2022-04-21 21:45:05" itemprop="dateCreated datePublished" datetime="2022-04-21T21:45:05+09:00">2022-04-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -205,7 +209,11 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                  <a href="/categories/web/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/javascript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
                 </span>
             </span>
 
@@ -218,8 +226,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/05/01/Switch-NotFound/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/Switch-NotFound/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/04/21/algorithm01/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/21/algorithm01/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -234,25 +242,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h1><ul>
-<li>여러 route 중 순서대로 먼저 맞는 하나만 보여준다</li>
-<li>exact를 뺄 수 있는 로직을 만들 수 있다</li>
-<li>가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, “Not Found”페이지를 만들 수 있다</li>
+        <h1 id="중복-단어-제거"><a href="#중복-단어-제거" class="headerlink" title="중복 단어 제거"></a>중복 단어 제거</h1><h3 id="n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다"><a href="#n개의-문자열이-입력되면-중복된-문자열은-제거하고-출력한다" class="headerlink" title="n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다"></a>n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> textArr = [<span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;time&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;student&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;bye&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">t</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> ans = t.<span class="title function_">filter</span>(<span class="function">(<span class="params">text, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> textArr.<span class="title function_">indexOf</span>(text) === index</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solution</span>(textArr)</span><br></pre></td></tr></table></figure>
+
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><ul>
+<li>배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환한다.</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span>, <span class="title class_">Route</span>, <span class="title class_">Switch</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Profile</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Profile&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/About&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NotFound</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/NotFound&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile/:id&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Profile&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Profile&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/about&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/&#x27;</span> <span class="attr">exact</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;/* Not Found */&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">component</span>=<span class="string">&#123;NotFound&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Path의 순서를 조정해준다</p>
-<ul>
-<li>루트경로인 ‘&#x2F;‘은 모든 경로에 포함되어 있기 때문이다</li>
-<li>루트경로인 ‘&#x2F;‘은 exact 여야 한다</li>
-<li>profile과 profile&#x2F;:id 는 porfile이 겹치는 범주이기 때문에 exact를 쓰지 않고 표현할려면 순서를 조정해야 한다</li>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf</a></p>
+<h3 id="filter-element-index-source-x3D-gt"><a href="#filter-element-index-source-x3D-gt" class="headerlink" title="filter((element, index, source) &#x3D;&gt; {})"></a>filter((element, index, source) &#x3D;&gt; {})</h3><ul>
+<li>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환한다.</li>
 </ul>
-</li>
-<li><p>NotFound 페이지는 path를 지정하지 않고 컴포넌트를 지정해준다</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> 페이지를 찾을 수 없습니다 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/./images/switch/notfound.png"><br>없는 주소일 경우 notfound 컴포넌트를 출력한다</p>
+<p>element : 요소값<br>index(optional) : 요소의 인덱스<br>source(optional) : 순회되는 배열 객체</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</a></p>
 
     </div>
 
@@ -263,7 +263,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
-              <a href="/tags/react/" rel="tag"># React</a>
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
           </div>
 
         
@@ -272,12 +272,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/01/React-router-dom/" rel="prev" title="React-router-dom">
-      <i class="fa fa-chevron-left"></i> React-router-dom
+    <a href="/2022/04/21/JS-data-Immutability/" rel="prev" title="JS-데이터 불변성">
+      <i class="fa fa-chevron-left"></i> JS-데이터 불변성
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/01/algorithm02/" rel="next" title="수박수박수">
-      수박수박수 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/04/23/Game-WORDLE-1/" rel="next" title="Game-WORDLE part.2">
+      Game-WORDLE part.2 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -344,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Switch"><span class="nav-number">1.</span> <span class="nav-text">Switch</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A4%91%EB%B3%B5-%EB%8B%A8%EC%96%B4-%EC%A0%9C%EA%B1%B0"><span class="nav-number">1.</span> <span class="nav-text">중복 단어 제거</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n%EA%B0%9C%EC%9D%98-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%B4-%EC%9E%85%EB%A0%A5%EB%90%98%EB%A9%B4-%EC%A4%91%EB%B3%B5%EB%90%9C-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%80-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%9C%EB%8B%A4"><span class="nav-number">1.0.1.</span> <span class="nav-text">n개의 문자열이 입력되면 중복된 문자열은 제거하고 출력한다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">1.0.2.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-element-index-source-x3D-gt"><span class="nav-number">1.0.3.</span> <span class="nav-text">filter((element, index, source) &#x3D;&gt; {})</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -476,9 +476,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://sacultang.github.io/2022/05/01/Switch-NotFound/";
-    this.page.identifier = "2022/05/01/Switch-NotFound/";
-    this.page.title = "Switch 와 NotFound";
+    this.page.url = "https://sacultang.github.io/2022/04/21/algorithm01/";
+    this.page.identifier = "2022/04/21/algorithm01/";
+    this.page.title = "중복단어제거";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
