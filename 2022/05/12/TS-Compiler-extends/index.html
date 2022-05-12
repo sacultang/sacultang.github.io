@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="extends tsconfig에서 다른 파일의 설정을 상속받을때 사용한다 파일(상대) 경로명 : string TypeScript 2.1 버전 이상에서만 가능12345678910111213141516&#x2F;&#x2F; tsconfig.json&amp;#123;  &quot;extends&quot;: &quot;.&#x2F;base.json&quot;,  &quot;compilerOptio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TS Compiler-extends">
+<meta property="og:url" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="extends tsconfig에서 다른 파일의 설정을 상속받을때 사용한다 파일(상대) 경로명 : string TypeScript 2.1 버전 이상에서만 가능12345678910111213141516&#x2F;&#x2F; tsconfig.json&amp;#123;  &quot;extends&quot;: &quot;.&#x2F;base.json&quot;,  &quot;compilerOptio">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/01.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/03.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/04.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/05.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/06.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/07.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/08.png">
+<meta property="article:published_time" content="2022-05-12T07:55:09.000Z">
+<meta property="article:modified_time" content="2022-05-12T12:11:33.780Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="TypeSciprt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/01.png">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>TS Compiler-extends | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TS Compiler-extends
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-12 16:55:09 / Modified: 21:11:33" itemprop="dateCreated datePublished" datetime="2022-05-12T16:55:09+09:00">2022-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeSciprt/" itemprop="url" rel="index"><span itemprop="name">TypeSciprt</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/12/TS-Compiler-extends/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/12/TS-Compiler-extends/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h1><ul>
+<li>tsconfig에서 다른 파일의 설정을 상속받을때 사용한다</li>
+<li>파일(상대) 경로명 : string</li>
+<li>TypeScript 2.1 버전 이상에서만 가능<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./base.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// &quot;strict&quot;: true,  </span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;strict&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="comment">// base.json파일의 설정을 상속받아 strict: true 가 적용 된다</span></span><br></pre></td></tr></table></figure>
+<h1 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h1></li>
+<li>프로젝트 안의 어떤 파일을 컴파일 할건지 결정하게 된다</li>
+<li>셋다 설정이 없으면, 전부다 컴바일<h2 id="files"><a href="#files" class="headerlink" title="files"></a>files</h2></li>
+<li>상대 혹은 절대 경로의 리스트 배열이다</li>
+<li>files에 설정이 되어있으면 exclude되어 있어도 컴파일이 된다<h2 id="include-exclude"><a href="#include-exclude" class="headerlink" title="include,exclude"></a>include,exclude</h2></li>
+<li>glob패턴 (마치 .gitignore)</li>
+</ul>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><ul>
+<li>exclude로 제외 되어있으면 컴파일하지 않는다</li>
+</ul>
+<h3 id="exclude"><a href="#exclude" class="headerlink" title="exclude"></a>exclude</h3><ul>
+<li>설정 안하면 4가지(node_modules,bower_components,jspm_packages, &lt;outDir&gt;를 default로 제외한다</li>
+<li>&lt;outDir&gt;은 항상 제외된다 (include에 있어도)</li>
+</ul>
+<h1 id="compileOptions"><a href="#compileOptions" class="headerlink" title="compileOptions"></a>compileOptions</h1><h2 id="typeRoots-types"><a href="#typeRoots-types" class="headerlink" title="typeRoots, types"></a>typeRoots, types</h2><h3 id="types"><a href="#types" class="headerlink" title="@types"></a>@types</h3><ul>
+<li><p>TypeScript 2.0부터 사용 가능해진 내장 type definition 시스템</p>
+</li>
+<li><p>아무 설정 안하면?</p>
+<ul>
+<li>node_modules&#x2F;@types라는 모든 경로를 찾아서 사용</li>
+</ul>
+</li>
+<li><p>typeRoots를 사용하면?</p>
+<ul>
+<li>배열 안에 들어 있는 경로들 아래서만 가져온다</li>
+</ul>
+</li>
+<li><p>types를 사용하면?</p>
+<ul>
+<li>배열 안의 모듈 혹은 .&#x2F;node_modules&#x2F;@types&#x2F; 안의 모듈 이름에서 찾아온다</li>
+<li>[]빈 배열을 넣는 다는건 이 시스템을 이용하지 않겠다는 것</li>
+</ul>
+</li>
+<li><p>typeRoots와 types를 같이 사용하지 않는다</p>
+<span id="more"></span>
+<h2 id="target과-lib"><a href="#target과-lib" class="headerlink" title="target과 lib"></a>target과 lib</h2></li>
+<li><p>target</p>
+<ul>
+<li>빌드의 결과물을 어떤 버전으로 할 것이냐</li>
+<li>지정을 안하면 es3 이다<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.ts</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">hello</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tsconfig.json의 target을 es5로 지정한 뒤 컴파일 후</span></span><br><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">var</span> hello = <span class="keyword">function</span> (<span class="params"></span>) &#123; &#125;;</span><br><span class="line"><span class="comment">// arrow 펑션이 일반 함수로 변경되어 컴파일 됨</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>lib</p>
+<ul>
+<li>기본 type definition 라이브러리를 어떤 것을 사용할 것이냐</li>
+<li>lib를 지정하지 않을 때<ul>
+<li>target이 ‘es3’이고, 디폴트로 lib.d.ts를 사용한다</li>
+<li>target이 ‘es5’이면, 디폴트로 dom, es5, scripthost를 사용</li>
+<li>target이 ‘es6’이면, 디폴트로 dom, es6, dom.iterable, scripthost를 사용</li>
+</ul>
+</li>
+<li>lib를 지정하면 그 lib 배열로만 라이브러리를 사용한다<ul>
+<li>빈 [] &#x3D;&gt; ‘no definition found…~’</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="outDir-outfile-rootDir"><a href="#outDir-outfile-rootDir" class="headerlink" title="outDir,outfile,rootDir"></a>outDir,outfile,rootDir</h2><ul>
+<li>outDir<ul>
+<li>outDir에 지정된 특정 폴더로 컴파일 생성 됨 (ex : dist)</li>
+</ul>
+</li>
+<li>rootDir<ul>
+<li>rootDir에 지정된 경로를 컴파일 한다</li>
+<li>rootDir을 지정 하지 않으면 최상위 루트를 대상으로 컴파일 한다</li>
+</ul>
+</li>
+</ul>
+<h2 id="compileOptions-strict"><a href="#compileOptions-strict" class="headerlink" title="compileOptions : strict"></a>compileOptions : strict</h2><h3 id="Enable-all-strict-type-checking-options"><a href="#Enable-all-strict-type-checking-options" class="headerlink" title="Enable all strict type checking options"></a>Enable all strict type checking options</h3><ul>
+<li>–noImplicitAny</li>
+<li>–noImplicitThis</li>
+<li>–strictNullchecks</li>
+<li>–strictFunctionTypes</li>
+<li>–strictPropertyInitialization</li>
+<li>–strictBindCallApply</li>
+<li>–alwaysStrict</li>
+</ul>
+<p><strong>–noImplicitAny</strong></p>
+<ul>
+<li>명시적이지 않게 any 타입을 사용하여, 표현식과 선언에 사용하면, 에러를 발생</li>
+<li>타입스크립트가 추론을 실패한경우, any가 맞으면 , any라고 지정하라</li>
+<li>아무것도 쓰지 않으면 , 에러를 발생</li>
+<li>이 오류를 해결하면, any라고 지정되어 있지 않은 경우는 any가 아닌 것이다.</li>
+</ul>
+<p><strong>–noImplicitThis</strong></p>
+<ul>
+<li>명시적이지 않게 any 타입을 사용하여, this 표현식에 사용하면, 에러를 발생합니다.</li>
+</ul>
+<img src="/2022/05/12/TS-Compiler-extends/01.png" class="">
+<ul>
+<li>첫 번째 매개변수 자리에 this를 놓고, this에 대한 타입을 어떤 것이라도 표현하지 않으면, noImplicitAny가 오류를 발생시킨다.</li>
+<li>JavaScript에서는 매개변수에 this를 넣으면, 이미 예약된 키워드라 SyntaxError를 발생시킨다.</li>
+<li>call &#x2F; apply &#x2F; bind 와 같이 this를 대체하여 함수 콜을 하는 용도로도 쓰입니다.</li>
+<li>그래서 this를 any로 명시적으로 지정하는 것은 합리적</li>
+</ul>
+<p><strong>–strictNullChecks</strong></p>
+<ul>
+<li>strictNullChecks 모드에서는, null 및 undefined 값이 모든 유형의 도메인에 속하지 않으며, 그 자신을 타입으로 가지거나, any일 경우에만 할당이 가능하다</li>
+<li>한 가지 예외는 undefined에 void 할당 가능</li>
+</ul>
+<img src="/2022/05/12/TS-Compiler-extends/02.png" class="">
+
+<img src="/2022/05/12/TS-Compiler-extends/03.png" class="">
+
+<ul>
+<li><p>strictNullChecks를 적용하지 않으면,</p>
+<ul>
+<li>모든 타입은 null, undefined 값을 가질 수 있다</li>
+<li>string으로 타입을 지정해도 , null 혹은 undefined 값을 할당할 수 있다는 것</li>
+</ul>
+</li>
+<li><p>strictNullChecks를 적용하면,</p>
+<ul>
+<li>모든 타입은 null, undefined값을 가질 수 없고 가지려면 union type을 이용해서 직접 명시 해야 한다.</li>
+<li>any 타입은 null 과 undefined를 가진다. 예외적으로 void 타입의 경우 undefined를 가진다</li>
+</ul>
+</li>
+<li><p>strictNullChecks를 적용하지 않고, 어떤 값이 null과 undefined를 가진다는 것을 암묵적으로 인정하고 계속 사용하다 보면, 정확히 어떤 타입이 오는지를 개발자 스스로가 간과할수 있다</p>
+</li>
+<li><p>정말로 null과 undefined를 가질 수 있는 경우, 해당 값을 조건부로 제외하고 사용하는것이 좋다</p>
+</li>
+<li><p>사용하려는 함수를 선언할 때부터 매개변수와 리턴 값에 정확한 타입을 지정하려는 노력을 기울여야 하고, 기울이게 될 것!</p>
+</li>
+</ul>
+<p><strong>–strictFunctionTypes</strong></p>
+<ul>
+<li>함수 타입에 대한 bivariant 매개변수 검사를 비활성화합니다</li>
+<li>반환 타입은 공변적(covariant)</li>
+<li>인자 타입은 반공변적(contravariant)</li>
+<li>그런데 타입스크립트에서 인자 타입은 공변적이면서, 반공변적인게 문제</li>
+<li>이 문제를 해결하는 옵션이 strictFunctionTypes</li>
+<li>옵션을 켜면, 에러가 안나던걸 에러 나게 함.</li>
+</ul>
+<img src="/2022/05/12/TS-Compiler-extends/04.png" class="">
+
+<img src="/2022/05/12/TS-Compiler-extends/05.png" class="">
+
+<p>KeyboardEvent 로 바꿔주면 에러가 사라진다</p>
+<img src="/2022/05/12/TS-Compiler-extends/06.png" class="">
+
+<p><strong>–strictPropertyInitialization</strong></p>
+<ul>
+<li>정의되지 않은 클래스의 속성이 생성자에서 초기화되었는지 확인합니다.</li>
+<li>이 옵션을 사용하려면 –strictNullChecks를 사용하도록 설정해야 한다.</li>
+</ul>
+<img src="/2022/05/12/TS-Compiler-extends/07.png" class="">
+
+<img src="/2022/05/12/TS-Compiler-extends/08.png" class="">
+
+<p><strong>–alwaysStrict</strong></p>
+<ul>
+<li>각 소스 파일에 대해 JavaScript의 strict mode로 코드를 분석하고,’엄격하게 사용’을 해제한다</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TypeSciprt/" rel="tag"># TypeSciprt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/" rel="prev" title="타입 호환성">
+      <i class="fa fa-chevron-left"></i> 타입 호환성
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/12/2022-05-12-TIL/" rel="next" title="2022-05-12-TIL">
+      2022-05-12-TIL <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#extends"><span class="nav-number">1.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#files-include-exclude"><span class="nav-number">2.</span> <span class="nav-text">files, include, exclude</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#files"><span class="nav-number">2.1.</span> <span class="nav-text">files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-exclude"><span class="nav-number">2.2.</span> <span class="nav-text">include,exclude</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#include"><span class="nav-number">2.2.1.</span> <span class="nav-text">include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exclude"><span class="nav-number">2.2.2.</span> <span class="nav-text">exclude</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compileOptions"><span class="nav-number">3.</span> <span class="nav-text">compileOptions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#typeRoots-types"><span class="nav-number">3.1.</span> <span class="nav-text">typeRoots, types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#types"><span class="nav-number">3.1.1.</span> <span class="nav-text">@types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#target%EA%B3%BC-lib"><span class="nav-number">3.2.</span> <span class="nav-text">target과 lib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outDir-outfile-rootDir"><span class="nav-number">3.3.</span> <span class="nav-text">outDir,outfile,rootDir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compileOptions-strict"><span class="nav-number">3.4.</span> <span class="nav-text">compileOptions : strict</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-all-strict-type-checking-options"><span class="nav-number">3.4.1.</span> <span class="nav-text">Enable all strict type checking options</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/05/12/TS-Compiler-extends/";
+    this.page.identifier = "2022/05/12/TS-Compiler-extends/";
+    this.page.title = "TS Compiler-extends";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
