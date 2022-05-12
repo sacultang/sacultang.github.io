@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://sacultang.github.io/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/</loc>
+        <lastmod>2022-05-12T14:50:23.730Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/</loc>
         <lastmod>2022-05-12T12:40:58.580Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -35,14 +43,6 @@
     <url>
         <loc>https://sacultang.github.io/2022/05/12/Typescript-Interface/</loc>
         <lastmod>2022-05-12T12:40:46.480Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sacultang.github.io/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/</loc>
-        <lastmod>2022-05-12T12:39:38.700Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -249,6 +249,14 @@
     </url>
 
     <url>
+        <loc>https://sacultang.github.io/2022/04/23/Game-WORDLE-1/</loc>
+        <lastmod>2022-04-23T12:39:33.090Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/04/21/Game-WORDLE/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -273,7 +281,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/23/Game-WORDLE-1/</loc>
+        <loc>https://sacultang.github.io/2022/04/21/JS-Object/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -281,7 +289,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/21/JS-Object/</loc>
+        <loc>https://sacultang.github.io/2022/04/16/JS-This/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -305,23 +313,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/16/JS-This/</loc>
-        <lastmod>2022-04-23T12:39:33.090Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://sacultang.github.io/2022/04/19/Tag-Category-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</loc>
-        <lastmod>2022-04-23T12:39:33.090Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sacultang.github.io/2022/04/21/duplicate-text/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -338,6 +330,14 @@
 
     <url>
         <loc>https://sacultang.github.io/2022/04/18/post/</loc>
+        <lastmod>2022-04-23T12:39:33.090Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sacultang.github.io/2022/04/21/duplicate-text/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
