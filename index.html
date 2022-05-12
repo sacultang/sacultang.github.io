@@ -481,7 +481,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/" class="post-title-link" itemprop="url">타입 호환성</a>
+            <a href="/2022/05/12/%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8-%E1%84%92%E1%85%A9%E1%84%92%E1%85%AA%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC/" class="post-title-link" itemprop="url">타입-호환성</a>
         </h2>
 
         <div class="post-meta">
@@ -490,10 +490,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-12 14:10:50 / Modified: 23:50:23" itemprop="dateCreated datePublished" datetime="2022-05-12T14:10:50+09:00">2022-05-12</time>
+              <time title="Created: 2022-05-12 14:10:50" itemprop="dateCreated datePublished" datetime="2022-05-12T14:10:50+09:00">2022-05-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-13 00:29:38" itemprop="dateModified" datetime="2022-05-13T00:29:38+09:00">2022-05-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -792,10 +798,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-11 14:08:51 / Modified: 14:20:07" itemprop="dateCreated datePublished" datetime="2022-05-11T14:08:51+09:00">2022-05-11</time>
+              <time title="Created: 2022-05-11 14:08:51" itemprop="dateCreated datePublished" datetime="2022-05-11T14:08:51+09:00">2022-05-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-13 00:38:09" itemprop="dateModified" datetime="2022-05-13T00:38:09+09:00">2022-05-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -847,8 +859,21 @@
 </ul>
 <ol>
 <li>Extraction 컴포넌트에서 Comment 컴포넌트 props로 date,text,author라는 이름으로 넘겨주고 있다</li>
-<li>Comment 컴포넌트에서 user라는 이름으로 {props.author}데이터를 UserInfo 컴포넌트로 props를 넘겨주고있다</li>
-<li></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Comment</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(props)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">UserInfo</span> <span class="attr">user</span>=<span class="string">&#123;props.author&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment-text&#x27;</span>&gt;</span>&#123;props.text&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Comment-date&#x27;</span>&gt;</span>&#123;formatDate(props.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Comment 컴포넌트의 props를 콘솔로 찍었을때 </p>
+<img src="/2022/05/11/React-Extraction/01.png" class="">
+
+<ol start="2">
+<li><p>Comment 컴포넌트에서 UserInfo 컴포넌트로 user라는 이름으로 {author}를 넘겨 주고 있다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">UserInfo</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(props)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;UserInfo&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Avatar</span> <span class="attr">user</span>=<span class="string">&#123;props.user&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;UserInfo-name&#x27;</span>&gt;</span>&#123;props.user.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>UserInfo 컴포넌트의 props를 콘솔로 찍었을 때</p>
+<img src="/2022/05/11/React-Extraction/02.png" class="">
+</li>
+<li><p>UserInfo 컴포넌트에서 Avatar 컴포넌트로 user라는 이름으로 {props.user} &#x3D; {author} 를 넘겨 주고 있다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Avatar</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(props)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&#x27;Avatar&#x27;</span> <span class="attr">src</span>=<span class="string">&#123;props.user.avatarUrl&#125;</span> <span class="attr">alt</span>=<span class="string">&#123;props.user.name&#125;</span> /&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Avatar 컴포넌트에서 props를 찍었을때</p>
+<img src="/2022/05/11/React-Extraction/03.png" class=""></li>
 </ol>
 
       
