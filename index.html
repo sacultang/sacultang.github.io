@@ -160,6 +160,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/" class="post-title-link" itemprop="url">Structural Type System vs Nominal Type System</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-12 13:58:34 / Modified: 14:09:59" itemprop="dateCreated datePublished" datetime="2022-05-12T13:58:34+09:00">2022-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeSciprt/" itemprop="url" rel="index"><span itemprop="name">TypeSciprt</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/12/Structural-Type-System-vs-Nominal-Type-System/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Structural-Type-System-vs-Nominal-Type-System"><a href="#Structural-Type-System-vs-Nominal-Type-System" class="headerlink" title="Structural Type System vs Nominal Type System"></a>Structural Type System vs Nominal Type System</h1><h2 id="Structural-Type-System-구조가-같으면-같은-타입이다"><a href="#Structural-Type-System-구조가-같으면-같은-타입이다" class="headerlink" title="Structural Type System - 구조가 같으면, 같은 타입이다"></a>Structural Type System - 구조가 같으면, 같은 타입이다</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Iperson</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">speak</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">PersonType</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">speak</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Iperson 과 PersonType은 똑같은 구조다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">personInterFace</span>: <span class="title class_">IPerson</span> = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">personType</span>: <span class="title class_">PersonType</span> = &#123;&#125; <span class="keyword">as</span> <span class="built_in">any</span></span><br><span class="line"></span><br><span class="line">personInterface = personType;</span><br><span class="line">personType = personInterface</span><br></pre></td></tr></table></figure>
+
+<h2 id="nominal-type-system-구조가-같아도-이름이-다르면-다른-타입이다"><a href="#nominal-type-system-구조가-같아도-이름이-다르면-다른-타입이다" class="headerlink" title="nominal type system - 구조가 같아도 이름이 다르면, 다른 타입이다"></a>nominal type system - 구조가 같아도 이름이 다르면, 다른 타입이다</h2><ul>
+<li>nominal type system은 타입스크립트는 따르지 않는다<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">PersonID</span> = <span class="built_in">string</span>  &amp; &#123; <span class="keyword">readonly</span> <span class="attr">brand</span>: unique <span class="built_in">symbol</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">PersonID</span>(<span class="params">id: <span class="built_in">string</span></span>): <span class="title class_">PersinID</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> id <span class="keyword">as</span> <span class="title class_">PersonID</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPersonById</span>(<span class="params">id: PersonID</span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getPersonbyId</span>(<span class="title function_">personId</span>(<span class="string">&#x27;id-aaaa&#x27;</span>))</span><br><span class="line"><span class="title function_">getPersonbyId</span>((<span class="string">&#x27;id-aaaa&#x27;</span>)) <span class="comment">// error TS2345: Argument of type &#x27;string&#x27; is not assignable to parameter of type &#x27;PersonID&#x27;. Type &#x27;string&#x27; is not assignable to type &#x27;&#123; readonly brand: unique symbol&#125;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TypeScript-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,7 +275,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-05-12 12:51:36 / Modified: 13:50:53" itemprop="dateCreated datePublished" datetime="2022-05-12T12:51:36+09:00">2022-05-12</time>
+              <time title="Created: 2022-05-12 12:51:36 / Modified: 13:58:00" itemprop="dateCreated datePublished" datetime="2022-05-12T12:51:36+09:00">2022-05-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,14 +340,14 @@
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if가 아닌 경우 return을 직접하지 않고 코드가 종료된다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS7030: Not all code paths return a value.</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f5</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>( a &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="매개변수에-object가-들어오는-경우"><a href="#매개변수에-object가-들어오는-경우" class="headerlink" title="매개변수에 object가 들어오는 경우"></a>매개변수에 object가 들어오는 경우</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f6</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f6</span>(&#123;<span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f6</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// 이름은 undefined이고, 연령대는 NaN대 입니다</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="object-literal-type"><a href="#object-literal-type" class="headerlink" title="object literal type"></a>object literal type</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f7</span>(<span class="params">a: &#123;name: string; age: number&#125;</span>): string &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f7</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>:<span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f7</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// error TS2345 : Argument of type &#x27;string&#x27; is not assignable to parameter of type &#x27;&#123;name: string; age: number;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>매번 이렇게 오브젝트의 타입을 지정해주는건 힘들기 때문에 나만의 타입을 만들 수 있다</p>
-<h3 id="나만의-타입을-만드는-방법"><a href="#나만의-타입을-만드는-방법" class="headerlink" title="나만의 타입을 만드는 방법"></a>나만의 타입을 만드는 방법</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">PersonInterface</span> &#123;</span><br><span class="line">  name : string</span><br><span class="line">  age : number</span><br><span class="line">&#125;</span><br><span class="line">type <span class="title class_">PersonTypeAlias</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">  <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f8</span>(<span class="params">a: PersonInterface</span>): string &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`이름은 <span class="subst">$&#123;a.name&#125;</span>이고, 연령대는 <span class="subst">$&#123;<span class="built_in">Math</span>.floor(a.age/<span class="number">10</span>) * <span class="number">10</span>&#125;</span>대 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f8</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">38</span>&#125;)) <span class="comment">// 이름은 Mark이고, 연령대는 30대 입니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f8</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// error TS2345: Argument of type &#x27;string&#x27; is not assignable to parameter of type &#x27;PersonInterface&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>타입스크립트 코드를 작성하는 사람으로서 어떻게 타입을 표현할 수 있는지가 중요</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/12/TypeScript-03/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1073,107 +1163,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/React-reRender/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/03/React-reRender/" class="post-title-link" itemprop="url">React-reRender</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-03 15:35:46 / Modified: 16:25:49" itemprop="dateCreated datePublished" datetime="2022-05-03T15:35:46+09:00">2022-05-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/03/React-reRender/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/React-reRender/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Rerender"><a href="#Rerender" class="headerlink" title="Rerender"></a>Rerender</h1><p>JavaScript 와 React 의 차이</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vanilla</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">random</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> number = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * (<span class="number">10</span> - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> element = <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;button&gt;<span class="subst">$&#123;number&#125;</span>&lt;/button&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#root&quot;</span>).<span class="property">innerHTML</span> = element;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">random</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(random, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>바닐라JS 에서는 element가 변경될때 element를 다시 그림</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//react</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">random</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> number = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * (<span class="number">10</span> - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> element = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>&#123;number&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(element, root)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">random</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(random, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>React에서는 변경되는 부분만 다시 그린다</p>
-<h2 id="렌더링-된-엘리먼트-업데이트하기"><a href="#렌더링-된-엘리먼트-업데이트하기" class="headerlink" title="렌더링 된 엘리먼트 업데이트하기"></a>렌더링 된 엘리먼트 업데이트하기</h2><blockquote>
-<p>두 개의 트리를 비교할 때, React는 두 엘리먼트의 루트(root) 엘리먼트부터 비교합니다. 이후의 동작은 루트 엘리먼트의 타입에 따라 달라진다.</p>
-</blockquote>
-<h3 id="엘리먼트의-타입이-다른-경우"><a href="#엘리먼트의-타입이-다른-경우" class="headerlink" title="엘리먼트의 타입이 다른 경우"></a>엘리먼트의 타입이 다른 경우</h3><p>두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축한다<br> &lt;a&gt;에서 &lt;img&gt;로, &lt;Article&gt;에서 &lt;Comment&gt;로, 혹은 &lt;Button&gt;에서 &lt;div&gt;로 바뀌는 것 모두 트리 전체를 재구축하는 경우</p>
-<h3 id="DOM엘리먼트의-타입이-같은-경우"><a href="#DOM엘리먼트의-타입이-같은-경우" class="headerlink" title="DOM엘리먼트의 타입이 같은 경우"></a>DOM엘리먼트의 타입이 같은 경우</h3><p> 같은 타입의 두 React DOM 엘리먼트를 비교할 때, React는 두 엘리먼트의 속성을 확인하여, 동일한 내역은 유지하고 변경된 속성들만 갱신한다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&quot;before&quot;</span> title=<span class="string">&quot;stuff&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;after&quot;</span> <span class="attr">title</span>=<span class="string">&quot;stuff&quot;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>이 두 엘리먼트를 비교하면, React는 현재 DOM 노드 상에 className만 수정한다</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1239,20 +1232,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

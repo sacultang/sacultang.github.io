@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://sacultang.github.io/2022/05/12/Structural-Type-System-vs-Nominal-Type-System/</loc>
+        <lastmod>2022-05-12T05:09:59.640Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/05/12/TypeScript-03/</loc>
-        <lastmod>2022-05-12T04:50:53.850Z</lastmod>
+        <lastmod>2022-05-12T04:58:00.930Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -281,7 +289,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/14/git-flow/</loc>
+        <loc>https://sacultang.github.io/2022/04/21/duplicate-text/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -289,7 +297,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/21/duplicate-text/</loc>
+        <loc>https://sacultang.github.io/2022/04/14/git-flow/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -305,7 +313,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/13/vue3-swiper/</loc>
+        <loc>https://sacultang.github.io/2022/04/14/vue3-naver-clone/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -313,7 +321,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/14/vue3-naver-clone/</loc>
+        <loc>https://sacultang.github.io/2022/04/13/vue3-swiper/</loc>
         <lastmod>2022-04-23T12:39:33.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
