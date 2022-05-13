@@ -160,6 +160,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/TS-Classes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/13/TS-Classes/" class="post-title-link" itemprop="url">TS-Classes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-13 13:58:12 / Modified: 15:21:37" itemprop="dateCreated datePublished" datetime="2022-05-13T13:58:12+09:00">2022-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/13/TS-Classes/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/TS-Classes/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><ul>
+<li>class 키워드를 이용하여 클래스를 만들 수 있다</li>
+<li>class 이름은 대문자로 시작한다</li>
+<li>new를 이용하여 class를 통해 object를 만들 수 있다</li>
+<li>constructor를 이용하여 object를 생성하면서 값을 전달할 수 있다</li>
+<li>this를 이용해 만들어진 object를 가르킬 수 있다</li>
+<li>JS로 컴파일되면 es5의 경우 function으로 변경된다</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  name</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="constructor-amp-initialize"><a href="#constructor-amp-initialize" class="headerlink" title="constructor &amp; initialize"></a>constructor &amp; initialize</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
+<img src="/2022/05/13/TS-Classes/01.png" class="">
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line">p1.<span class="property">age</span> = <span class="number">39</span> <span class="comment">// 초기값 없이 이후에 값을 설정 하고 싶을때</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
+<p>초기값이 없으면 에러가 뜬다  </p>
+<img src="/2022/05/13/TS-Classes/02.png" class="">
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span></span><br><span class="line">  age!: <span class="built_in">number</span> <span class="comment">// age 뒤에 ! 를 붙여준다</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"><span class="comment">// p1.age = 39 // age 뒤에 ! 가 붙어있는데 값을 설정 하지 않은 경우</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>)</span><br><span class="line"><span class="comment">// undefined가 뜬다</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="접근-제어자-Access-Modifiers"><a href="#접근-제어자-Access-Modifiers" class="headerlink" title="접근 제어자 (Access Modifiers)"></a>접근 제어자 (Access Modifiers)</h2><ul>
+<li>접근 제어자에는 public, private, protected가 있다</li>
+<li>설정하지 않으면 public</li>
+<li>클래스 내부의 모든 곳에(생성자, 프로퍼티, 메서드) 설정 가능하다</li>
+<li>private 으로 설정하면 클래스 외부에서 접근할 수 없다</li>
+<li>자바스크립트에서 private 지원하지 않아 오랫동안 프로퍼티나 메서드 이름 앞에 _를 붙여서 표현 했다</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;Mark&#x27;</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">constructor</span>(<span class="params">age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">init</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">39</span>) <span class="comment">// error</span></span><br><span class="line"><span class="comment">// p1.age = 39</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>constructor에 private 설정 한 경우 외부에서 생성자 호출 불가</p>
+<img src="/2022/05/13/TS-Classes/03.png" class="">
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;Mark&#x27;</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">init</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">39</span>) </span><br><span class="line"><span class="comment">// p1.age = 39</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>) <span class="comment">// error</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>프로퍼티에 private 를 붙였을때 age에 접근 불가</p>
+<img src="/2022/05/13/TS-Classes/04.png" class="">
+
+<h3 id="initialization-in-constructor-parameters"><a href="#initialization-in-constructor-parameters" class="headerlink" title="initialization in constructor parameters"></a>initialization in constructor parameters</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 기존</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 수정</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Getters-amp-Setters"><a href="#Getters-amp-Setters" class="headerlink" title="Getters &amp; Setters"></a>Getters &amp; Setters</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>) <span class="comment">// get</span></span><br><span class="line">p1.<span class="property">name</span> = <span class="string">&#x27;John&#x27;</span> <span class="comment">// set</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> _name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">n: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">// return 해줄 필요 없다</span></span><br><span class="line">    <span class="comment">// 인자를 받아 넣어 준다</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>) <span class="comment">// get</span></span><br><span class="line">p1.<span class="property">name</span> = <span class="string">&#x27;John&#x27;</span> <span class="comment">// set</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/type-compatibility/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -279,10 +402,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-12 21:22:09 / Modified: 21:40:46" itemprop="dateCreated datePublished" datetime="2022-05-12T21:22:09+09:00">2022-05-12</time>
+              <time title="Created: 2022-05-12 21:22:09" itemprop="dateCreated datePublished" datetime="2022-05-12T21:22:09+09:00">2022-05-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-13 12:59:04" itemprop="dateModified" datetime="2022-05-13T12:59:04+09:00">2022-05-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -326,6 +455,10 @@
 
 <h2 id="optional-property-1"><a href="#optional-property-1" class="headerlink" title="optional property (1)"></a>optional property (1)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person2</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  age?: <span class="built_in">number</span></span><br><span class="line">  <span class="comment">// 객체에 있을수도 있고 없을수도 있을때 ? 를 뒤에 붙인다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello2</span>(<span class="params">person: Person2</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요 <span class="subst">$&#123;person.name&#125;</span>입니다 `</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hello2</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;)</span><br><span class="line"><span class="title function_">hello2</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Anna&#x27;</span> &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="optional-property-2"><a href="#optional-property-2" class="headerlink" title="optional property (2)"></a>optional property (2)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person3</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  age?: <span class="built_in">number</span></span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">string</span>]: <span class="built_in">any</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hello3</span>(<span class="params">person: Person3</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    <span class="string">`안녕하세요 <span class="subst">$&#123;person.name&#125;</span> <span class="subst">$&#123;person.systers&#125;</span> <span class="subst">$&#123;person.father&#125;</span>입니다`</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p31</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p32</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Anna&#x27;</span>,</span><br><span class="line">  <span class="attr">systers</span>: [<span class="string">&#x27;sung&#x27;</span>, <span class="string">&#x27;chan&#x27;</span>], <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p33</span>: <span class="title class_">Person3</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Bokdan&#x27;</span>,</span><br><span class="line">  <span class="attr">father</span>: p31, <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">  <span class="attr">mother</span>: p32, <span class="comment">// any 이기 때문에 들어 올 수 있다</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hello3</span>(p31)</span><br><span class="line"><span class="title function_">hello3</span>(p32)</span><br><span class="line"><span class="title function_">hello3</span>(p33)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="function-in-interface"><a href="#function-in-interface" class="headerlink" title="function in interface"></a>function in interface</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person4</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">hello</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p41</span>: <span class="title class_">Person4</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">  <span class="attr">hello</span>: <span class="keyword">function</span> (<span class="params"></span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요! <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 입니다`</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p42</span>: <span class="title class_">Person4</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">  <span class="title function_">hello</span>(<span class="attr">this</span>: <span class="title class_">Person4</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요! <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>입니다`</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p43</span>: <span class="title class_">Person4</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">  <span class="attr">hello</span>: (<span class="attr">this</span>: <span class="title class_">Person4</span>): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`안녕하세요! <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>입니다`</span>) <span class="comment">// this는 글로벌을 가르킨다</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/05/12/Typescript-Interface/01.png" class="">
+<img src="/2022/05/12/Typescript-Interface/02.png" class="">
       
     </div>
 
@@ -1071,99 +1204,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/10/2022-05-10-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/2022-05-10-TIL/" class="post-title-link" itemprop="url">2022-05-10-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-10 13:00:20 / Modified: 13:02:00" itemprop="dateCreated datePublished" datetime="2022-05-10T13:00:20+09:00">2022-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/10/2022-05-10-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/10/2022-05-10-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Element-getBoundingClientRect"><a href="#Element-getBoundingClientRect" class="headerlink" title="Element.getBoundingClientRect()"></a>Element.getBoundingClientRect()</h1><p><strong>Element.getBoundingClientRect() 는 엘리먼트의 크기와 뷰포트에 상대적인 위치 정보를 제공하는</strong></p>
-<p>DOMRect 객체를 반환</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">domRect = element.<span class="title function_">getBoundingClientRect</span>()</span><br></pre></td></tr></table></figure>
-<p>값<br>반환 값은 padding과 border-width를 포함해 전체 엘리먼트가 들어 있는 가장 작은 사각형인 DOMRect 객체입니다. left, top, right, bottom, x, y, width, height 프로퍼티는 전반적인 사각형의 위치와 크기를 픽셀 단위로 나타냅니다. width와 height가 아닌 다른 프로퍼티는 뷰포트의 top-left에 상대적입니다.<br><img src="https://quickest-asterisk-75d.notion.site/image/https%3A%2F%2Fdeveloper.mozilla.org%2Fko%2Fdocs%2FWeb%2FAPI%2FElement%2FgetBoundingClientRect%2Felement-box-diagram.png?table=block&id=962bf1fd-8cd2-44fa-9ae0-eaca2f066c3a&spaceId=3ef8dbd9-414c-4cf5-813d-32ecb943cc67&width=2000&userId=&cache=v2"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1233,7 +1273,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
