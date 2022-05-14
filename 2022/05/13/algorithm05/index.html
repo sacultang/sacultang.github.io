@@ -30,7 +30,7 @@
 <meta property="og:description" content="체육복을 도난 당한 학생 수는 1명 이상 n명 이하 중복된 번호는 없다 여벌의 체육복을 가져온 학생의 수는 1명 이상 n명 이하 중복된 번호는 없다 여벌 체육복을 가져온 사람만 빌려 줄 수 있다 자신의 번호 앞 뒤로 +1 -1 인 사람 한테만 한 벌 빌려 줄 수 있다 자기 자신의 체육복도 도난 당했을 수도 있다 &#x3D;&gt; 자기만 입을 수 있고 빌">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-13T14:20:21.000Z">
-<meta property="article:modified_time" content="2022-05-14T12:44:08.260Z">
+<meta property="article:modified_time" content="2022-05-14T13:34:28.010Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="algorithm">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-14 21:44:08" itemprop="dateModified" datetime="2022-05-14T21:44:08+09:00">2022-05-14</time>
+                <time title="Modified: 2022-05-14 22:34:28" itemprop="dateModified" datetime="2022-05-14T22:34:28+09:00">2022-05-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,22 +252,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lost = [<span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> reserve = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">n, lost, reserve</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> answer = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> lostV = lost.<span class="title function_">filter</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> !reserve.<span class="title function_">includes</span>(x))</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(lostV)</span><br><span class="line">  <span class="keyword">let</span> reserveV = reserve.<span class="title function_">filter</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> !lost.<span class="title function_">includes</span>(x))</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(reserveV)</span><br><span class="line">  <span class="keyword">let</span> arr = reserveV</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> e + <span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">filter</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> e &lt;= n)</span><br><span class="line">  <span class="comment">// console.log(arr)</span></span><br><span class="line">  <span class="keyword">let</span> arr2 = lostV.<span class="title function_">filter</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !arr.<span class="title function_">includes</span>(x)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// console.log(arr2)</span></span><br><span class="line">  answer = n - arr2.<span class="property">length</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(answer)</span><br><span class="line">  <span class="keyword">return</span> answer</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">solution</span>(<span class="number">5</span>, lost, reserve)</span><br></pre></td></tr></table></figure>
 <p>첫 작성 코드.. 30점 </p>
 <ul>
-<li>문제는 자기 자신이 잃어 버렸을때는 자기 밖에 못 입는다는게 문제!<!-- 
-순서대로 다시 작성 해본다</li>
+<li>문제는 자기 자신이 잃어 버렸을때는 자기 밖에 못 입는다는게 문제!</li>
 </ul>
 <ol>
-<li>가져온 사람 번호에서 잃어버린 사람의 번호를 필터한다 &#x3D;&gt; 자기 자신도 잃어버렸으면 걸러진다 &#x3D;&gt; 걸러진 갯수는 입을 수 있는 갯수++</li>
-</ol>
-<ul>
-<li>만약 가져온 사람보다 잃어버린 사람이 많으면 리턴 answer &#x3D; 걸러진 갯수</li>
-</ul>
-<ol start="2">
-<li><p>필터된 데이터에서 +1을 해서 잃어버린 사람의 번호를 필터한다 &#x3D;&gt; 걸러진 갯수 &#x3D; 입을 수 있는 갯수 ++</p>
-</li>
-<li><p>다시 필터된 데이터에서 -1을 해서 잃어버린 사람의 번호를 필터한다 &#x3D;&gt; 걸러진 갯수 &#x3D; 입을 수 있는 갯수++ –&gt;</p>
-</li>
-<li><p>가져온 사람 번호에서 잃어버린 사람 번호를 필터한다</p>
-</li>
+<li>가져온 사람 번호에서 잃어버린 사람 번호를 필터한다</li>
 </ol>
 <ul>
 <li>-&gt; 자기 자신도 잃어 버렸으면 걸러진다</li>
