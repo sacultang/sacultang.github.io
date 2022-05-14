@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-05-14 22:27:00 / Modified: 22:30:59" itemprop="dateCreated datePublished" datetime="2022-05-14T22:27:00+09:00">2022-05-14</time>
+              <time title="Created: 2022-05-14 22:27:00 / Modified: 22:34:54" itemprop="dateCreated datePublished" datetime="2022-05-14T22:27:00+09:00">2022-05-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,9 +230,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="두-배결-비교하기"><a href="#두-배결-비교하기" class="headerlink" title="두 배결 비교하기"></a>두 배결 비교하기</h1><h2 id="교집합"><a href="#교집합" class="headerlink" title="교집합"></a>교집합</h2><p>두 배열에 모두 포함된 값만 출력</p>
+          <h1 id="두-배열-비교하기"><a href="#두-배열-비교하기" class="headerlink" title="두 배열 비교하기"></a>두 배열 비교하기</h1><h2 id="교집합"><a href="#교집합" class="headerlink" title="교집합"></a>교집합</h2><p>두 배열에 모두 포함된 값만 출력</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1.<span class="title function_">filter</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> arr2.<span class="title function_">includes</span>(e)))</span><br><span class="line"></span><br><span class="line"><span class="comment">// [1,2]</span></span><br></pre></td></tr></table></figure>
-<h2 id="차집함"><a href="#차집함" class="headerlink" title="차집함"></a>차집함</h2><p>arr1에서 arr2의 값이 포함 안된 값만 출력</p>
+<h2 id="차집합"><a href="#차집합" class="headerlink" title="차집합"></a>차집합</h2><p>arr1에서 arr2의 값이 포함 안된 값만 출력</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1.<span class="title function_">filter</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> !arr2.<span class="title function_">includes</span>(e)))</span><br><span class="line"><span class="comment">// [3,4,5]</span></span><br></pre></td></tr></table></figure>
       
     </div>
