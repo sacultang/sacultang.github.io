@@ -160,6 +160,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TypeScript-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/12/TypeScript-03/" class="post-title-link" itemprop="url">TypeScript-03</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-12 12:51:36 / Modified: 21:40:49" itemprop="dateCreated datePublished" datetime="2022-05-12T12:51:36+09:00">2022-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/12/TypeScript-03/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/12/TypeScript-03/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="작성자와-사용자의-관점으로-코드-바라보기"><a href="#작성자와-사용자의-관점으로-코드-바라보기" class="headerlink" title="작성자와 사용자의 관점으로 코드 바라보기"></a>작성자와 사용자의 관점으로 코드 바라보기</h1><p>타입이란 해당 변수가 할 수 있는 일을 결정한다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="comment">// f1이라는 함수의 body에서는 a를 사용한다</span></span><br><span class="line"><span class="comment">// a가 할 수 있는 일은 a의 타입이 결정한다</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법을 숙지하지 않은 채, 문자열을 사용하여 함수를 실행</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f2</span>(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f2</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>타입스크립트의 추론에 의지하는 경우</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 타입스크립트 코드지만</span></span><br><span class="line"><span class="comment">// a의 타입을 명시적으로 지정하지 않은 경우이기 때문에 a는 any로 추론된다</span></span><br><span class="line"><span class="comment">// 함수의 리턴타입은 number로 추론된다(NaN도 number이기 때문에)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f3</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 사용자는 a가 any이기 때문에, 사용법에 맞게 문자열을 사용하여 함수를 실행</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="number">10</span>)) <span class="comment">// 380</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="string">&#x27;Mark&#x27;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="nolmplicitAny-옵션"><a href="#nolmplicitAny-옵션" class="headerlink" title="nolmplicitAny 옵션"></a>nolmplicitAny 옵션</h2><p>타입을 명시적으로 지정하지 않은경우, 타입스크립트가 추론 중 ‘any’라고 판단하게 되면,<br>컴파일 에러를 발생시켜 명시적으로 지정하도록 유도한다</p>
+<h3 id="noImplicitAny-에-의한-방어"><a href="#noImplicitAny-에-의한-방어" class="headerlink" title="noImplicitAny 에 의한 방어"></a>noImplicitAny 에 의한 방어</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error TS7006: Parameter &#x27;a&#x27; implicitly has an &#x27;any&#x27; type</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f3</span>(<span class="params">a</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 사용자의 코드를 실행할 수 없습니다. 컴파일이 정상적으로 마무리 될 수 있도록 수정해야 합니다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">lof</span>(<span class="title function_">f3</span>(<span class="number">10</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f3</span>(<span class="string">&#x27;Mark&#x27;</span>) + <span class="number">5</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>number타입으로 추론된 리턴 타입</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입은 명시적으로 지정</span></span><br><span class="line"><span class="comment">// 명시적으로 지정하지 않은 함수의 리턴 타입은 number로 추론된다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f4</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(a&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법에 맞게 숫자형을 사용하여 함수를 실행했습니다.</span></span><br><span class="line"><span class="comment">// 해당 함수의 리턴 타입은 number이기 때문에, 타입에 따르면 연산을 바로 할 수 있다</span></span><br><span class="line"><span class="comment">// 하지만 실제 undefined + 5가 실행되어 NaN이 출력된다</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(<span class="number">5</span>)) <span class="comment">// 190</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(-<span class="number">5</span>) + <span class="number">5</span>) <span class="comment">// NaN</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="strictNullChecks-옵션"><a href="#strictNullChecks-옵션" class="headerlink" title="strictNullChecks 옵션"></a>strictNullChecks 옵션</h2><ul>
+<li>모든 타입에 자동으로 포함되어 있는 ‘null’과 ‘undefined’를 제거해준다</li>
+</ul>
+<h3 id="number-undefined-타입으로-추론된-리턴-타입"><a href="#number-undefined-타입으로-추론된-리턴-타입" class="headerlink" title="number | undefined 타입으로 추론된 리턴 타입"></a>number | undefined 타입으로 추론된 리턴 타입</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입은 명시적으로 지정</span></span><br><span class="line"><span class="comment">// 명시적으로 지정하지 않은 함수의 리턴 타입은 number | undefined로 추론</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f4</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(a&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 사용자는 사용법에 맞게 숫자형을 사용하여 함수를 실행</span></span><br><span class="line"><span class="comment">// 해당 함수의 리턴 타입은 number | undefined 이기 때문에,</span></span><br><span class="line"><span class="comment">// 타입에 따르면 이어진 연산을 바로 할 수 없다</span></span><br><span class="line"><span class="comment">// 컴파일 에러를 고쳐야하기 때문에 사용자와 작성자가 의논을 해야한다</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(<span class="number">5</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f4</span>(-<span class="number">5</span>) + <span class="number">5</span>) <span class="comment">// error TS2532: Object is possibly &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>명시적으로 리턴타입을 지정해야 할까?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 매개변수의 타입과 함수의 리턴 타입을 명시적으로 지정했습니다.</span></span><br><span class="line"><span class="comment">// 실제 함수 구현부의 리턴 타입과 명시적으로 지정한 타입이 일치하지 않아 컴파일 에러가 발생한다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS2366</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f5</span>(<span class="params">a: number</span>): number &#123;</span><br><span class="line">  <span class="keyword">if</span>( a &gt; <span class="number">0</span>)&#123; <span class="comment">// if만 리턴 되기 때문에 if가 아닌 부분에 대한 작업이 필요함</span></span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>noImplicitReturns 옵션을 켜면<ul>
+<li>함수내에서 모든 코드가 값을 리턴하지 않으면, 컴파일 에러를 발생 시킨다</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if가 아닌 경우 return을 직접하지 않고 코드가 종료된다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS7030: Not all code paths return a value.</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f5</span>(<span class="params">a: number</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>( a &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a * <span class="number">38</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/12/TypeScript-03/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/11/React-Extraction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,115 +1189,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/2022-05-03-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/03/2022-05-03-TIL/" class="post-title-link" itemprop="url">2022-05-03-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-03 14:23:03 / Modified: 14:24:12" itemprop="dateCreated datePublished" datetime="2022-05-03T14:23:03+09:00">2022-05-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/03/2022-05-03-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/2022-05-03-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>for in 반복문은 객체에서 주로 사용</p>
-<ul>
-<li>객체 자료형에서 ‘열거’ 할 수 있는 자료들을 순회할 수 있도록 해준다</li>
-<li>특정 순서에 따라 인덱스를 반환하는 것을 보장 할 수 없다 (반복되는 순서가 구현에 따라 다르다)</li>
-<li>배열 데이터에서는 인덱스값이 중요하므로 forEach나 for..of를 권장한다</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 예제</span></span><br><span class="line"><span class="keyword">const</span> object = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> property <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;property&#125;</span>: <span class="subst">$&#123;object[property]&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// expected output:</span></span><br><span class="line"><span class="comment">// &quot;a: 1&quot;</span></span><br><span class="line"><span class="comment">// &quot;b: 2&quot;</span></span><br><span class="line"><span class="comment">// &quot;c: 3&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>variable</strong> : 매번 반복마다 객체의 키 값이 variable로 지정된다</p>
-<p><strong>object</strong> : 반복 작업을 수행할 객체 (열거형 속성을 가지고 있는객체 )</p>
-<blockquote>
-<p>객체 데이터는 만들때 개발자가 적은 키:밸류 값만 저장되는게 아닌 그 외 숨겨진 속성 3개가 같이 저장된다</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">숨겨진 속성을 확인해보는 메서드 <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">let</span> book = &#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&quot;자바스크립트 완벽하게 이해하기&quot;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">32000</span>,</span><br><span class="line">        <span class="attr">author</span>: <span class="string">&quot;훈이&quot;</span>,</span><br><span class="line">        <span class="attr">publisher</span>: <span class="string">&quot;자바스크립트짱짱&quot;</span>,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Obejct.getOwnPropertyDescriptor(객체명,&#x27;객체키명&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(book, <span class="string">&quot;title&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>숨겨진 속성들을 이용해 객체데이터의 값을 열거불가,수정불가,삭제불가 등을 할 수있음..</p>
-<p><strong>writable</strong> 이 false 이면 변경불가 → default : true</p>
-<p><strong>enumerable</strong> 이 false 이면 열거 불가 → default : true</p>
-<p><strong>configurable</strong> 이 false 이면 enumerable 및 configurable을 변경 불가 및 삭제 불가 하지만 쓰기 writable은 가능 → default : true</p>
-<p><a target="_blank" rel="noopener" href="https://developer-talk.tistory.com/277">[JavaScript]객체 속성(writable, enumerable, configurable)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1251,7 +1258,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
