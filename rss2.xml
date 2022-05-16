@@ -9,7 +9,7 @@
     <atom:link href="https://sacultang.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 16 May 2022 04:52:01 GMT</pubDate>
+    <pubDate>Mon, 16 May 2022 05:41:43 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -23,50 +23,10 @@
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/vue/">vue</category>
+      <category domain="https://sacultang.github.io/categories/Web/React/">React</category>
       
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/">vue 연습</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/">React</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/">JavaScript</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/">TypeScript</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/">algorithm</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/">TIL</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/">2022.05</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/Object/">Object</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/Object/HTML/">HTML</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/Object/HTML/css/">css</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/Object/HTML/css/Hexo/">Hexo</category>
-      
-      <category domain="https://sacultang.github.io/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/React/JavaScript/TypeScript/algorithm/TIL/2022-05/Object/HTML/css/Hexo/git/">git</category>
-      
-      
-      <category domain="https://sacultang.github.io/tags/JavaScript/">JavaScript</category>
-      
-      <category domain="https://sacultang.github.io/tags/Object/">Object</category>
-      
-      <category domain="https://sacultang.github.io/tags/css/">css</category>
-      
-      <category domain="https://sacultang.github.io/tags/HTML/">HTML</category>
-      
-      <category domain="https://sacultang.github.io/tags/git/">git</category>
       
       <category domain="https://sacultang.github.io/tags/React/">React</category>
-      
-      <category domain="https://sacultang.github.io/tags/TypeSciprt/">TypeSciprt</category>
-      
-      <category domain="https://sacultang.github.io/tags/vue/">vue</category>
-      
-      <category domain="https://sacultang.github.io/tags/algorithm/">algorithm</category>
       
       
       <comments>https://sacultang.github.io/2022/05/16/react-hook-1/#disqus_thread</comments>
