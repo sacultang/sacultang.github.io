@@ -160,6 +160,120 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/30/React-create-react-app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/30/React-create-react-app/" class="post-title-link" itemprop="url">create-react-app</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-30 17:37:22" itemprop="dateCreated datePublished" datetime="2022-04-30T17:37:22+09:00">2022-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-01 20:57:30" itemprop="dateModified" datetime="2022-05-01T20:57:30+09:00">2022-05-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/30/React-create-react-app/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/30/React-create-react-app/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Getting-Started-with-Create-React-App"><a href="#Getting-Started-with-Create-React-App" class="headerlink" title="Getting Started with Create React App"></a>Getting Started with Create React App</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-react-app [Project]</span><br></pre></td></tr></table></figure>
+
+<p>npx 이용해 그냥 설치시 아래 에러 코드가 뜨면서 설치가 되지 않는다</p>
+<p>@latest를 붙여서 설치해주면 된다</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">You are running `create-react-app` 4.0.3, <span class="built_in">which</span> is behind the latest release (5.0.1).</span><br><span class="line"></span><br><span class="line">We no longer support global installation of Create React App.</span><br><span class="line"></span><br><span class="line">Please remove any global installs with one of the following commands:</span><br><span class="line">- npm uninstall -g create-react-app</span><br><span class="line">- yarn global remove create-react-appcd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-react-app@latest [Project]</span><br></pre></td></tr></table></figure>
+
+<h2 id="ESlint"><a href="#ESlint" class="headerlink" title="ESlint"></a>ESlint</h2><h3 id="일반적인-프로젝트에서"><a href="#일반적인-프로젝트에서" class="headerlink" title="일반적인 프로젝트에서"></a>일반적인 프로젝트에서</h3><p>ESlint 라이브러리 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i eslint -D</span><br></pre></td></tr></table></figure>
+
+<p>ESlint 초기화<br> .eslintrc.js 파일이 생성된다</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx eslint --init</span><br></pre></td></tr></table></figure>
+
+<p>.eslintrc.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 다양한 옵션들 설정 가능</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2021</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: <span class="string">&#x27;eslint:recommended&#x27;</span>,</span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="string">&#x27;latest&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123; <span class="comment">// 룰을 추가해 줄 수있다</span></span><br><span class="line">    <span class="attr">semi</span>: [<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;always&#x27;</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/30/React-create-react-app/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/30/2022-04-30-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,130 +1270,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/21/JS-data-Immutability/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/21/JS-data-Immutability/" class="post-title-link" itemprop="url">JS-데이터 불변성</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-04-21 21:13:08" itemprop="dateCreated datePublished" datetime="2022-04-21T21:13:08+09:00">2022-04-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/21/JS-data-Immutability/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/21/JS-data-Immutability/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="데이터-불변성-Immutability"><a href="#데이터-불변성-Immutability" class="headerlink" title="데이터 불변성(Immutability)"></a>데이터 불변성(Immutability)</h1><ul>
-<li>원시 데이터 : String, Number, Boolean, undefined, null<ul>
-<li>원시데이터들은 메모리에 만들어지면 불변한다.</li>
-<li>간단히 생긴게 같으면 같은 데이터, 다르면 다른 데이터이다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// 1 4 false</span></span><br><span class="line">b = a</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// 1 1 true</span></span><br><span class="line">a = <span class="number">7</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// 7 1 false</span></span><br><span class="line"><span class="keyword">let</span> c = <span class="number">1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b, c, b === c)</span><br><span class="line"><span class="comment">// 1 1 true</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>참조형 데이터 : Object, Array, Function<ul>
-<li>불변성이 없다. 즉, 가변한다</li>
-<li>모양이 같다고 같은 데이터는 아니다</li>
-<li>한 쪽을 수정하면 의도치 않게 다른쪽도 수정이 될 수 있다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123; <span class="attr">k</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123; <span class="attr">k</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// &#123;k:1&#125; &#123;k:1&#125; false</span></span><br><span class="line">a.<span class="property">k</span> = <span class="number">7</span></span><br><span class="line">b = a</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// &#123;k:7&#125; &#123;k:7&#125; true</span></span><br><span class="line">a.<span class="property">k</span> = <span class="number">2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, a === b)</span><br><span class="line"><span class="comment">// &#123;k:2&#125; &#123;k:2&#125; true</span></span><br><span class="line"><span class="keyword">let</span> c = b</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, a === c)</span><br><span class="line"><span class="comment">// &#123;k:2&#125; &#123;k:2&#125; &#123;k:2&#125; true</span></span><br><span class="line">a.<span class="property">k</span> = <span class="number">9</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, a === c)</span><br><span class="line"><span class="comment">// &#123;k:9&#125; &#123;k:9&#125; &#123;k:9&#125; true</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>참조형 데이터를 새롭게 할당해서 완전히 구분지어 사용하고 싶으면<br>복사라는 개념을 사용해 메모리상에서 분리해줘야 한다.<ul>
-<li>복사에는 얕은복사와 깊은복사가 있다</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">85</span>,</span><br><span class="line">	<span class="attr">emails</span>: [<span class="string">&#x27;abc@gmail.com&#x27;</span>],</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> copyUser = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(copyUser === user)</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line">user.<span class="property">age</span> = <span class="number">22</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="property">age</span>) <span class="comment">// 22</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(copyUser.<span class="property">age</span>) <span class="comment">// 22</span></span><br><span class="line"><span class="comment">// 데이터가 둘 다 변했다</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/21/JS-data-Immutability/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1349,7 +1339,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
