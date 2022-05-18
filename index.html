@@ -160,6 +160,137 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/2022-05-18-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/18/2022-05-18-TIL/" class="post-title-link" itemprop="url">2022-05-18-TIL</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-18 23:29:15" itemprop="dateCreated datePublished" datetime="2022-05-18T23:29:15+09:00">2022-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-19 00:41:59" itemprop="dateModified" datetime="2022-05-19T00:41:59+09:00">2022-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/18/2022-05-18-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/18/2022-05-18-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h1><p>Object.values() 메소드는 전달된 파라미터 객체가 가지는 속성의 값들로 이루어진 배열을 리턴한다.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values</a></p>
+</blockquote>
+<p>오늘 리액트 수업에서 배운 것.<br>하나의 state로 여러개 input 처리 하기</p>
+<p>선생님이 만들어주신 템플릿</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="title class_">Array</span>(<span class="number">100</span>), <span class="function">(<span class="params">_, i</span>) =&gt;</span> i + <span class="number">1</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Calc</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [result, setResult] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = <span class="title function_">useState</span>(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params"></span>)=&gt;&#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;arr.map((num, i) =&gt; (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&#x27;number&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">name</span>=<span class="string">&#123;</span>`<span class="attr">input</span>=<span class="string">$&#123;num&#125;</span>`&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">key</span>=<span class="string">&#123;i&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onChange</span>=<span class="string">&#123;onHandleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          /&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;i !== arr.length - 1 ? &#x27;+&#x27; : &#x27;=&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">      ))&#125;</span><br><span class="line">      =</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&#x27;number&#x27;</span> <span class="attr">disabled</span> <span class="attr">value</span>=<span class="string">&#123;result&#125;</span> /&gt;</span></span></span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&#x27;button&#x27;</span> <span class="attr">onClick</span>=<span class="string">&#123;add&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        계산</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>input을 100개를 만들면 각각의 input에 state를 일일이 줄 순 없다.</li>
+</ul>
+<img src="/2022/05/18/2022-05-18-TIL/01.png" class="">
+
+<p>문제는.. input 각각의 밸류를 어떻게 받아올것인가</p>
+<p>일단 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [num, setNum] = <span class="title function_">useState</span>(&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>초기값이 객체이고..<br>input에다 name을 만들어 두셨다</p>
+<p>콘솔로 찍어보니</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">name</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2022/05/18/2022-05-18-TIL/02.png" class="">
+<p>이렇게 각각의 input name과<br>그 안의 밸류들이 찍힌다</p>
+<p>그럼 이걸 num에다 name을 키 값으로, value를 value로 만들어서 객체 데이터로 넣어주면 된다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; name, value &#125; = e.<span class="property">target</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setNum</span>(&#123; ...num1, [name]: <span class="built_in">parseInt</span>(value) &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>객체구조분해 할당으로 각각 e.target.name 과 e.target.value 를 name,value에 할당해준다</strong></p>
+<p>그리고 setter함수로 num에다 값을 넣어줘야 하는데<br>이때 num의 초기값은 객체이기때문에 객체형태로 넣어줘야 한다<br>스프레드 연산자 <code>...</code>는 객체의 내용을 펼쳐서 기존 객체를 복사해준다<br>현재 num1은 빈 객체이기때문에 빈 객체 생성<br>name을 key, value를 값으로 넣어준다 value는 현재 문자이기때문에 뒤에서 더해줄것 이므로 숫자로 변환해서 넣어준다  </p>
+<p>그리고 console로 num을 찍어보니 객체로 잘 들어간다</p>
+<img src="/2022/05/18/2022-05-18-TIL/03.png" class="">
+
+<p>이제 num에서 value값만 가져와 더해서 result에 넣어주면 되는데..</p>
+<p>객체에서 value만 가져오기 검색해보니 Object.values() 가 뜬다</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/18/2022-05-18-TIL/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/fetch-data-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1165,139 +1296,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/TS-Generics-Function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/TS-Generics-Function/" class="post-title-link" itemprop="url">TS-Generics-Function</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-13 17:26:14" itemprop="dateCreated datePublished" datetime="2022-05-13T17:26:14+09:00">2022-05-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-15 03:56:48" itemprop="dateModified" datetime="2022-05-15T03:56:48+09:00">2022-05-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/13/TS-Generics-Function/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/TS-Generics-Function/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params">message: <span class="built_in">any</span></span>) : <span class="built_in">any</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>(<span class="string">&#x27;mark&#x27;</span>)) <span class="comment">// any로 추론되기 때문에 .length 같은 property를 사용하지 못한다</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>(<span class="number">39</span>))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="string">&#x27;Mark&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/01.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="number">39</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/02.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="literal">true</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/03.png" class="">
-
-<h2 id="Generics-Basic"><a href="#Generics-Basic" class="headerlink" title="Generics Basic"></a>Generics Basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloBasic&lt;T&gt;(<span class="attr">message</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>) <span class="comment">// 타입이 string으로 된다</span></span><br><span class="line"><span class="title function_">helloBasic</span>(<span class="number">36</span>) <span class="comment">// T의 타입을 넣지 않으면 추론된다 36이 number이지만 number가 아닌 가장 좁은 범위인 36으로 추론된다</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/04.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/05.png" class="">
-
-<h2 id="Generics-Array-amp-Tuple"><a href="#Generics-Array-amp-Tuple" class="headerlink" title="Generics Array &amp; Tuple"></a>Generics Array &amp; Tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloArray&lt;T&gt;(<span class="attr">message</span>: T[]): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">helloArray</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="title function_">helloArray</span>([<span class="string">&#x27;hello&#x27;</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/06.png" class="">
-<p>string으로 추론</p>
-<img src="/2022/05/13/TS-Generics-Function/07.png" class="">
-<p>string과 number로 추론 </p>
-<img src="/2022/05/13/TS-Generics-Function/08.png" class="">
-<p>사용할 수 있는 메서드가 제한적이다</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloTuple&lt;T, K&gt;(<span class="attr">message</span>: [T, K]): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">helloTuple</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="title function_">helloTuple</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/09.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/10.png" class="">
-
-<h2 id="Generics-Function"><a href="#Generics-Function" class="headerlink" title="Generics Function"></a>Generics Function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">HelloFunctionGeneric1</span> = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">hellofunction1</span>: <span class="title class_">HelloFunctionGeneric1</span> = &lt;T&gt;(<span class="attr">message</span>: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// interface</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">HelloFunctionGeneric2</span> &#123;</span><br><span class="line">  &lt;T&gt;(<span class="attr">message</span>: T): T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">helloFunction2</span>: <span class="title class_">HelloFunctionGeneric2</span> = &lt;T&gt;(<span class="attr">message</span>: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Generics-Class"><a href="#Generics-Class" class="headerlink" title="Generics Class"></a>Generics Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;123&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/11.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/12.png" class="">
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&lt;T, K&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_age</span>: K</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T, age: K</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">123</span>, <span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span>&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&#x27;Hello&#x27;</span>, <span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/14.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/15.png" class="">
-
-<h2 id="Generics-with-extends"><a href="#Generics-with-extends" class="headerlink" title="Generics with extends"></a>Generics with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PersonExtends</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="comment">// T 는 string 과 number만 가능하다</span></span><br><span class="line">  <span class="comment">// class 상속과는 조금 다른 개념</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="number">39</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="literal">true</span>) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/16.png" class="">
-
-<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">person</span>: <span class="title class_">IPerson</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Keys</span> = keyof <span class="title class_">IPerson</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">keys</span>: <span class="title class_">Keys</span> = <span class="string">&#x27;name&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&#x27;name] | IPerson[&#x27;age&#x27;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="keyword">function</span> getProp&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K): T[K] &#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getProp</span>(person, <span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> setProp&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K, <span class="attr">value</span>: T[K]): <span class="built_in">void</span> &#123;</span><br><span class="line">  obj[key] = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setProp</span>(person, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;anna&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1367,7 +1365,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
