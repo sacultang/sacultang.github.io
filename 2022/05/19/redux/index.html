@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://sacultang.github.io/2022/05/19/redux/02.png">
 <meta property="og:image" content="https://sacultang.github.io/2022/05/19/redux/03.png">
 <meta property="article:published_time" content="2022-05-19T01:38:23.000Z">
-<meta property="article:modified_time" content="2022-05-20T16:23:40.000Z">
+<meta property="article:modified_time" content="2022-05-20T16:46:20.000Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-21 01:23:40" itemprop="dateModified" datetime="2022-05-21T01:23:40+09:00">2022-05-21</time>
+                <time title="Modified: 2022-05-21 01:46:20" itemprop="dateModified" datetime="2022-05-21T01:46:20+09:00">2022-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -307,11 +307,11 @@
 <li>type은 name에서 지어준 이름이 prefixer로 붙어있고 action 함수 이름이 있다</li>
 <li>payload는 action 함수를 호출할때 넣어준 인수가 들어있다</li>
 </ul>
-<p>payload를 콘솔로 찍었을때 </p>
+<p>action 함수는 하나의 값만이 아닌, 객체, 배열등도 넘길 수 있다<br>객체로 값을 넘겼을때 payload를 콘솔로 찍었을때 </p>
 <img src="/2022/05/19/redux/03.png" class="">
 
 <h2 id="컴포넌트에서-store에-접근할때-사용하는-Hook"><a href="#컴포넌트에서-store에-접근할때-사용하는-Hook" class="headerlink" title="컴포넌트에서 store에 접근할때 사용하는 Hook"></a>컴포넌트에서 store에 접근할때 사용하는 Hook</h2><h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h3><ul>
-<li>컴포넌트에서 store안에 있는 state값에 접근하기 위해서는 useSelector 훅을 사용해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> green = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">green</span>);</span><br><span class="line">  <span class="keyword">const</span> red = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">red</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">backgroundColor:</span> <span class="attr">green</span> &#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>컴포넌트에서 store안에 있는 state값에 접근하기 위해서는 useSelector 훅을 사용해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> green = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">green</span>);</span><br><span class="line">  <span class="keyword">const</span> red = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">red</span>);keyword</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">backgroundColor:</span> <span class="attr">green</span> &#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>값을 꺼내 컴포넌트의 초기값으로 사용할 수 있다</li>
 </ul>
 
@@ -364,10 +364,7 @@
     <a href="/2022/05/18/2022-05-18-TIL/" rel="prev" title="2022-05-18-TIL">
       <i class="fa fa-chevron-left"></i> 2022-05-18-TIL
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/19/2022-05-19-TIL/" rel="next" title="2022-05-19-TIL">
-      2022-05-19-TIL <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -447,7 +444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

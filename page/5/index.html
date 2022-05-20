@@ -160,116 +160,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/26/css-scss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/26/css-scss/" class="post-title-link" itemprop="url">SCSS</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-04-26 17:10:59" itemprop="dateCreated datePublished" datetime="2022-04-26T17:10:59+09:00">2022-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-27 13:04:19" itemprop="dateModified" datetime="2022-04-27T13:04:19+09:00">2022-04-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/26/css-scss/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/26/css-scss/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><p>CSS 전처리기 (CSS Preprocessor)</p>
-<ul>
-<li>전처리기에는 SCSS,Sass,Less,Stylus 등이 있다</li>
-<li>CSS 문법과 유사하지만 선택자의 중첩, 조건문, 반복문 등 표준 CSS 보다 훨씬 많은 기능을 사용해서 편리하게 작성 가능</li>
-<li>웹에서는 CSS만 동작하기 때문에 SCSS를 웹에서 동작 가능한 CSS로 컴파일(Compile)해줘야 한다.</li>
-</ul>
-<p>SCSS 컴파일 미리보기 사이트<br><a target="_blank" rel="noopener" href="https://www.sassmeister.com/">https://www.sassmeister.com/</a></p>
-<h2 id="주석"><a href="#주석" class="headerlink" title="주석"></a>주석</h2><p>SCSS에서는 CSS에서 사용하는 주석방식 외에도<br>&#x2F;&#x2F; 같은 JS에서 사용하는 주석 방식도 사용 가능하다</p>
-<ul>
-<li>주의점 &#x2F;&#x2F; 로 주석 처리할 시 CSS로 컴파일 하면 내용이 사라진다</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scss</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span> : royalblue;</span><br><span class="line">    <span class="comment">// font-size:60px; JS에서 사용하는 주석 방식</span></span><br><span class="line">    <span class="comment">/* background-color : orange */</span> 일반 CSS에서 사용하는 주석 방식. 컴파일시 나타나지 않는다</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css로 컴파일시</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>:royalblue;</span><br><span class="line">  <span class="comment">/* background-color : orange */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/26/css-scss/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/25/JS-Hoisting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1260,6 +1150,109 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/18/vue-search-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/18/vue-search-value/" class="post-title-link" itemprop="url">Vue Search Value</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-18 20:46:24" itemprop="dateCreated datePublished" datetime="2022-04-18T20:46:24+09:00">2022-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-04-23 21:39:33" itemprop="dateModified" datetime="2022-04-23T21:39:33+09:00">2022-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/vue/vue-%EC%97%B0%EC%8A%B5/" itemprop="url" rel="index"><span itemprop="name">vue 연습</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/18/vue-search-value/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/18/vue-search-value/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="데이터-실시간-서치"><a href="#데이터-실시간-서치" class="headerlink" title="데이터 실시간 서치"></a>데이터 실시간 서치</h1><h2 id="Axios로-데이터-가져오기"><a href="#Axios로-데이터-가져오기" class="headerlink" title="Axios로 데이터 가져오기"></a>Axios로 데이터 가져오기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">poketmon</span>:[],</span><br><span class="line">        <span class="attr">filterInput</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">  axios.<span class="title function_">get</span>(<span class="string">&#x27;@/assets/data/poketmon.json&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">poketmon</span> = res.<span class="property">data</span>.<span class="property">poketmon</span></span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">error</span>.<span class="title function_">push</span>(e)</span><br><span class="line">      &#125;)</span><br><span class="line">&#125;</span><br><span class="line">mounted 훅에서 데이터를 가져와서 뿌려줬다</span><br><span class="line">created 훅으로도 적어봤는데 똑같이 잘 동작한다</span><br></pre></td></tr></table></figure>
+<h2 id="Computed-filter"><a href="#Computed-filter" class="headerlink" title="Computed filter"></a>Computed filter</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">      <span class="title function_">filteredList</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> value = <span class="variable language_">this</span>.<span class="property">filterInput</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">poketmon</span>.<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">mon</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> mon.<span class="property">name</span>.<span class="title function_">includes</span>(value) || mon.<span class="property">type</span>.<span class="title function_">includes</span>(value) </span><br><span class="line">          <span class="comment">// = return mon.name.indexOf(value) &gt; -1 || mon.type.indexOf(value) &gt; -1</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>인풋으로 들어가는 데이터가 계산되어 나올수 있게 computed에 메소드를 적는다  <br></li>
+<li>poketmon 배열을 filter메소드로 걸러서 반환한다 무엇을? filter의 콜백 함수 부분에서 조건에 맞는 요소를  <br></li>
+<li>includes() 메소드는 문자열이 특정 문자열을 포함하는지 확인하는 메소드</li>
+</ul>
+<p>axios로 api 요청할때 쿼리값으로 넣는 것만 해봐서<br>받아온 데이터를 필터링 하는건 처음 해봐서 좀 헤맸다..</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1329,7 +1322,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
