@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Redux 리액트는 컴포넌트 간의 depth가 깊어질 수록 props(state)를 주고 받는 일이 힘들어진다     리덕스를 통해서 state를 한 곳에 몰아 저장할 수 있다 리덕스를 통해서 state를 어떤 컴포넌트에서든지 바로 사용 할 수 있다(부모간의 props전달이 필요 없다) 리덕스를 통해서만 state를 변형 할 수 있으므로 관리가 용이하다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redux-toolkit">
+<meta property="og:url" content="https://sacultang.github.io/2022/05/19/redux/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="Redux 리액트는 컴포넌트 간의 depth가 깊어질 수록 props(state)를 주고 받는 일이 힘들어진다     리덕스를 통해서 state를 한 곳에 몰아 저장할 수 있다 리덕스를 통해서 state를 어떤 컴포넌트에서든지 바로 사용 할 수 있다(부모간의 props전달이 필요 없다) 리덕스를 통해서만 state를 변형 할 수 있으므로 관리가 용이하다">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/19/redux/01.jpg">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/19/redux/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/05/19/redux/03.png">
+<meta property="article:published_time" content="2022-05-19T01:38:23.000Z">
+<meta property="article:modified_time" content="2022-05-20T16:23:40.000Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/2022/05/19/redux/01.jpg">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/05/19/redux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>redux-toolkit | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/19/redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          redux-toolkit
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-19 10:38:23" itemprop="dateCreated datePublished" datetime="2022-05-19T10:38:23+09:00">2022-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-21 01:23:40" itemprop="dateModified" datetime="2022-05-21T01:23:40+09:00">2022-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/19/redux/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/19/redux/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><ul>
+<li>리액트는 컴포넌트 간의 depth가 깊어질 수록 props(state)를 주고 받는 일이 힘들어진다</li>
+</ul>
+<img src="/2022/05/19/redux/01.jpg" class="">
+
+<ul>
+<li>리덕스를 통해서 state를 한 곳에 몰아 저장할 수 있다</li>
+<li>리덕스를 통해서 state를 어떤 컴포넌트에서든지 바로 사용 할 수 있다(부모간의 props전달이 필요 없다)</li>
+<li>리덕스를 통해서만 state를 변형 할 수 있으므로 관리가 용이하다</li>
+</ul>
+<h1 id="Redux-toolkit"><a href="#Redux-toolkit" class="headerlink" title="Redux-toolkit"></a>Redux-toolkit</h1><ul>
+<li>기존 리덕스는 사용하기가 복잡하다</li>
+<li>리덕스에서 좀더 간편하게 사용할 수 있게 Redux-toolkit 이라는 라이브러리를 지원한다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i @reduxjs/toolkit</span><br></pre></td></tr></table></figure>
+
+<h2 id="store"><a href="#store" class="headerlink" title="store"></a>store</h2><ul>
+<li>애플리케이션의 state를 관리하고 업데이트하는 중앙 저장소 역할을 한다</li>
+<li>toolkit 에서는 slice들을 모아 관리 한다</li>
+<li>configureStore 로 store 를 설정해 줄 수 있다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> counterSlice <span class="keyword">from</span> <span class="string">&#x27;../features/counter/counterSlice&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> colorSlice <span class="keyword">from</span> <span class="string">&#x27;../features/counter/colorSlice&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: &#123; <span class="comment">// 리듀서들</span></span><br><span class="line">    counterSlice, </span><br><span class="line">    <span class="attr">colorBtn</span>: colorSlice, <span class="comment">// key : value(리듀서 이름)</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// optional</span></span><br><span class="line">	middleware </span><br><span class="line">	devTools</span><br><span class="line">	preloadedState</span><br><span class="line">	enhancers</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>어떤 컴포넌트던지 리덕스의 store에 접근해 state를 사용 할 수 있게 해주는게 Provider 이다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Provider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store/store&#x27;</span>;</span><br><span class="line"></span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>App 컴포넌트는 모든 컴포넌트를 담고 있으므로 Provider로 App 컴포넌트를 감싸게 되면 모든 컴포넌트가 store에 접근 할 수 있게 된다</li>
+<li>여기서 알 수 있는점은 App이 아니라 특정 컴포넌트만 Provider로 감싸면 그 컴포넌트만 store에 접근 할 수 있다는 점.</li>
+<li>Provider는 만들어 놓은 store를 필수적으로 props로 넘겨주어야 한다</li>
+</ul>
+<h2 id="Reducer에는"><a href="#Reducer에는" class="headerlink" title="Reducer에는"></a>Reducer에는</h2><ul>
+<li>createAction, createReducer, createSlice, createAsyncThunk… 등등 있다<ul>
+<li>createAction : action 타입 정의, action 생성 함수 </li>
+<li>createReducer : initialState 정의, reducer 함수</li>
+</ul>
+</li>
+<li>toolkit에서 사용하는 createSlice에는 createAction 과 createReducer를 내부에서 사용할 수 있으므로 createSlice만 사용 해도 된다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> colorSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">  <span class="attr">initialState</span>: &#123;</span><br><span class="line">   <span class="comment">// 초기 상태 값 -&gt; useState()의 초기값</span></span><br><span class="line">    <span class="attr">green</span>: <span class="string">&#x27;green&#x27;</span>,</span><br><span class="line">    <span class="attr">red</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">value2</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">padding</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">reducers</span>: &#123;</span><br><span class="line">    <span class="comment">// 변화를 일으키는 함수 action -&gt; useState setter</span></span><br><span class="line">    <span class="attr">tomato</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">green</span> === <span class="string">&#x27;green&#x27;</span></span><br><span class="line">        ? (state.<span class="property">green</span> = <span class="string">&#x27;tomato&#x27;</span>)</span><br><span class="line">        : (state.<span class="property">green</span> = <span class="string">&#x27;green&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">banana</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">red</span> = <span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actionBtn</span>: <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(action);</span><br><span class="line">			<span class="comment">// </span></span><br><span class="line">      state.<span class="property">value</span> = action.<span class="property">payload</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actionBtn2</span>: <span class="function">(<span class="params">state, &#123; payload &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(payload)</span><br><span class="line">      <span class="keyword">const</span> &#123; padding, color &#125; = payload;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">backgroundColor</span> = payload.<span class="property">back</span>;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">padding</span> = padding;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">color</span> = color;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; tomato, banana, actionBtn, actionBtn2 &#125; = colorSlice.<span class="property">actions</span>;</span><br><span class="line"><span class="comment">// action creator 함수를 내보낸다 컴포넌트에서 import해서 사용 할 수 있다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> colorSlice.<span class="property">reducer</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><ul>
+<li>creatAction에서 type에 해당하는 부분. action의 prefixer로 사용 된다</li>
+</ul>
+<h3 id="initialState"><a href="#initialState" class="headerlink" title="initialState"></a>initialState</h3><ul>
+<li>state초기 값들을 설정할 수 있다 useState()의 초기값이라고 정리했다</li>
+</ul>
+<h3 id="reducers"><a href="#reducers" class="headerlink" title="reducers"></a>reducers</h3><ul>
+<li><p>state에 변화를 일으키는 함수들을 모아놓은 객체이다</p>
+</li>
+<li><p>함수의 매개변수로는 state &#x3D; initialState, action &#x3D; type 과 payload가 들어있다</p>
+<ul>
+<li>payload에는 이 action 함수를 호출할때 넘겨주는 인수가 들어 있다</li>
+<li>객체구조분해를 통해 payload만 꺼내서 사용 할 수도 있다</li>
+</ul>
+</li>
+</ul>
+<p>action을 콘솔로 찍었을때 </p>
+<img src="/2022/05/19/redux/02.png" class="">
+<ul>
+<li>action 은 객체 타입이고 안에 type 과 payload가 들어있다 </li>
+<li>type은 name에서 지어준 이름이 prefixer로 붙어있고 action 함수 이름이 있다</li>
+<li>payload는 action 함수를 호출할때 넣어준 인수가 들어있다</li>
+</ul>
+<p>payload를 콘솔로 찍었을때 </p>
+<img src="/2022/05/19/redux/03.png" class="">
+
+<h2 id="컴포넌트에서-store에-접근할때-사용하는-Hook"><a href="#컴포넌트에서-store에-접근할때-사용하는-Hook" class="headerlink" title="컴포넌트에서 store에 접근할때 사용하는 Hook"></a>컴포넌트에서 store에 접근할때 사용하는 Hook</h2><h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h3><ul>
+<li>컴포넌트에서 store안에 있는 state값에 접근하기 위해서는 useSelector 훅을 사용해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> green = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">green</span>);</span><br><span class="line">  <span class="keyword">const</span> red = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">red</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">backgroundColor:</span> <span class="attr">green</span> &#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>값을 꺼내 컴포넌트의 초기값으로 사용할 수 있다</li>
+</ul>
+
+
+<h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h3><ul>
+<li>컴포넌트에서 store안에 있는 action함수를 호출 하기 위해서는 useDispatch 훅을 사용한다</li>
+<li>store 안에 있는 action 중 사용 할 것들을 import 해줘야 한다</li>
+<li>useDispatch()를 바로 사용 할 수 없으므로 변수에 담아 사용 한다 (바로 사용할 수 있는지 사실 잘 모르겠지만 에러가 뜬다)</li>
+<li>action 함수를 호출할때 인수로 변경할 값을 넘길 수 있다. 이때 값은 payload에 들어간다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useDispatch &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; tomato &#125; <span class="keyword">from</span> <span class="string">&#x27;../features/counter/colorSlice&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(tomato())&#125;&gt;green<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(actionBtn(&#x27;black&#x27;))&#125;&gt; actionBtn <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+<h2 id="강의-따라하기"><a href="#강의-따라하기" class="headerlink" title="강의 따라하기"></a>강의 따라하기</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Redux Toolkit은 Redux 코어 뿐 아니라 </span><br><span class="line">// Redux 앱을 만들때 필수적이라고 느낀 패키지들을 포함 하고 있다</span><br><span class="line"></span><br><span class="line">$ npm install @reduxjs/toolkit</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>store.js 만들기</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore&#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">  reducer : &#123; &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>index.js 에 <code>provider</code> 로 &lt;App&gt; 감싸기</strong><br>Provider로 store를 넣어서 App을 감싸게 되면 렌더링하는 그 어떤 컴포넌트던지 리덕스 스토에 접근 할 수 있게 된다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">Provider</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store/store&#x27;</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>Reducer 만들기</strong><br>슬라이스를 생성하려면 슬라이스를 식별하기 위한 문자열 이름 <code>name:&#39;counter&#39;</code>,<br>초기 상태값 <code>initialState:&#123;0&#125;</code> 상태 업데이트 방법을 정의하는 하나 이상의 리듀서 함수가 필요하다</p>
+<blockquote>
+<p>Redux는 데이터 복사본을 만들고 복사본을 업데이트하여 모든 상태 업데이틀 불변하게 작성하도록 요구한다<br>그러나 Redux 툴깃의 createSlice 및 createReducer API는 Immer 내부로직을 사용하여 불변데이터를 올바르게 업데이트 되게 해준다</p>
+</blockquote>
+<ul>
+<li>reducer 만들고 store에 등록해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// counterSlice.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;createSlice&#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">  <span class="attr">initialState</span>:&#123;</span><br><span class="line">    <span class="attr">value</span>:<span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">reducers</span>:&#123;</span><br><span class="line">    <span class="attr">increment</span>:<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">value</span> += <span class="number">1</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrement</span>:<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">value</span> -= <span class="number">1</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">incrementByAmount</span>:<span class="function">(<span class="params">state,action</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>스토어에 등록</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> counterSlice <span class="keyword">from</span> <span class="string">&#x27;../features/counter/counterSlice&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: &#123;</span><br><span class="line">    counterSlice,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>컴포넌트 만들기</strong><br>useSelector를 사용해서 저장소에서 데이터를 읽고 useDispatch를 사용해 작업을 전달 할 수 있다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; increment, decrement, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./counterSlice&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">counterSlice</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(increment())&#125;&gt;Increment<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(decrement())&#125;&gt;Decrement<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(incrementByAmount(5))&#125;&gt;+5<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/18/2022-05-18-TIL/" rel="prev" title="2022-05-18-TIL">
+      <i class="fa fa-chevron-left"></i> 2022-05-18-TIL
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/19/2022-05-19-TIL/" rel="next" title="2022-05-19-TIL">
+      2022-05-19-TIL <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">1.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux-toolkit"><span class="nav-number">2.</span> <span class="nav-text">Redux-toolkit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#store"><span class="nav-number">2.1.</span> <span class="nav-text">store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer%EC%97%90%EB%8A%94"><span class="nav-number">2.2.</span> <span class="nav-text">Reducer에는</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#name"><span class="nav-number">2.2.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initialState"><span class="nav-number">2.2.2.</span> <span class="nav-text">initialState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducers"><span class="nav-number">2.2.3.</span> <span class="nav-text">reducers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%97%90%EC%84%9C-store%EC%97%90-%EC%A0%91%EA%B7%BC%ED%95%A0%EB%95%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-Hook"><span class="nav-number">2.3.</span> <span class="nav-text">컴포넌트에서 store에 접근할때 사용하는 Hook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useSelector"><span class="nav-number">2.3.1.</span> <span class="nav-text">useSelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useDispatch"><span class="nav-number">2.3.2.</span> <span class="nav-text">useDispatch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B0%95%EC%9D%98-%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0"><span class="nav-number">2.4.</span> <span class="nav-text">강의 따라하기</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/05/19/redux/";
+    this.page.identifier = "2022/05/19/redux/";
+    this.page.title = "redux-toolkit";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
