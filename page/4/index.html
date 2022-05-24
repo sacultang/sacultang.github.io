@@ -160,6 +160,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/2022-05-03-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/03/2022-05-03-TIL/" class="post-title-link" itemprop="url">for .. in 반복문</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-03 14:23:03" itemprop="dateCreated datePublished" datetime="2022-05-03T14:23:03+09:00">2022-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-21 15:50:24" itemprop="dateModified" datetime="2022-05-21T15:50:24+09:00">2022-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/03/2022-05-03-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/2022-05-03-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="for-in"><a href="#for-in" class="headerlink" title="for..in"></a>for..in</h1><p>for in 반복문은 객체에서 주로 사용</p>
+<ul>
+<li>객체 자료형에서 ‘열거’ 할 수 있는 자료들을 순회할 수 있도록 해준다</li>
+<li>특정 순서에 따라 인덱스를 반환하는 것을 보장 할 수 없다 (반복되는 순서가 구현에 따라 다르다)</li>
+<li>배열 데이터에서는 인덱스값이 중요하므로 forEach나 for..of를 권장한다</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 예제</span></span><br><span class="line"><span class="keyword">const</span> object = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> property <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;property&#125;</span>: <span class="subst">$&#123;object[property]&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// expected output:</span></span><br><span class="line"><span class="comment">// &quot;a: 1&quot;</span></span><br><span class="line"><span class="comment">// &quot;b: 2&quot;</span></span><br><span class="line"><span class="comment">// &quot;c: 3&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>variable</strong> : 매번 반복마다 객체의 키 값이 variable로 지정된다</p>
+<p><strong>object</strong> : 반복 작업을 수행할 객체 (열거형 속성을 가지고 있는객체 )</p>
+<blockquote>
+<p>객체 데이터는 만들때 개발자가 적은 키:밸류 값만 저장되는게 아닌 그 외 숨겨진 속성 3개가 같이 저장된다</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">숨겨진 속성을 확인해보는 메서드 <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">let</span> book = &#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&quot;자바스크립트 완벽하게 이해하기&quot;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">32000</span>,</span><br><span class="line">        <span class="attr">author</span>: <span class="string">&quot;훈이&quot;</span>,</span><br><span class="line">        <span class="attr">publisher</span>: <span class="string">&quot;자바스크립트짱짱&quot;</span>,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Obejct.getOwnPropertyDescriptor(객체명,&#x27;객체키명&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(book, <span class="string">&quot;title&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>숨겨진 속성들을 이용해 객체데이터의 값을 열거불가,수정불가,삭제불가 등을 할 수있음..</p>
+<p><strong>writable</strong> 이 false 이면 변경불가 → default : true</p>
+<p><strong>enumerable</strong> 이 false 이면 열거 불가 → default : true</p>
+<p><strong>configurable</strong> 이 false 이면 enumerable 및 configurable을 변경 불가 및 삭제 불가 하지만 쓰기 writable은 가능 → default : true</p>
+<p><a target="_blank" rel="noopener" href="https://developer-talk.tistory.com/277">[JavaScript]객체 속성(writable, enumerable, configurable)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/02/React-router-dom-v6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1188,136 +1303,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/28/React-first/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/28/React-first/" class="post-title-link" itemprop="url">React 기초</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-04-28 17:34:20" itemprop="dateCreated datePublished" datetime="2022-04-28T17:34:20+09:00">2022-04-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-30 00:07:04" itemprop="dateModified" datetime="2022-04-30T00:07:04+09:00">2022-04-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/28/React-first/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/28/React-first/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><ul>
-<li>유저 인터페이스를 만들기위한 자바스크립트 라이브러리(library)</li>
-<li>Component based Development</li>
-</ul>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><p>Component Tree &#x3D;&gt; DOM Tree</p>
-<ul>
-<li>DOM과는 다르게 Component 내장되어 있는 태그들을 조합하고 스타일,동작등을 한 번에 다루는 형태를 만든 다음 재활용하는 방식</li>
-</ul>
-<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM ?"></a>Virtual DOM ?</h3><ul>
-<li>DOM을 직접 제어하는 경우<ul>
-<li>바뀐 부분만 정확히 바꿔야 한다.</li>
-</ul>
-</li>
-<li>DOM을 직접 제어하지 않는 경우<ul>
-<li>가상의 돔 트리를 사용해서 이정 상태와 이후 상태를 비교하여, 바뀐 부분을 찾아내서 자동으로 바꾼다</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>CSR(React Client Side Rendering)</p>
-<ul>
-<li>JS가 전부 다운로드 되어 리액트 애플리케이션이 정상 실행되기 전까지는 화면이 보이지 않음.</li>
-<li>JS가 전부 다운로드 되어 리액트 애플리케이션이 정상 실행된 후, 화면이 보이면서 유저가 인터렉션 가능</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>SSR(React Server Side Rendering)</p>
-<ul>
-<li>JS가 전부 다운로드 되지 않아도, 일단 화면은 보이지만 유저가 사용 할 수 없음.</li>
-<li>JS가 전부 다운로드 되어 리액트 애플리케이션이 정상 실행된 후, 유저가 사용 가능</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/28/React-first/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1387,14 +1372,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
