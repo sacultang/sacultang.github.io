@@ -160,6 +160,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/React-reRender/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/03/React-reRender/" class="post-title-link" itemprop="url">React-reRender</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-03 15:35:46 / Modified: 16:25:49" itemprop="dateCreated datePublished" datetime="2022-05-03T15:35:46+09:00">2022-05-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/03/React-reRender/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/React-reRender/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Rerender"><a href="#Rerender" class="headerlink" title="Rerender"></a>Rerender</h1><p>JavaScript 와 React 의 차이</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vanilla</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">random</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> number = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * (<span class="number">10</span> - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> element = <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;button&gt;<span class="subst">$&#123;number&#125;</span>&lt;/button&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#root&quot;</span>).<span class="property">innerHTML</span> = element;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">random</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(random, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>바닐라JS 에서는 element가 변경될때 element를 다시 그림</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//react</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">random</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> number = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * (<span class="number">10</span> - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> element = <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>&#123;number&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(element, root)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">random</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setInterval</span>(random, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>React에서는 변경되는 부분만 다시 그린다</p>
+<h2 id="렌더링-된-엘리먼트-업데이트하기"><a href="#렌더링-된-엘리먼트-업데이트하기" class="headerlink" title="렌더링 된 엘리먼트 업데이트하기"></a>렌더링 된 엘리먼트 업데이트하기</h2><blockquote>
+<p>두 개의 트리를 비교할 때, React는 두 엘리먼트의 루트(root) 엘리먼트부터 비교합니다. 이후의 동작은 루트 엘리먼트의 타입에 따라 달라진다.</p>
+</blockquote>
+<h3 id="엘리먼트의-타입이-다른-경우"><a href="#엘리먼트의-타입이-다른-경우" class="headerlink" title="엘리먼트의 타입이 다른 경우"></a>엘리먼트의 타입이 다른 경우</h3><p>두 루트 엘리먼트의 타입이 다르면, React는 이전 트리를 버리고 완전히 새로운 트리를 구축한다<br> &lt;a&gt;에서 &lt;img&gt;로, &lt;Article&gt;에서 &lt;Comment&gt;로, 혹은 &lt;Button&gt;에서 &lt;div&gt;로 바뀌는 것 모두 트리 전체를 재구축하는 경우</p>
+<h3 id="DOM엘리먼트의-타입이-같은-경우"><a href="#DOM엘리먼트의-타입이-같은-경우" class="headerlink" title="DOM엘리먼트의 타입이 같은 경우"></a>DOM엘리먼트의 타입이 같은 경우</h3><p> 같은 타입의 두 React DOM 엘리먼트를 비교할 때, React는 두 엘리먼트의 속성을 확인하여, 동일한 내역은 유지하고 변경된 속성들만 갱신한다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&quot;before&quot;</span> title=<span class="string">&quot;stuff&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;after&quot;</span> <span class="attr">title</span>=<span class="string">&quot;stuff&quot;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>이 두 엘리먼트를 비교하면, React는 현재 DOM 노드 상에 className만 수정한다</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/2022-05-03-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1155,158 +1252,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/29/algorithm04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/29/algorithm04/" class="post-title-link" itemprop="url">없는 숫자 더하기</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-04-29 23:02:03 / Modified: 23:41:37" itemprop="dateCreated datePublished" datetime="2022-04-29T23:02:03+09:00">2022-04-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/JavaScript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/29/algorithm04/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/29/algorithm04/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="없는-숫자-더하기"><a href="#없는-숫자-더하기" class="headerlink" title="없는 숫자 더하기"></a>없는 숫자 더하기</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><blockquote>
-<p>0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. <br><br>numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.</p>
-</blockquote>
-<h2 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h2><ul>
-<li>1 ≤ numbers의 길이 ≤ 9<ul>
-<li>0 ≤ numbers의 모든 원소 ≤ 9</li>
-<li>numbers의 모든 원소는 서로 다릅니다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h2><table>
-<thead>
-<tr>
-<th align="center">numbers</th>
-<th align="center">result</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">[1,2,3,4,6,7,8,0]</td>
-<td align="center">14</td>
-</tr>
-<tr>
-<td align="center">[5,8,4,0,6,7,9]</td>
-<td align="center">6</td>
-</tr>
-</tbody></table>
-<h2 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h2><ul>
-<li><p>입출력 예 #1</p>
-<ul>
-<li>5, 9가 numbers에 없으므로, 5 + 9 &#x3D; 14를 return 해야 합니다.</li>
-</ul>
-</li>
-<li><p>입출력 예 #2</p>
-<ul>
-<li>1, 2, 3이 numbers에 없으므로, 1 + 2 + 3 &#x3D; 6을 return 해야 합니다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ol>
-<li>0부터 9까지의 합을 구한다</li>
-<li>주어진 numbers의 합을 구한다</li>
-<li>0부터 9까지의 합에서 numbers의 합을 뺀다</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">numbers</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> allSum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> numbSum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i &lt;=<span class="number">9</span>; i++)&#123;</span><br><span class="line">    allSum += i</span><br><span class="line">  &#125;</span><br><span class="line">  numbers.<span class="title function_">forEach</span>(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">    numbSum += el</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> allSum - numbSum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="다른-사람의-풀이를-보자"><a href="#다른-사람의-풀이를-보자" class="headerlink" title="다른 사람의 풀이를 보자.."></a>다른 사람의 풀이를 보자..</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">numbers</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">45</span> - numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> acc + cur, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>깔끔쓰..<br>0부터9까지합 로직은 그렇다 쳐도<br>reduce는 생각도 못했다</p>
-<p>reduce()에 대해 알아보자..</p>
-<h2 id="Array-reduce"><a href="#Array-reduce" class="headerlink" title="Array.reduce()"></a>Array.reduce()</h2><blockquote>
-<p>배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행하고, 하나의 결과값을 반환한다</p>
-</blockquote>
-<p>말이 어렵다..</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">reduce</span>(callback[, initialValue])</span><br></pre></td></tr></table></figure>
-
-<h3 id="사용-방법"><a href="#사용-방법" class="headerlink" title="사용 방법"></a>사용 방법</h3><p>reduce()에는 누산기가 포함되어 있기 때문에, 배열의 각 요소에 대해 함수를 실행하고 누적된 값을 출력할때 용이하다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
-<p>예제에서 initialValue 를 0 으로 주었기 때문에 초기값이 0부터 시작해서 하나씩 누적 시켜 나간다<br>0+1+2+3+4+5 &#x3D; 15</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> result = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, cur, idx</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur </span><br><span class="line">&#125;,<span class="number">10</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result) <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
-<p>initialValue 를 10 으로 주었기 때문에 초기값이 10부터 시작해서 하나씩 누적 시켜 나간다<br>10+1+2+3+4+5 &#x3D; 15</p>
-<h3 id="reduce-의-콜백-함수는-4가지-인수를-받는다"><a href="#reduce-의-콜백-함수는-4가지-인수를-받는다" class="headerlink" title="reduce()의 콜백 함수는 4가지 인수를 받는다"></a>reduce()의 콜백 함수는 4가지 인수를 받는다</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. accumulator</span><br><span class="line">    - 누산기, 콜백의 반환값을 누적시킨다. initialValue를 제공했을때는 initialValue의 값이다</span><br><span class="line">2. currentValue</span><br><span class="line">  - 처리할 현재 요소</span><br><span class="line">3. currentIndex (optional)</span><br><span class="line">    - 처리할 현재 요소의 인덱스 </span><br><span class="line">4. array (optional)</span><br><span class="line">  - reduce()를 호출한 배열</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1372,7 +1321,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
