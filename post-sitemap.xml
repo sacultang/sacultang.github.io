@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://sacultang.github.io/2022/05/24/virtual-keyboard/</loc>
+        <lastmod>2022-05-25T06:17:54.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/05/25/login-form/</loc>
         <lastmod>2022-05-25T04:10:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +27,6 @@
     <url>
         <loc>https://sacultang.github.io/2022/05/23/react-movie-app/</loc>
         <lastmod>2022-05-25T02:15:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sacultang.github.io/2022/05/24/virtual-keyboard/</loc>
-        <lastmod>2022-05-25T02:15:13.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -377,6 +377,14 @@
     </url>
 
     <url>
+        <loc>https://sacultang.github.io/2022/04/21/Game-WORDLE/</loc>
+        <lastmod>2022-04-23T12:39:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/04/23/Game-WORDLE-1/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -385,7 +393,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/21/Game-WORDLE/</loc>
+        <loc>https://sacultang.github.io/2022/04/21/JS-Date-Object/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -409,15 +417,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/21/JS-Date-Object/</loc>
-        <lastmod>2022-04-23T12:39:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sacultang.github.io/2022/04/21/JS-Object/</loc>
+        <loc>https://sacultang.github.io/2022/04/16/JS-This/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -433,7 +433,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/16/JS-This/</loc>
+        <loc>https://sacultang.github.io/2022/04/21/JS-Object/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -481,7 +481,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/18/vue-search-value/</loc>
+        <loc>https://sacultang.github.io/2022/04/14/vue3-naver-clone/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -489,7 +489,7 @@
     </url>
 
     <url>
-        <loc>https://sacultang.github.io/2022/04/14/vue3-naver-clone/</loc>
+        <loc>https://sacultang.github.io/2022/04/18/vue-search-value/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
