@@ -160,6 +160,237 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/2022-05-18-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/18/2022-05-18-TIL/" class="post-title-link" itemprop="url">Object.values()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-18 23:29:15" itemprop="dateCreated datePublished" datetime="2022-05-18T23:29:15+09:00">2022-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-21 15:49:48" itemprop="dateModified" datetime="2022-05-21T15:49:48+09:00">2022-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/18/2022-05-18-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/18/2022-05-18-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h1><p>Object.values() 메소드는 전달된 파라미터 객체가 가지는 속성의 값들로 이루어진 배열을 리턴한다.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values</a></p>
+</blockquote>
+<p>오늘 리액트 수업에서 배운 것.<br>하나의 state로 여러개 input 처리 하기</p>
+<p>선생님이 만들어주신 템플릿</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="title class_">Array</span>(<span class="number">100</span>), <span class="function">(<span class="params">_, i</span>) =&gt;</span> i + <span class="number">1</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Calc</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [result, setResult] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = <span class="title function_">useState</span>(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params"></span>)=&gt;&#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;arr.map((num, i) =&gt; (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&#x27;number&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">name</span>=<span class="string">&#123;</span>`<span class="attr">input</span>=<span class="string">$&#123;num&#125;</span>`&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">key</span>=<span class="string">&#123;i&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onChange</span>=<span class="string">&#123;onHandleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          /&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;i !== arr.length - 1 ? &#x27;+&#x27; : &#x27;=&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">      ))&#125;</span><br><span class="line">      =</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&#x27;number&#x27;</span> <span class="attr">disabled</span> <span class="attr">value</span>=<span class="string">&#123;result&#125;</span> /&gt;</span></span></span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&#x27;button&#x27;</span> <span class="attr">onClick</span>=<span class="string">&#123;add&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        계산</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>input을 100개를 만들면 각각의 input에 state를 일일이 줄 순 없다.</li>
+</ul>
+<img src="/2022/05/18/2022-05-18-TIL/01.png" class="">
+
+<p>문제는.. input 각각의 밸류를 어떻게 받아올것인가</p>
+<p>일단 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [num, setNum] = <span class="title function_">useState</span>(&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>초기값이 객체이고..<br>input에다 name을 만들어 두셨다</p>
+<p>콘솔로 찍어보니</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">name</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2022/05/18/2022-05-18-TIL/02.png" class="">
+<p>이렇게 각각의 input name과<br>그 안의 밸류들이 찍힌다</p>
+<p>그럼 이걸 num에다 name을 키 값으로, value를 value로 만들어서 객체 데이터로 넣어주면 된다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onHandleChange</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; name, value &#125; = e.<span class="property">target</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setNum</span>(&#123; ...num1, [name]: <span class="built_in">parseInt</span>(value) &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>객체구조분해 할당으로 각각 e.target.name 과 e.target.value 를 name,value에 할당해준다</strong></p>
+<p>그리고 setter함수로 num에다 값을 넣어줘야 하는데<br>이때 num의 초기값은 객체이기때문에 객체형태로 넣어줘야 한다<br>스프레드 연산자 <code>...</code>는 객체의 내용을 펼쳐서 기존 객체를 복사해준다<br>현재 num1은 빈 객체이기때문에 빈 객체 생성<br>name을 key, value를 값으로 넣어준다 value는 현재 문자이기때문에 뒤에서 더해줄것 이므로 숫자로 변환해서 넣어준다  </p>
+<p>그리고 console로 num을 찍어보니 객체로 잘 들어간다</p>
+<img src="/2022/05/18/2022-05-18-TIL/03.png" class="">
+
+<p>이제 num에서 value값만 가져와 더해서 result에 넣어주면 되는데..</p>
+<p>객체에서 value만 가져오기 검색해보니 Object.values() 가 뜬다</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/18/2022-05-18-TIL/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/fetch-data-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/18/fetch-data-error/" class="post-title-link" itemprop="url">error)fetch data error</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-18 00:18:14 / Modified: 00:34:15" itemprop="dateCreated datePublished" datetime="2022-05-18T00:18:14+09:00">2022-05-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/18/fetch-data-error/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/18/fetch-data-error/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="data-받아와서-맵"><a href="#data-받아와서-맵" class="headerlink" title="data 받아와서 맵"></a>data 받아와서 맵</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">DailyList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(</span><br><span class="line">        <span class="string">&#x27;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4b41cea6-0a74-4f33-86b8-718f24260cc3/data.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220517%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220517T145911Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5156d7c9add92e724823ada0a623f7f270b0b051ae0700d5c3eda2da5775bbee&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22data.json%22&amp;x-id=GetObject&#x27;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">const</span> dataArr = res.<span class="property">data</span>;</span><br><span class="line">      <span class="title function_">setData</span>(dataArr);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(dataArr);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">fetchData</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data.map((e) =&gt; e.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ToyProject를 리액트로 만들어보기 위해서 데이터를 먼저 받아와봤다<br>콘솔로도 받아와지는게 잘 찍히는데 출력해보기 위해서 map을 써봤더니 두둥.. 오류?  </p>
+<img src="/2022/05/18/fetch-data-error/01.png" class="">
+
+<img src="/2022/05/18/fetch-data-error/02.png" class="">
+
+<p>검색 해보니 </p>
+<ol>
+<li>컴포넌트의 상태값 (data) 의 시작값은 null이다</li>
+<li>비동기적으로 데이터를 처리할 때, 컴포넌트는 적어도 한 번, 데이터가 불러지기 전에 렌더링 된다<br>이기 때문이다..</li>
+</ol>
+<p>해결법은 논리연산자 &amp;&amp; 을 사용해 조건이 참이면 렌더링 되게 해주면 된다고 한다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">DailyList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(</span><br><span class="line">        <span class="string">&#x27;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4b41cea6-0a74-4f33-86b8-718f24260cc3/data.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220517%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220517T145911Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5156d7c9add92e724823ada0a623f7f270b0b051ae0700d5c3eda2da5775bbee&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22data.json%22&amp;x-id=GetObject&#x27;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">const</span> dataArr = res.<span class="property">data</span>;</span><br><span class="line">      <span class="title function_">setData</span>(dataArr);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(dataArr);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">fetchData</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data &amp;&amp; data.map((e) =&gt; e.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/05/18/fetch-data-error/03.png" class="">  
+<p>잘 출력 된다..</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/17/moment-library/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1116,225 +1347,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/TS-Classes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/TS-Classes/" class="post-title-link" itemprop="url">TS-Classes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-13 13:58:12 / Modified: 15:21:37" itemprop="dateCreated datePublished" datetime="2022-05-13T13:58:12+09:00">2022-05-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/13/TS-Classes/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/TS-Classes/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><ul>
-<li>class 키워드를 이용하여 클래스를 만들 수 있다</li>
-<li>class 이름은 대문자로 시작한다</li>
-<li>new를 이용하여 class를 통해 object를 만들 수 있다</li>
-<li>constructor를 이용하여 object를 생성하면서 값을 전달할 수 있다</li>
-<li>this를 이용해 만들어진 object를 가르킬 수 있다</li>
-<li>JS로 컴파일되면 es5의 경우 function으로 변경된다</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  name</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="constructor-amp-initialize"><a href="#constructor-amp-initialize" class="headerlink" title="constructor &amp; initialize"></a>constructor &amp; initialize</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Classes/01.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line">p1.<span class="property">age</span> = <span class="number">39</span> <span class="comment">// 초기값 없이 이후에 값을 설정 하고 싶을때</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
-<p>초기값이 없으면 에러가 뜬다  </p>
-<img src="/2022/05/13/TS-Classes/02.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;Mark&quot;</span></span><br><span class="line">  age!: <span class="built_in">number</span> <span class="comment">// age 뒤에 ! 를 붙여준다</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"><span class="comment">// p1.age = 39 // age 뒤에 ! 가 붙어있는데 값을 설정 하지 않은 경우</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>)</span><br><span class="line"><span class="comment">// undefined가 뜬다</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="접근-제어자-Access-Modifiers"><a href="#접근-제어자-Access-Modifiers" class="headerlink" title="접근 제어자 (Access Modifiers)"></a>접근 제어자 (Access Modifiers)</h2><ul>
-<li>접근 제어자에는 public, private, protected가 있다</li>
-<li>설정하지 않으면 public</li>
-<li>클래스 내부의 모든 곳에(생성자, 프로퍼티, 메서드) 설정 가능하다</li>
-<li>private 으로 설정하면 클래스 외부에서 접근할 수 없다</li>
-<li>자바스크립트에서 private 지원하지 않아 오랫동안 프로퍼티나 메서드 이름 앞에 _를 붙여서 표현 했다</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;Mark&#x27;</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">constructor</span>(<span class="params">age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">init</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">39</span>) <span class="comment">// error</span></span><br><span class="line"><span class="comment">// p1.age = 39</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>constructor에 private 설정 한 경우 외부에서 생성자 호출 불가</p>
-<img src="/2022/05/13/TS-Classes/03.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;Mark&#x27;</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">init</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">39</span>) </span><br><span class="line"><span class="comment">// p1.age = 39</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">age</span>) <span class="comment">// error</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>프로퍼티에 private 를 붙였을때 age에 접근 불가</p>
-<img src="/2022/05/13/TS-Classes/04.png" class="">
-
-<h3 id="initialization-in-constructor-parameters"><a href="#initialization-in-constructor-parameters" class="headerlink" title="initialization in constructor parameters"></a>initialization in constructor parameters</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 기존</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 수정</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Getters-amp-Setters"><a href="#Getters-amp-Setters" class="headerlink" title="Getters &amp; Setters"></a>Getters &amp; Setters</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>) <span class="comment">// get</span></span><br><span class="line">p1.<span class="property">name</span> = <span class="string">&#x27;John&#x27;</span> <span class="comment">// set</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> _name: <span class="built_in">string</span>, <span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">n: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">// return 해줄 필요 없다</span></span><br><span class="line">    <span class="comment">// 인자를 받아 넣어 준다</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set&#x27;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>, <span class="number">39</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>) <span class="comment">// get</span></span><br><span class="line">p1.<span class="property">name</span> = <span class="string">&#x27;John&#x27;</span> <span class="comment">// set</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/type-compatibility/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/type-compatibility/" class="post-title-link" itemprop="url">타입-호환성</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-13 00:40:39 / Modified: 00:40:58" itemprop="dateCreated datePublished" datetime="2022-05-13T00:40:39+09:00">2022-05-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/13/type-compatibility/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/type-compatibility/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="타입-호환성-Type-Compatibility"><a href="#타입-호환성-Type-Compatibility" class="headerlink" title="타입 호환성 (Type Compatibility)"></a>타입 호환성 (Type Compatibility)</h1><h2 id="서브-타입-1"><a href="#서브-타입-1" class="headerlink" title="서브 타입(1)"></a>서브 타입(1)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sub1 타입은 sup1 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub1</span>: <span class="number">1</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup1</span>: <span class="built_in">number</span> = sub1;</span><br><span class="line">sub1 = sup1 <span class="comment">//error! Type &#x27;number&#x27; is not assignable to type &#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub2 타입은 sup2 타입의 서브 타입이다</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub2</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup2</span>: <span class="built_in">object</span> = sub2; <span class="comment">// sup2에는 sub2를 할당 할 수 있다</span></span><br><span class="line">sub2 = sup2 </span><br><span class="line"><span class="comment">// error! Type &#x27;&#123;&#125;&#x27; is missing the following properties from type &#x27;number[]&#x27;:length, pop, push, concat, and 16 more.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub3 타입은 sup3 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub3</span>: [<span class="built_in">number</span>, <span class="built_in">number</span>] = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup3</span>: <span class="built_in">number</span>[] = sub3; <span class="comment">// sup3에 sub3 을 할당 할 수 있다</span></span><br><span class="line">sub3 = sup3</span><br><span class="line"><span class="comment">// error! Type &#x27;number[]&#x27; is not assignable to type &#x27;[number, number]&#x27;. Target requires 2 element(s) but source may have fewer.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="서브-타입-2"><a href="#서브-타입-2" class="headerlink" title="서브 타입(2)"></a>서브 타입(2)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sub4 타입은 sup4 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub4</span>: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup4</span>: <span class="built_in">any</span> = sub4; <span class="comment">// any는 어떤것도 들어갈 수 있다</span></span><br><span class="line">sub4 = sup4; <span class="comment">// 반대의 경우도 마찬가지</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub5 타입은 sup5 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub5</span>: <span class="built_in">never</span> = <span class="number">0</span> <span class="keyword">as</span> <span class="built_in">never</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup5</span>: <span class="built_in">number</span> = sub5; <span class="comment">// number에 포함 될 수 있지만 반대의 경우 문제가 된다</span></span><br><span class="line">sub5 = sup5; <span class="comment">// error! Type &#x27;number&#x27; is not assignable to type &#x27;never&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">eat</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sub6 타입은 sup6 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub6</span>: <span class="title class_">Dog</span> = <span class="keyword">new</span> <span class="title class_">Dog</span>()</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup6</span>: <span class="title class_">Animal</span> = sub6;</span><br><span class="line">sub6 = sup6; <span class="comment">// error! Property &#x27;eat&#x27; is missing in type &#x27;SubAnimal&#x27; but required in type &#x27;SubDog&#x27;</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-같거나-서브-타입인-경우-할당이-가능하다-x3D-gt-공변"><a href="#1-같거나-서브-타입인-경우-할당이-가능하다-x3D-gt-공변" class="headerlink" title="1. 같거나 서브 타입인 경우, 할당이 가능하다. &#x3D;&gt; 공변"></a>1. 같거나 서브 타입인 경우, 할당이 가능하다. &#x3D;&gt; 공변</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// primitive type</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub7</span>: <span class="built_in">string</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup7</span>: <span class="built_in">string</span> | <span class="built_in">number</span> = sub7;</span><br><span class="line"></span><br><span class="line"><span class="comment">// object - 각각의 프로퍼티가 대응하는 프로퍼티와 같거나 서브타입이어야 한다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub8</span>: &#123; <span class="attr">a</span>: <span class="built_in">string</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125; =&#123;<span class="attr">a</span>: <span class="string">&#x27;&#x27;</span>, <span class="attr">b</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup8</span>: &#123; <span class="attr">a</span>: <span class="built_in">string</span> | <span class="built_in">number</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125; = sub8;</span><br><span class="line"></span><br><span class="line"><span class="comment">// array - object 와 마찬가지</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub9</span>: <span class="title class_">Array</span>&lt;&#123; <span class="attr">a</span>: <span class="built_in">string</span>; <span class="attr">b</span>:<span class="built_in">number</span>&#125;&gt; =[&#123;<span class="attr">a</span>: <span class="string">&#x27;&#x27;</span>, <span class="attr">b</span>: <span class="number">1</span>&#125;]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup9</span>: <span class="title class_">Array</span>&lt;&#123; <span class="attr">a</span>: <span class="built_in">string</span> | <span class="built_in">number</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125;&gt; = sub8;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/13/type-compatibility/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1404,14 +1416,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
