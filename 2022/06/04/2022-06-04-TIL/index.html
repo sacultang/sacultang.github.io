@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="실행 컨텍스트 (Excute Context) 자바스크립트 코드가 실행되고 연산되는 범위를 나타내는 추상적인 개념-&gt; 우리가 코드를 작성하고 실행한다면 실행 컨텍스트 내부에서 실행되고 있는 것  자바스크립트는 변수를 읽으려고 할때 scope(범위)에서 변수를 찾는다 변수 선언 앞에 아무것도 붙지 않으면 global에 저장 된다   scope 안에 scr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022-06-04-TIL">
+<meta property="og:url" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="실행 컨텍스트 (Excute Context) 자바스크립트 코드가 실행되고 연산되는 범위를 나타내는 추상적인 개념-&gt; 우리가 코드를 작성하고 실행한다면 실행 컨텍스트 내부에서 실행되고 있는 것  자바스크립트는 변수를 읽으려고 할때 scope(범위)에서 변수를 찾는다 변수 선언 앞에 아무것도 붙지 않으면 global에 저장 된다   scope 안에 scr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/01.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/03.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/04.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/05.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/06.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/07.png">
+<meta property="article:published_time" content="2022-06-04T13:00:06.000Z">
+<meta property="article:modified_time" content="2022-06-04T14:39:57.000Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/01.png">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>2022-06-04-TIL | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/04/2022-06-04-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2022-06-04-TIL
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-04 22:00:06 / Modified: 23:39:57" itemprop="dateCreated datePublished" datetime="2022-06-04T22:00:06+09:00">2022-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-06/" itemprop="url" rel="index"><span itemprop="name">2022.06</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/04/2022-06-04-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/04/2022-06-04-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="실행-컨텍스트-Excute-Context"><a href="#실행-컨텍스트-Excute-Context" class="headerlink" title="실행 컨텍스트 (Excute Context)"></a>실행 컨텍스트 (Excute Context)</h1><blockquote>
+<p>자바스크립트 코드가 실행되고 연산되는 범위를 나타내는 추상적인 개념<br>-&gt; 우리가 코드를 작성하고 실행한다면 실행 컨텍스트 내부에서 실행되고 있는 것</p>
+</blockquote>
+<p>자바스크립트는 변수를 읽으려고 할때 scope(범위)에서 변수를 찾는다</p>
+<p>변수 선언 앞에 아무것도 붙지 않으면 <code>global</code>에 저장 된다</p>
+<img src="/2022/06/04/2022-06-04-TIL/01.png" class="">
+
+<p>scope 안에 script 안에는 n0 가 없다<br>global에서 n0를 찾을 수 있다</p>
+<img src="/2022/06/04/2022-06-04-TIL/02.png" class="">
+
+<p>변수 선언 앞에 var가 붙으면 아무것도 붙지 않은것과 마찬가지로 <code>global</code>에 저장 된다</p>
+<img src="/2022/06/04/2022-06-04-TIL/03.png" class="">
+
+<p>let이 붙으면 <code>script</code> 안에 저장 된다</p>
+<img src="/2022/06/04/2022-06-04-TIL/04.png" class="">
+
+<p>const도 마찬가지로 <code>script</code> 안에 저장 된다</p>
+<img src="/2022/06/04/2022-06-04-TIL/05.png" class="">
+
+<p>scope의 global 옆에 보면 window가 쓰여 있다<br>웹브라우저에서 동작하는 자바스크립트는 window객체가 global객체 또는 global scope이라 할 수 있다  </p>
+<img src="/2022/06/04/2022-06-04-TIL/06.png" class="">
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="number">1</span>) </span><br><span class="line"><span class="comment">// 경고창으로 1이 뜬다</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">alert</span>(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// 마찬가지로 경고창으로 1이 뜬다</span></span><br><span class="line"></span><br><span class="line">alert은 <span class="variable language_">window</span> 객체 즉 <span class="variable language_">global</span> scope에 포함되어 있다</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 그럼 global에 속해 있던 변수 n0, v0 역시 window. 으로 호출 할 수 있다</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">n0</span></span><br><span class="line"><span class="comment">// &#x27;n0&#x27;</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">v0</span></span><br><span class="line"><span class="comment">// &#x27;v0&#x27;</span></span><br></pre></td></tr></table></figure>
+<img src="/2022/06/04/2022-06-04-TIL/07.png" class="">
+
+<p>어디서 코드를 실행하던간에 scope 상에서 global은 바닥에 깔려있다<br>-&gt; 어디서 실행하던 global은 접근이 가능하다</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/02/2022-06-02-TIL/" rel="prev" title="2022-06-02-TIL">
+      <i class="fa fa-chevron-left"></i> 2022-06-02-TIL
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-Excute-Context"><span class="nav-number">1.</span> <span class="nav-text">실행 컨텍스트 (Excute Context)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/06/04/2022-06-04-TIL/";
+    this.page.identifier = "2022/06/04/2022-06-04-TIL/";
+    this.page.title = "2022-06-04-TIL";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

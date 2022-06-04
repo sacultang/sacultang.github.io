@@ -160,6 +160,186 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/19/redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/19/redux/" class="post-title-link" itemprop="url">redux-toolkit</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-19 10:38:23" itemprop="dateCreated datePublished" datetime="2022-05-19T10:38:23+09:00">2022-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-21 01:46:20" itemprop="dateModified" datetime="2022-05-21T01:46:20+09:00">2022-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/19/redux/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/19/redux/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><ul>
+<li>리액트는 컴포넌트 간의 depth가 깊어질 수록 props(state)를 주고 받는 일이 힘들어진다</li>
+</ul>
+<img src="/2022/05/19/redux/01.jpg" class="">
+
+<ul>
+<li>리덕스를 통해서 state를 한 곳에 몰아 저장할 수 있다</li>
+<li>리덕스를 통해서 state를 어떤 컴포넌트에서든지 바로 사용 할 수 있다(부모간의 props전달이 필요 없다)</li>
+<li>리덕스를 통해서만 state를 변형 할 수 있으므로 관리가 용이하다</li>
+</ul>
+<h1 id="Redux-toolkit"><a href="#Redux-toolkit" class="headerlink" title="Redux-toolkit"></a>Redux-toolkit</h1><ul>
+<li>기존 리덕스는 사용하기가 복잡하다</li>
+<li>리덕스에서 좀더 간편하게 사용할 수 있게 Redux-toolkit 이라는 라이브러리를 지원한다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i @reduxjs/toolkit</span><br></pre></td></tr></table></figure>
+
+<h2 id="store"><a href="#store" class="headerlink" title="store"></a>store</h2><ul>
+<li>애플리케이션의 state를 관리하고 업데이트하는 중앙 저장소 역할을 한다</li>
+<li>toolkit 에서는 slice들을 모아 관리 한다</li>
+<li>configureStore 로 store 를 설정해 줄 수 있다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> counterSlice <span class="keyword">from</span> <span class="string">&#x27;../features/counter/counterSlice&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> colorSlice <span class="keyword">from</span> <span class="string">&#x27;../features/counter/colorSlice&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: &#123; <span class="comment">// 리듀서들</span></span><br><span class="line">    counterSlice, </span><br><span class="line">    <span class="attr">colorBtn</span>: colorSlice, <span class="comment">// key : value(리듀서 이름)</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">// optional</span></span><br><span class="line">	middleware </span><br><span class="line">	devTools</span><br><span class="line">	preloadedState</span><br><span class="line">	enhancers</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>어떤 컴포넌트던지 리덕스의 store에 접근해 state를 사용 할 수 있게 해주는게 Provider 이다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Provider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store/store&#x27;</span>;</span><br><span class="line"></span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>App 컴포넌트는 모든 컴포넌트를 담고 있으므로 Provider로 App 컴포넌트를 감싸게 되면 모든 컴포넌트가 store에 접근 할 수 있게 된다</li>
+<li>여기서 알 수 있는점은 App이 아니라 특정 컴포넌트만 Provider로 감싸면 그 컴포넌트만 store에 접근 할 수 있다는 점.</li>
+<li>Provider는 만들어 놓은 store를 필수적으로 props로 넘겨주어야 한다</li>
+</ul>
+<h2 id="Reducer에는"><a href="#Reducer에는" class="headerlink" title="Reducer에는"></a>Reducer에는</h2><ul>
+<li>createAction, createReducer, createSlice, createAsyncThunk… 등등 있다<ul>
+<li>createAction : action 타입 정의, action 생성 함수 </li>
+<li>createReducer : initialState 정의, reducer 함수</li>
+</ul>
+</li>
+<li>toolkit에서 사용하는 createSlice에는 createAction 과 createReducer를 내부에서 사용할 수 있으므로 createSlice만 사용 해도 된다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> colorSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">  <span class="attr">initialState</span>: &#123;</span><br><span class="line">   <span class="comment">// 초기 상태 값 -&gt; useState()의 초기값</span></span><br><span class="line">    <span class="attr">green</span>: <span class="string">&#x27;green&#x27;</span>,</span><br><span class="line">    <span class="attr">red</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">value2</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">padding</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">reducers</span>: &#123;</span><br><span class="line">    <span class="comment">// 변화를 일으키는 함수 action -&gt; useState setter</span></span><br><span class="line">    <span class="attr">tomato</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">green</span> === <span class="string">&#x27;green&#x27;</span></span><br><span class="line">        ? (state.<span class="property">green</span> = <span class="string">&#x27;tomato&#x27;</span>)</span><br><span class="line">        : (state.<span class="property">green</span> = <span class="string">&#x27;green&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">banana</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.<span class="property">red</span> = <span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actionBtn</span>: <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(action);</span><br><span class="line">			<span class="comment">// </span></span><br><span class="line">      state.<span class="property">value</span> = action.<span class="property">payload</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actionBtn2</span>: <span class="function">(<span class="params">state, &#123; payload &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(payload)</span><br><span class="line">      <span class="keyword">const</span> &#123; padding, color &#125; = payload;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">backgroundColor</span> = payload.<span class="property">back</span>;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">padding</span> = padding;</span><br><span class="line">      state.<span class="property">value2</span>.<span class="property">color</span> = color;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; tomato, banana, actionBtn, actionBtn2 &#125; = colorSlice.<span class="property">actions</span>;</span><br><span class="line"><span class="comment">// action creator 함수를 내보낸다 컴포넌트에서 import해서 사용 할 수 있다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> colorSlice.<span class="property">reducer</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><ul>
+<li>creatAction에서 type에 해당하는 부분. action의 prefixer로 사용 된다</li>
+</ul>
+<h3 id="initialState"><a href="#initialState" class="headerlink" title="initialState"></a>initialState</h3><ul>
+<li>state초기 값들을 설정할 수 있다 useState()의 초기값이라고 정리했다</li>
+</ul>
+<h3 id="reducers"><a href="#reducers" class="headerlink" title="reducers"></a>reducers</h3><ul>
+<li><p>state에 변화를 일으키는 함수들을 모아놓은 객체이다</p>
+</li>
+<li><p>함수의 매개변수로는 state &#x3D; initialState, action &#x3D; type 과 payload가 들어있다</p>
+<ul>
+<li>payload에는 이 action 함수를 호출할때 넘겨주는 인수가 들어 있다</li>
+<li>객체구조분해를 통해 payload만 꺼내서 사용 할 수도 있다</li>
+</ul>
+</li>
+</ul>
+<p>action을 콘솔로 찍었을때 </p>
+<img src="/2022/05/19/redux/02.png" class="">
+<ul>
+<li>action 은 객체 타입이고 안에 type 과 payload가 들어있다 </li>
+<li>type은 name에서 지어준 이름이 prefixer로 붙어있고 action 함수 이름이 있다</li>
+<li>payload는 action 함수를 호출할때 넣어준 인수가 들어있다</li>
+</ul>
+<p>action 함수는 하나의 값만이 아닌, 객체, 배열등도 넘길 수 있다<br>객체로 값을 넘겼을때 payload를 콘솔로 찍었을때 </p>
+<img src="/2022/05/19/redux/03.png" class="">
+
+<h2 id="컴포넌트에서-store에-접근할때-사용하는-Hook"><a href="#컴포넌트에서-store에-접근할때-사용하는-Hook" class="headerlink" title="컴포넌트에서 store에 접근할때 사용하는 Hook"></a>컴포넌트에서 store에 접근할때 사용하는 Hook</h2><h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h3><ul>
+<li>컴포넌트에서 store안에 있는 state값에 접근하기 위해서는 useSelector 훅을 사용해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> green = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">green</span>);</span><br><span class="line">  <span class="keyword">const</span> red = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">colorBtn</span>.<span class="property">red</span>);keyword</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">backgroundColor:</span> <span class="attr">green</span> &#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>값을 꺼내 컴포넌트의 초기값으로 사용할 수 있다</li>
+</ul>
+
+
+<h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h3><ul>
+<li>컴포넌트에서 store안에 있는 action함수를 호출 하기 위해서는 useDispatch 훅을 사용한다</li>
+<li>store 안에 있는 action 중 사용 할 것들을 import 해줘야 한다</li>
+<li>useDispatch()를 바로 사용 할 수 없으므로 변수에 담아 사용 한다 (바로 사용할 수 있는지 사실 잘 모르겠지만 에러가 뜬다)</li>
+<li>action 함수를 호출할때 인수로 변경할 값을 넘길 수 있다. 이때 값은 payload에 들어간다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useDispatch &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; tomato &#125; <span class="keyword">from</span> <span class="string">&#x27;../features/counter/colorSlice&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(tomato())&#125;&gt;green<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(actionBtn(&#x27;black&#x27;))&#125;&gt; actionBtn <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/19/redux/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/2022-05-18-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,139 +1394,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/TS-Generics-Function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/TS-Generics-Function/" class="post-title-link" itemprop="url">TS-Generics-Function</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-13 17:26:14" itemprop="dateCreated datePublished" datetime="2022-05-13T17:26:14+09:00">2022-05-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-15 03:56:48" itemprop="dateModified" datetime="2022-05-15T03:56:48+09:00">2022-05-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/13/TS-Generics-Function/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/TS-Generics-Function/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params">message: <span class="built_in">any</span></span>) : <span class="built_in">any</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>(<span class="string">&#x27;mark&#x27;</span>)) <span class="comment">// any로 추론되기 때문에 .length 같은 property를 사용하지 못한다</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>(<span class="number">39</span>))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="string">&#x27;Mark&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/01.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="number">39</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/02.png" class="">
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloGeneric&lt;T&gt; (<span class="attr">message</span>:T) :T &#123; <span class="comment">// 함수의 안에서 T의 타입을 기억하게 된다</span></span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">helloGeneric</span>(<span class="literal">true</span>))</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/03.png" class="">
-
-<h2 id="Generics-Basic"><a href="#Generics-Basic" class="headerlink" title="Generics Basic"></a>Generics Basic</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloBasic&lt;T&gt;(<span class="attr">message</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">helloBasic&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>) <span class="comment">// 타입이 string으로 된다</span></span><br><span class="line"><span class="title function_">helloBasic</span>(<span class="number">36</span>) <span class="comment">// T의 타입을 넣지 않으면 추론된다 36이 number이지만 number가 아닌 가장 좁은 범위인 36으로 추론된다</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/04.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/05.png" class="">
-
-<h2 id="Generics-Array-amp-Tuple"><a href="#Generics-Array-amp-Tuple" class="headerlink" title="Generics Array &amp; Tuple"></a>Generics Array &amp; Tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloArray&lt;T&gt;(<span class="attr">message</span>: T[]): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">helloArray</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="title function_">helloArray</span>([<span class="string">&#x27;hello&#x27;</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/06.png" class="">
-<p>string으로 추론</p>
-<img src="/2022/05/13/TS-Generics-Function/07.png" class="">
-<p>string과 number로 추론 </p>
-<img src="/2022/05/13/TS-Generics-Function/08.png" class="">
-<p>사용할 수 있는 메서드가 제한적이다</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> helloTuple&lt;T, K&gt;(<span class="attr">message</span>: [T, K]): T &#123;</span><br><span class="line">  <span class="keyword">return</span> message[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">helloTuple</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="title function_">helloTuple</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/09.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/10.png" class="">
-
-<h2 id="Generics-Function"><a href="#Generics-Function" class="headerlink" title="Generics Function"></a>Generics Function</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">HelloFunctionGeneric1</span> = &lt;T&gt;<span class="function">(<span class="params">message: T</span>) =&gt;</span> T</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">hellofunction1</span>: <span class="title class_">HelloFunctionGeneric1</span> = &lt;T&gt;(<span class="attr">message</span>: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// interface</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">HelloFunctionGeneric2</span> &#123;</span><br><span class="line">  &lt;T&gt;(<span class="attr">message</span>: T): T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">helloFunction2</span>: <span class="title class_">HelloFunctionGeneric2</span> = &lt;T&gt;(<span class="attr">message</span>: T): <span class="function"><span class="params">T</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Generics-Class"><a href="#Generics-Class" class="headerlink" title="Generics Class"></a>Generics Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;123&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/13/TS-Generics-Function/11.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/12.png" class="">
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&lt;T, K&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_age</span>: K</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T, age: K</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_age</span> = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">123</span>, <span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span>&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">&#x27;Hello&#x27;</span>, <span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/14.png" class="">
-<img src="/2022/05/13/TS-Generics-Function/15.png" class="">
-
-<h2 id="Generics-with-extends"><a href="#Generics-with-extends" class="headerlink" title="Generics with extends"></a>Generics with extends</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PersonExtends</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="comment">// T 는 string 과 number만 가능하다</span></span><br><span class="line">  <span class="comment">// class 상속과는 조금 다른 개념</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: T</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="string">&#x27;Mark&#x27;</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="number">39</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">PersonExtends</span>(<span class="literal">true</span>) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2022/05/13/TS-Generics-Function/16.png" class="">
-
-<h2 id="keyof-amp-type-lookup-system"><a href="#keyof-amp-type-lookup-system" class="headerlink" title="keyof &amp; type lookup system"></a>keyof &amp; type lookup system</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">person</span>: <span class="title class_">IPerson</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">39</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Keys</span> = keyof <span class="title class_">IPerson</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">keys</span>: <span class="title class_">Keys</span> = <span class="string">&#x27;name&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// IPerson[keyof IPerson]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&quot;name&quot; | &quot;age&quot;]</span></span><br><span class="line"><span class="comment">// =&gt; IPerson[&#x27;name] | IPerson[&#x27;age&#x27;]</span></span><br><span class="line"><span class="comment">// =&gt; string | number</span></span><br><span class="line"><span class="keyword">function</span> getProp&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K): T[K] &#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getProp</span>(person, <span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> setProp&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K, <span class="attr">value</span>: T[K]): <span class="built_in">void</span> &#123;</span><br><span class="line">  obj[key] = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setProp</span>(person, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;anna&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1416,7 +1463,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
