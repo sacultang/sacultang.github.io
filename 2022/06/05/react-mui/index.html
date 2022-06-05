@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Material-ui 따라 해보기12345$ yarn create vite..$ yarnreact-ts  123456789101112131415&#x2F;&#x2F; App.tsximport Header from &amp;#x27;.&#x2F;components&#x2F;Header&amp;#x27;;import Nav from &amp;#x27;.&#x2F;components&#x2F;Nav&amp;#x27;;import Article">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Material-ui 따라 해보기">
+<meta property="og:url" content="https://sacultang.github.io/2022/06/05/react-mui/index.html">
+<meta property="og:site_name" content="ㅇㅇㅈ Blog">
+<meta property="og:description" content="Material-ui 따라 해보기12345$ yarn create vite..$ yarnreact-ts  123456789101112131415&#x2F;&#x2F; App.tsximport Header from &amp;#x27;.&#x2F;components&#x2F;Header&amp;#x27;;import Nav from &amp;#x27;.&#x2F;components&#x2F;Nav&amp;#x27;;import Article">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/01.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/03.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/04.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/05.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/07.png">
+<meta property="og:image" content="https://sacultang.github.io/images/react-mui/02.gif">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/05/react-mui/08.png">
+<meta property="article:published_time" content="2022-06-05T08:31:24.000Z">
+<meta property="article:modified_time" content="2022-06-05T09:30:09.000Z">
+<meta property="article:author" content="OH YJ">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Material-ui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/2022/06/05/react-mui/02.png">
+
+<link rel="canonical" href="https://sacultang.github.io/2022/06/05/react-mui/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6780908848652782"
+     crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="7KJWFt0NooR3SF-T04OAe-Fp39_M4EApgfetzHVncRE" />
+  <title>Material-ui 따라 해보기 | ㅇㅇㅈ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="ㅇㅇㅈ Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㅇㅇㅈ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/05/react-mui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Material-ui 따라 해보기
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-05 17:31:24 / Modified: 18:30:09" itemprop="dateCreated datePublished" datetime="2022-06-05T17:31:24+09:00">2022-06-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/05/react-mui/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/05/react-mui/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Material-ui-따라-해보기"><a href="#Material-ui-따라-해보기" class="headerlink" title="Material-ui 따라 해보기"></a>Material-ui 따라 해보기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ yarn create vite</span><br><span class="line">..</span><br><span class="line">$ yarn</span><br><span class="line"></span><br><span class="line">react-ts</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Header</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Header&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Nav</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Nav&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Article</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Article&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Header</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Nav</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Article</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
+
+<p>간단한 컴포넌트를 만들고 임포트</p>
+<h2 id="mui-설치"><a href="#mui-설치" class="headerlink" title="mui 설치"></a>mui 설치</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://mui.com/material-ui/getting-started/installation/">https://mui.com/material-ui/getting-started/installation/</a></p>
+</blockquote>
+<p>mui는 기본으로 emotion을 사용한다 근데 styled-component도 사용 할 수 있다<br>그래서 styled-components 도 함께 설치</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add @mui/material @mui/styled-engine-sc styled-components</span><br></pre></td></tr></table></figure>
+
+<p>설치 후 article 컴포넌트에서 button을 만들어 보았다</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/material&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Article</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">article</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        Hello Web!</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&#x27;contained&#x27;</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Article</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Button 을 mui&#x2F;material 에서 임포트후 컴포넌트 처럼 사용 하는 것</p>
+<h3 id="error"><a href="#error" class="headerlink" title="error.."></a>error..</h3><p>저렇게 하고 렌더링을 하면 무한 로딩이 되면서 터미널에 에러가 잔뜩 뜬다</p>
+<img src="/2022/06/05/react-mui/02.png" class="">
+
+<p>대충 보니 자세히는 몰라도 emotion이 안깔려 있어서 에러를 내뱉는거 같다</p>
+<p>찾아보니 mui는 기본적으로 emotion을 사용하기 때문에 styled-components를 사용할려면 추가 설정을 해줘야 한다</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mui.com/material-ui/guides/styled-engine/">https://mui.com/material-ui/guides/styled-engine/</a></p>
+</blockquote>
+<p>가이드가 꽤 친절하게 되어있다 그냥 따라서 <code>package.json</code> 에 resolutions를 추가해주고</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;@mui/styled-engine-sc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^5.8.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  </span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// 아래는 추가 되는 부분 </span></span><br><span class="line"><span class="attr">&quot;resolutions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@mui/styled-engine-sc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^5.8.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>이 프로젝트는 vite로 설치해서 웹팩은 없으니 패스<br><code>tsconfig.json</code> 의 <code>compilerOptions</code>에 <code>paths</code>를 추가 해줬더니 잘 된다</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">       <span class="attr">&quot;@mui/styled-engine&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./node_modules/@mui/styled-engine-sc&quot;</span><span class="punctuation">]</span></span><br><span class="line">     <span class="punctuation">&#125;</span></span><br><span class="line">   <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Button variant 값에 따라 모양이 달라진다</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mui.com/material-ui/react-button/">https://mui.com/material-ui/react-button/</a></p>
+</blockquote>
+<img src="/2022/06/05/react-mui/01.png" class="">
+
+<p>Button들을 그룹시켜 줄 수도 있다</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">ButtonGroup</span> variant=<span class="string">&#x27;outlined&#x27;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>Create<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>Update<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">ButtonGroup</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&#x27;outlined&#x27;</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<img src="/2022/06/05/react-mui/03.png" class="">
+
+<p>create와update 버튼이 그룹화 되어 묶여 있다</p>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><p>웹 사이트의 base width를 Container를 통해 만들어 줄 수 있다</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/material&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span> <span class="attr">fixed</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Header</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Nav</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Article</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>App.tsx 에서 import 한 Container 컴포넌트로 다른 컴포넌트들을 감싸주었다</p>
+<img src="/2022/06/05/react-mui/04.png" class="">
+
+<p>컨텐츠들이 margin auto를 준 것 처럼 중앙에 있게 되고,<br>또한 반응형으로 동작하게 된다</p>
+<h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><p>mui 그리드 시스템을 통해 유연한 레이아웃을 만들 수 있다</p>
+<img src="/2022/06/05/react-mui/05.png" class="">
+
+<p>가로를 12등분한 column을 가지고 각 컨테츠가 12개의 column중 몇 칸을 차지 할 것인지를 설정 해주면 된다</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Header</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Header&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Nav</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Nav&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Article</span> <span class="keyword">from</span> <span class="string">&#x27;./components/Article&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Container</span>, <span class="title class_">Grid</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/material&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span> <span class="attr">fixed</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Header</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">container</span> <span class="attr">spacing</span>=<span class="string">&#123;2&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">item</span> <span class="attr">xs</span>=<span class="string">&#123;2&#125;</span> <span class="attr">md</span>=<span class="string">&#123;6&#125;</span> <span class="attr">lg</span>=<span class="string">&#123;10&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Nav</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">item</span> <span class="attr">xs</span>=<span class="string">&#123;10&#125;</span> <span class="attr">md</span>=<span class="string">&#123;6&#125;</span> <span class="attr">lg</span>=<span class="string">&#123;2&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Article</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Grid를 설정할 컴포넌트 <code>Nav</code> 와 <code>Article</code>을 <code>&lt;Grid container&gt;</code>로 감싸 준 뒤<br>각각의 컴포넌트를 <code>&lt;Grid item&gt;</code>으로 다시 감싸 준다.<br>item이 grid에는 breakpoint마다 몇 칸을 차지 할 것인지를 넣어 주면 된다.</p>
+<p><strong>breakPoint</strong></p>
+
+
+<p>mui breakpoint<br>sm는 600px ~ 이상일때<br>md는 900px ~ 이상일때 뭐 이런식이다</p>
+<p>그래서 위 코드를 보면 브라우저가 lg일때 10칸 ,2칸 비율로 컨텐츠를 배치한다 </p>
+<img src="/2022/06/05/react-mui/07.png" class="">
+
+
+<p>breakpoint가 md일때 6:6 으로 컨텐츠가 배치된다</p>
+<p><img src="/./images/react-mui/02.gif"></p>
+<img src="/2022/06/05/react-mui/08.png" class="">
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/Material-ui/" rel="tag"># Material-ui</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/04/2022-06-04-TIL/" rel="prev" title="2022-06-04-TIL">
+      <i class="fa fa-chevron-left"></i> 2022-06-04-TIL
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Material-ui-%EB%94%B0%EB%9D%BC-%ED%95%B4%EB%B3%B4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">Material-ui 따라 해보기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mui-%EC%84%A4%EC%B9%98"><span class="nav-number">1.1.</span> <span class="nav-text">mui 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#error"><span class="nav-number">1.1.1.</span> <span class="nav-text">error..</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container"><span class="nav-number">1.2.</span> <span class="nav-text">Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid"><span class="nav-number">1.3.</span> <span class="nav-text">Grid</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">OH YJ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sacultang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sacultang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">OH YJ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hexo-blog-9.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sacultang.github.io/2022/06/05/react-mui/";
+    this.page.identifier = "2022/06/05/react-mui/";
+    this.page.title = "Material-ui 따라 해보기";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hexo-blog-9.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

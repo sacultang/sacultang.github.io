@@ -160,6 +160,130 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/algorithm02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/01/algorithm02/" class="post-title-link" itemprop="url">수박수박수</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-01 21:54:18 / Modified: 22:12:01" itemprop="dateCreated datePublished" datetime="2022-05-01T21:54:18+09:00">2022-05-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/JavaScript/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/01/algorithm02/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/algorithm02/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="수박수박수"><a href="#수박수박수" class="headerlink" title="수박수박수"></a>수박수박수</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>길이가 n이고, “수박수박수박수….”와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요.<br>예를들어 n이 4이면 “수박수박”을 리턴하고 3이라면 “수박수”를 리턴하면 됩니다.</p>
+<h2 id="제한-조건"><a href="#제한-조건" class="headerlink" title="제한 조건"></a>제한 조건</h2><ul>
+<li>n은 길이 10,000이하인 자연수</li>
+</ul>
+<h2 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h2><table>
+<thead>
+<tr>
+<th>n</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“수박수”</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“수박수박”</td>
+</tr>
+</tbody></table>
+<h2 id="soulution"><a href="#soulution" class="headerlink" title="soulution"></a>soulution</h2><ol>
+<li>인자로 받은 n 만큼 for문을 돈다</li>
+<li>i를 2로 나누었을때 몫이 0일 경우에 수를 추가해준다 아니면 박을 추가해준다</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> answer = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    i % <span class="number">2</span> === <span class="number">0</span> ? (answer += <span class="string">&#x27;수&#x27;</span>) : (answer += <span class="string">&#x27;박&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(answer)</span><br><span class="line">  <span class="keyword">return</span> answer</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">solution</span>(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="다른-사람-풀이"><a href="#다른-사람-풀이" class="headerlink" title="다른 사람 풀이"></a>다른 사람 풀이</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">waterMelon</span> = n =&gt; <span class="string">&quot;수박&quot;</span>.<span class="title function_">repeat</span>(n).<span class="title function_">slice</span>(<span class="number">0</span>,n);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;n이 3인 경우: &quot;</span>+ <span class="title function_">waterMelon</span>(<span class="number">3</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;n이 4인 경우: &quot;</span>+ <span class="title function_">waterMelon</span>(<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>repeat()과 slice() 사용했다  </p>
+<p>repeat()은 문자열을 주어진 횟수만큼 반복 해준다</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;수박&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3</span>) <span class="comment">// &quot;수박수박수박&quot; 이 된다</span></span><br></pre></td></tr></table></figure>
+
+<p>이후 slice()로 0번째서 시작해 인자로 받은 n개만큼(n번째 인덱스의 그 바로 전까지만 추출된다) 추출 해준다… </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/React-Switch-NotFound/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1179,116 +1303,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/26/css-scss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/26/css-scss/" class="post-title-link" itemprop="url">SCSS</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-04-26 17:10:59" itemprop="dateCreated datePublished" datetime="2022-04-26T17:10:59+09:00">2022-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-27 13:04:19" itemprop="dateModified" datetime="2022-04-27T13:04:19+09:00">2022-04-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/26/css-scss/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/26/css-scss/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><p>CSS 전처리기 (CSS Preprocessor)</p>
-<ul>
-<li>전처리기에는 SCSS,Sass,Less,Stylus 등이 있다</li>
-<li>CSS 문법과 유사하지만 선택자의 중첩, 조건문, 반복문 등 표준 CSS 보다 훨씬 많은 기능을 사용해서 편리하게 작성 가능</li>
-<li>웹에서는 CSS만 동작하기 때문에 SCSS를 웹에서 동작 가능한 CSS로 컴파일(Compile)해줘야 한다.</li>
-</ul>
-<p>SCSS 컴파일 미리보기 사이트<br><a target="_blank" rel="noopener" href="https://www.sassmeister.com/">https://www.sassmeister.com/</a></p>
-<h2 id="주석"><a href="#주석" class="headerlink" title="주석"></a>주석</h2><p>SCSS에서는 CSS에서 사용하는 주석방식 외에도<br>&#x2F;&#x2F; 같은 JS에서 사용하는 주석 방식도 사용 가능하다</p>
-<ul>
-<li>주의점 &#x2F;&#x2F; 로 주석 처리할 시 CSS로 컴파일 하면 내용이 사라진다</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scss</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span> : royalblue;</span><br><span class="line">    <span class="comment">// font-size:60px; JS에서 사용하는 주석 방식</span></span><br><span class="line">    <span class="comment">/* background-color : orange */</span> 일반 CSS에서 사용하는 주석 방식. 컴파일시 나타나지 않는다</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">css로 컴파일시</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>:royalblue;</span><br><span class="line">  <span class="comment">/* background-color : orange */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/26/css-scss/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1358,7 +1372,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1371,7 +1385,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

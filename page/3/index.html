@@ -160,6 +160,184 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/React-State-functional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/13/React-State-functional/" class="post-title-link" itemprop="url">컴포넌트 State</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-13 19:53:39" itemprop="dateCreated datePublished" datetime="2022-05-13T19:53:39+09:00">2022-05-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-15 15:47:19" itemprop="dateModified" datetime="2022-05-15T15:47:19+09:00">2022-05-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/13/React-State-functional/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/React-State-functional/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="함수형-컴포넌트-State"><a href="#함수형-컴포넌트-State" class="headerlink" title="함수형 컴포넌트 State"></a>함수형 컴포넌트 State</h1><p><strong>Class Component</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">ClassComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>() &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">timerID</span> = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">tick</span>(), <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="variable language_">this</span>.<span class="property">timerID</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">tick</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world! Class Component<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;this.state.date.toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Functional Component</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">FunctionalComponent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [date, setDate] = <span class="title function_">useState</span>(<span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">tick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// DidMount</span></span><br><span class="line">    <span class="keyword">const</span> interval = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="title function_">tick</span>(), <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// WillUnmount</span></span><br><span class="line">      <span class="built_in">clearInterval</span>(interval)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world! It&#x27;s Functional<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;date.toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="컴포넌트-생명주기"><a href="#컴포넌트-생명주기" class="headerlink" title="컴포넌트 생명주기"></a>컴포넌트 생명주기</h2><ul>
+<li>어떤 타이밍에 어떤 동작들이 일어나는가</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://ko.reactjs.org/docs/react-component.html">https://ko.reactjs.org/docs/react-component.html</a></p>
+</blockquote>
+<ol>
+<li>마운트 - 메서드들은 컴포넌트의 인스턴스가 생성되어 DOM 상에 삽입될 때에 순서대로 호출</li>
+</ol>
+<ul>
+<li>constructor()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+<ol start="2">
+<li>업데이트 - Props 또는 state가 변경되면 갱신이 발생. 컴포넌트가 다시 렌더링될때 순서대로 호출</li>
+</ol>
+<ul>
+<li>render()</li>
+<li>componentDidUpdate()</li>
+</ul>
+<ol start="3">
+<li>마운트 해제 - 컴포넌트가 DOM 상에서 제거될 때에 호출</li>
+</ol>
+<ul>
+<li>componentWillUnmount()</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a></p>
+</blockquote>
+<h3 id="생명주기-도표"><a href="#생명주기-도표" class="headerlink" title="생명주기 도표"></a>생명주기 도표</h3><img src="/2022/05/13/React-State-functional/01.png" class="">
+
+<h1 id="합성-이벤트"><a href="#합성-이벤트" class="headerlink" title="합성 이벤트"></a>합성 이벤트</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://ko.reactjs.org/docs/handling-events.html">https://ko.reactjs.org/docs/handling-events.html</a></p>
+</blockquote>
+<ul>
+<li>React 엘리먼트에서 이벤트를 처리하는 방식은 DOM엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하지만 , 몇 가지 문법 차이가 있다<ul>
+<li>React의 이벤트는 소문자 대신 캐멀 케이스(camelCase)를 사용한다.</li>
+<li>JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달한다.</li>
+<li>React에서는 false를 반환해도 기본 동작을 방지할 수 없다. 반드시 preventDefault를 명시적으로 호출해야 한다<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Form</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">handleSubmit</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;You clicked submit.&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="캡쳐링과-버블링"><a href="#캡쳐링과-버블링" class="headerlink" title="캡쳐링과 버블링"></a>캡쳐링과 버블링</h2><ul>
+<li>이벤트 버블링<ul>
+<li>자식요소에서 발생한 이벤트가 상위의 부모요소에까지 영향을 미치는 것</li>
+</ul>
+</li>
+<li>이벤트 캡쳐링<ul>
+<li>버블링과는 반대로 부모요소의 이벤트가 자식요소에까지 영향을 미치는 것</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Event</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleButtonClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;handleButtonClick&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClickcaputre</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;handleClickcaputre&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClickCaputre2</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;handleClickCaputre2&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClickBubble</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;handleClickBubble&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClickCapture</span>=<span class="string">&#123;handleClickcaputre&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">onClickCapture</span>=<span class="string">&#123;handleClickCaputre2&#125;</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClickBubble&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleButtonClick&#125;</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/05/13/React-State-functional/02.png" class="">
+
+<p>제일 상위 div에서 캡쳐링 &gt; 그 아래 div &gt; 캡쳐링 &gt; 버튼의 클릭이벤트 &gt; 그 위 div의 버블링</p>
+<h1 id="조건부-렌더링"><a href="#조건부-렌더링" class="headerlink" title="조건부 렌더링"></a>조건부 렌더링</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">UserGreeting</span> = (<span class="params">&#123; name, count &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;name &amp;&amp; name + &#x27;,&#x27;&#125; Welcome &#123;count &amp;&amp; `Its $&#123;count&#125; times`&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">GuestGreeting</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Plsease sign Up<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Greeting</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// if (props.isLoggedIn) &#123;</span></span><br><span class="line">  <span class="comment">//   return &lt;UserGreeting name=&#x27;jimmy&#x27; count=&#123;0&#125; /&gt;;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="keyword">return</span> props.<span class="property">isLoggedIn</span> ? (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">UserGreeting</span> <span class="attr">name</span>=<span class="string">&#x27;jimmy&#x27;</span> <span class="attr">count</span>=<span class="string">&#123;0&#125;</span> /&gt;</span></span></span><br><span class="line">  ) : (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">GuestGreeting</span> /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Condition</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">isLoggedIn</span>=<span class="string">&#123;isLoggedIn&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="논리연산자-amp-amp-으로-if를-인라인으로-표현하기"><a href="#논리연산자-amp-amp-으로-if를-인라인으로-표현하기" class="headerlink" title="논리연산자 &amp;&amp; 으로 if를 인라인으로 표현하기"></a>논리연산자 &amp;&amp; 으로 if를 인라인으로 표현하기</h2><p>JavaScript에서 true &amp;&amp; expression은 항상 expression으로 평가되고 false &amp;&amp; expression은 항상 false로 평가됩니다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> <span class="title function_">UserGreeting</span> = (<span class="params">&#123; name, count &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;name &amp;&amp; name + &#x27;,&#x27;&#125; Welcome &#123;count &amp;&amp; `Its $&#123;count&#125; times`&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>name이 있을경우에 &amp;&amp; 뒤의 name + ‘,’ 가 보인다. name이 없으면 아무것도 출력되지 않음</li>
+<li>falsy 표현식을 반환하면 여전히 &amp;&amp; 뒤에 있는 표현식은 건너뛰지만 falsy 표현식이 반환된다는 것에 주의하라</li>
+<li>count에 0이 들어가면 내용이 안나오는게 아닌 0이 렌더링 된다</li>
+</ul>
+<img src="/2022/05/13/React-State-functional/03.png" class="">
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">UserGreeting</span> = (<span class="params">&#123; name, count &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;name &amp;&amp; name + &#x27;,&#x27;&#125; Welcome &#123;Boolean(count) &amp;&amp; `Its $&#123;count&#125; times`&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>count를 Boolean으로 감싸서 falsy를 false로 만든다 &#x3D;&gt; 아무것도 출력되지 않는다</li>
+<li>삼항연산자를 쓸 수도 있다</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">UserGreeting</span> = (<span class="params">&#123; name, count &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;name &amp;&amp; name + &#x27;,&#x27;&#125; Welcome &#123;count ? `Its $&#123;count&#125; times` : null&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<img src="/2022/05/13/React-State-functional/04.png" class="">
+
+<h1 id="List-와-Key"><a href="#List-와-Key" class="headerlink" title="List 와 Key"></a>List 와 Key</h1><ul>
+<li>default key &#x3D;&gt; key를 안주면 react는 index를 쓴다(워닝 O)</li>
+<li>고유성 &#x3D;&gt; 형제 사이에서만 고유하면 된다</li>
+<li>key props &#x3D;&gt; key는 props로 넘어가지 않음<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;아침먹기&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;점심먹기&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">text</span>: <span class="string">&#x27;저녁먹기&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">text</span>: <span class="string">&#x27;간식먹기&#x27;</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Item</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;props.text&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">TodoList</span> = (<span class="params"></span>) =&gt;</span><br><span class="line"></span><br><span class="line">  todos.<span class="title function_">map</span>(<span class="function">(<span class="params">todo</span>) =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Item</span> <span class="attr">key</span>=<span class="string">&#123;todo.id&#125;</span> <span class="attr">text</span>=<span class="string">&#123;todo.text&#125;</span> /&gt;</span></span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">List</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// const numbers = [1, 2, 3, 4, 5];</span></span><br><span class="line">  <span class="comment">// return (</span></span><br><span class="line">  <span class="comment">//   &lt;ul&gt;</span></span><br><span class="line">  <span class="comment">//     &#123;numbers.map((item) =&gt; (</span></span><br><span class="line">  <span class="comment">//       &lt;li key=&#123;item.toString()&#125;&gt;&#123;item&#125;&lt;/li&gt;</span></span><br><span class="line">  <span class="comment">//     ))&#125;</span></span><br><span class="line">  <span class="comment">//   &lt;/ul&gt;</span></span><br><span class="line">  <span class="comment">// );</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">TodoList</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/TS-Generics-Function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,100 +1334,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/10/React-up-state/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/React-up-state/" class="post-title-link" itemprop="url">React 상태 끌어올리기</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-10 15:57:58 / Modified: 16:46:52" itemprop="dateCreated datePublished" datetime="2022-05-10T15:57:58+09:00">2022-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/10/React-up-state/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/10/React-up-state/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React-상태-끌어올리기"><a href="#React-상태-끌어올리기" class="headerlink" title="React 상태 끌어올리기"></a>React 상태 끌어올리기</h1><p>형제 컴포넌트끼리 현재 상태를 알기 위해 부모 컴포넌트를 이용한다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">IdInput</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> [id, setId] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handleIdClick</span> = (<span class="params">event</span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">setId</span>(event.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;id-input&quot;</span>&gt;</span>ID : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;id-input&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleIdClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">PwInput</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> [pw, setPW] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handlePwClick</span> = (<span class="params">event</span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">setPW</span>(event.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;pw-input&quot;</span>&gt;</span>PW : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pw-input&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handlePwClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handleLoginClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">alert</span>(<span class="string">`<span class="subst">$&#123;id&#125;</span> , <span class="subst">$&#123;pw&#125;</span>`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">IdInput</span>  /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">PwInput</span>  /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">disabled</span> <span class="attr">onClick</span>=<span class="string">&#123;handleLoginClick&#125;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
-<p>위 코드에서는 button 에서 id의 상태와 pw의 상태를 알 수가 없다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">IdInput</span> = (<span class="params">&#123; handleIdClick &#125;</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;id-input&quot;</span>&gt;</span>ID : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;id-input&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleIdClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">PwInput</span> = (<span class="params">&#123; handlePwClick &#125;</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;pw-input&quot;</span>&gt;</span>PW : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pw-input&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handlePwClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> [id, setId] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handleIdClick</span> = (<span class="params">event</span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">setId</span>(event.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> [pw, setPW] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handlePwClick</span> = (<span class="params">event</span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">setPW</span>(event.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">handleLoginClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">          <span class="title function_">alert</span>(<span class="string">`<span class="subst">$&#123;id&#125;</span> , <span class="subst">$&#123;pw&#125;</span>`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">IdInput</span> <span class="attr">handleIdClick</span>=<span class="string">&#123;handleIdClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">PwInput</span> <span class="attr">handlePwClick</span>=<span class="string">&#123;handlePwClick&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">disabled</span>=<span class="string">&#123;id.length</span> === <span class="string">0</span> || <span class="attr">pw.length</span> === <span class="string">0&#125;</span> <span class="attr">onClick</span>=<span class="string">&#123;handleLoginClick&#125;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
-<h3 id="lifting-up"><a href="#lifting-up" class="headerlink" title="lifting up"></a>lifting up</h3><ul>
-<li>useState를 형제간의 가장 가까운 부모 컴포넌트인 App에 준다</li>
-<li>컴포넌트의 props로 변경된 상태를 넘겨준다</li>
-<li>과도한 lifting은 drilling을 야기한다</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1319,7 +1403,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1332,7 +1416,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
