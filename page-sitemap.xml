@@ -10,6 +10,15 @@
     
     
     <url>
+        <loc>https://sacultang.github.io/hello/</loc>
+        <lastmod>2022-06-05T18:27:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
         <loc>https://sacultang.github.io/categories/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
