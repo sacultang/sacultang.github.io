@@ -528,10 +528,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-02 15:43:01 / Modified: 21:41:52" itemprop="dateCreated datePublished" datetime="2022-06-02T15:43:01+09:00">2022-06-02</time>
+              <time title="Created: 2022-06-02 15:43:01" itemprop="dateCreated datePublished" datetime="2022-06-02T15:43:01+09:00">2022-06-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-06 03:03:19" itemprop="dateModified" datetime="2022-06-06T03:03:19+09:00">2022-06-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -571,13 +577,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="next-js"><a href="#next-js" class="headerlink" title="next.js"></a>next.js</h1><p>nextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크</p>
+          <h1 id="next-js-공식문서-따라만들기"><a href="#next-js-공식문서-따라만들기" class="headerlink" title="next.js 공식문서 따라만들기"></a>next.js 공식문서 따라만들기</h1><h2 id="next-js"><a href="#next-js" class="headerlink" title="next.js"></a>next.js</h2><p>nextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크</p>
 <h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><p>클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것</p>
 <ul>
 <li>클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진</li>
 <li>검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능</li>
 </ul>
+<p>✅ 기본적으로 React는 CSR (Client Side Rendering)을 한다.  </p>
+<ul>
+<li>처음 웹사이트를 요청했을때 빈 html을 가져와 javasciprt를 로딩 한다<br>리액트는 index.html의 root div 안의 모든것이 javascript로 그려지기 때문에<br>검색엔진은 웹사이트를 분석하기 힘들다</li>
+</ul>
+<p>실제 React로 만든 사이트를 자바스크립트를 사용하지 않고 load하면 페이지에 아무것도 표시 되지 않는다.</p>
+<p><img src="/../images/next-js/04.gif"></p>
+<p>root div에도 아무것도 그려지지 않는다</p>
+<img src="/2022/06/02/Next-js-1/01.png" class="">
 
+<p>반면 Next.js는 서버측에서 html파일 내용(일부를)미리 그려서 내려주기 때문에 화면이 표시가 된다</p>
+<p><img src="/../images/next-js/05.gif"><br><img src="/../images/next-js/06.gif">  </p>
+<img src="/2022/06/02/Next-js-1/02.png" class="">
+
+<p>👍 크롬 개발자도구에서 javascript사용 중지를 했음에도 html이 그려져 있다</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/02/Next-js-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://sacultang.github.io/2022/06/02/Next-js-1/</loc>
+        <lastmod>2022-06-05T18:03:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://sacultang.github.io/2022/06/05/react-mui/</loc>
         <lastmod>2022-06-05T13:16:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -27,14 +35,6 @@
     <url>
         <loc>https://sacultang.github.io/2022/06/02/2022-06-02-TIL/</loc>
         <lastmod>2022-06-04T12:59:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://sacultang.github.io/2022/06/02/Next-js-1/</loc>
-        <lastmod>2022-06-02T12:41:52.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

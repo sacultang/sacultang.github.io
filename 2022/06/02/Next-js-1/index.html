@@ -22,18 +22,27 @@
     var CONFIG = {"hostname":"sacultang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="next.jsnextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크 SSR클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것  클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진 검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능">
+  <meta name="description" content="next.js 공식문서 따라만들기next.jsnextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크 SSR클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것  클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진 검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능  ✅">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Next.js(1)">
 <meta property="og:url" content="https://sacultang.github.io/2022/06/02/Next-js-1/index.html">
 <meta property="og:site_name" content="ㅇㅇㅈ Blog">
-<meta property="og:description" content="next.jsnextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크 SSR클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것  클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진 검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능">
+<meta property="og:description" content="next.js 공식문서 따라만들기next.jsnextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크 SSR클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것  클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진 검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능  ✅">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sacultang.github.io/images/next-js/04.gif">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/02/Next-js-1/01.png">
+<meta property="og:image" content="https://sacultang.github.io/images/next-js/05.gif">
+<meta property="og:image" content="https://sacultang.github.io/images/next-js/06.gif">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/02/Next-js-1/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/02/Next-js-1/05.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/02/Next-js-1/06.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/02/Next-js-1/07.png">
 <meta property="article:published_time" content="2022-06-02T06:43:01.000Z">
-<meta property="article:modified_time" content="2022-06-02T12:41:52.000Z">
+<meta property="article:modified_time" content="2022-06-05T18:03:19.000Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sacultang.github.io/images/next-js/04.gif">
 
 <link rel="canonical" href="https://sacultang.github.io/2022/06/02/Next-js-1/">
 
@@ -188,10 +197,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-02 15:43:01 / Modified: 21:41:52" itemprop="dateCreated datePublished" datetime="2022-06-02T15:43:01+09:00">2022-06-02</time>
+              <time title="Created: 2022-06-02 15:43:01" itemprop="dateCreated datePublished" datetime="2022-06-02T15:43:01+09:00">2022-06-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-06 03:03:19" itemprop="dateModified" datetime="2022-06-06T03:03:19+09:00">2022-06-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -231,11 +246,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="next-js"><a href="#next-js" class="headerlink" title="next.js"></a>next.js</h1><p>nextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크</p>
+        <h1 id="next-js-공식문서-따라만들기"><a href="#next-js-공식문서-따라만들기" class="headerlink" title="next.js 공식문서 따라만들기"></a>next.js 공식문서 따라만들기</h1><h2 id="next-js"><a href="#next-js" class="headerlink" title="next.js"></a>next.js</h2><p>nextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크</p>
 <h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><p>클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것</p>
 <ul>
 <li>클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진</li>
 <li>검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능</li>
+</ul>
+<p>✅ 기본적으로 React는 CSR (Client Side Rendering)을 한다.  </p>
+<ul>
+<li>처음 웹사이트를 요청했을때 빈 html을 가져와 javasciprt를 로딩 한다<br>리액트는 index.html의 root div 안의 모든것이 javascript로 그려지기 때문에<br>검색엔진은 웹사이트를 분석하기 힘들다</li>
+</ul>
+<p>실제 React로 만든 사이트를 자바스크립트를 사용하지 않고 load하면 페이지에 아무것도 표시 되지 않는다.</p>
+<p><img src="/../images/next-js/04.gif"></p>
+<p>root div에도 아무것도 그려지지 않는다</p>
+<img src="/2022/06/02/Next-js-1/01.png" class="">
+
+<p>반면 Next.js는 서버측에서 html파일 내용(일부를)미리 그려서 내려주기 때문에 화면이 표시가 된다</p>
+<p><img src="/../images/next-js/05.gif"><br><img src="/../images/next-js/06.gif">  </p>
+<img src="/2022/06/02/Next-js-1/02.png" class="">
+
+<p>👍 크롬 개발자도구에서 javascript사용 중지를 했음에도 html이 그려져 있다</p>
+<span id="more"></span>
+
+<h2 id="Next-js-설치-하기"><a href="#Next-js-설치-하기" class="headerlink" title="Next.js 설치 하기"></a>Next.js 설치 하기</h2><p>기본 설치는 아래와 같이  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-next-app@latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"></span><br><span class="line">$ yarn create next-app</span><br></pre></td></tr></table></figure>
+
+<p>하지만 공식문서 lesson을 보고 따라 할 것이므로</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-next-app nextjs-blog --use-npm --example <span class="string">&quot;https://github.com/vercel/next-learn/tree/master/basics/navigate-between-pages-starter&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>starter 코드를 설치 했다</p>
+<h3 id="pages-amp-link"><a href="#pages-amp-link" class="headerlink" title="pages &amp; link"></a>pages &amp; link</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://nextjs.org/learn/basics/navigate-between-pages/pages-in-nextjs">https://nextjs.org/learn/basics/navigate-between-pages/pages-in-nextjs</a></p>
+</blockquote>
+<p>pages 폴더 안에 컴포넌트를 만들면</p>
+<p><code>pages/컴포넌트이름</code> 으로 경로 설정이 된다</p>
+<img src="/2022/06/02/Next-js-1/05.png" class="">
+
+<p><code>pages</code> 안에 <code>posts</code> 디렉토리를 만들고 <code>first-post</code> 컴포넌트를 만들어 주고 나서</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Link</span> <span class="keyword">from</span> <span class="string">&#x27;next/link&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">FirstPost</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>FirstPost<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">href</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">a</span>&gt;</span>Back to home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">FirstPost</span>;</span><br></pre></td></tr></table></figure>
+<p>일반 react 처럼 컴포넌트를 작성 후 <code>localhost:3000/posts/first-post</code> 로 접속하면 해당 컴포넌트가 보인다<br>➡️ 여기서 주의점은 export 할때의 컴포넌트 name이 아니라 jsx 파일의 name이 주소 라는 점  </p>
+<p><code>Link</code> 태그는 react-router-dom의 Link와 같다  </p>
+<p> 대신 to가 아닌 href를 사용한다는 것<br>안에 a태그는 안적어도 제대로 동작하는거 같다  </p>
+<blockquote>
+<p>공식 문서 마지막에 읽어보니 a태그의 속성을 사용하고 싶을때 예를 들어 <code>target</code> 이나 <code>rel</code> 같은 걸 Link에 작성하면 적용이 안된다.<br>그리고 className도 Link에 작성하면 적용이 안된다.. 그래서 Link 안쪽에 html 태그를 따로 작성 해주는 거 같다</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Link</span> href=<span class="string">&#x27;/posts/first-post&#x27;</span> target=<span class="string">&#x27;_blank&#x27;</span> className=<span class="string">&#x27;alink&#x27;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span>&gt;</span>this Page<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Link</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Link 에 target과 className을 주면 </p>
+<img src="/2022/06/02/Next-js-1/06.png" class="">
+
+<p>아무것도 적용이 안된다.</p>
+<p>a태그에 적용 시켜 보면</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Link</span> href=<span class="string">&#x27;/posts/first-post&#x27;</span> &gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">&#x27;_blank&#x27;</span> <span class="attr">className</span>=<span class="string">&#x27;alink&#x27;</span>&gt;</span>this Page<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Link</span>&gt;</span><br></pre></td></tr></table></figure>
+<img src="/2022/06/02/Next-js-1/07.png" class="">
+
+<p>잘 적용 되어 있다.</p>
+<p><strong>코드 분할 및 프리페칭</strong>  </p>
+<ul>
+<li>Next.js는 자동으로 코드 분할을 수행해 각 페이지는 해당 페이지에 필요한 것만 로드한다 -&gt; 홈페이지가 렌더링 될 때 다른 페이지의 코드는 처음에 로드 되지 않는다  </li>
+<li>Next.js의 프로덕션 빌드에서 Link 구성 요소가 브라우저의 뷰포트에 나타날 때마다 Next.js는 백그라운드에서 연결된 페이지에 대한 코드를 자동으로 미리 가져온다. -&gt; 링크를 클릭할때 대상 페이지에 대한 코드가 이미 백그라운드에서 로드되고 페이지 전환이 즉각적으로 이루어 진다</li>
 </ul>
 
     </div>
@@ -327,7 +395,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#next-js"><span class="nav-number">1.</span> <span class="nav-text">next.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR"><span class="nav-number">1.1.</span> <span class="nav-text">SSR</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#next-js-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%EB%94%B0%EB%9D%BC%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">next.js 공식문서 따라만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#next-js"><span class="nav-number">1.1.</span> <span class="nav-text">next.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR"><span class="nav-number">1.2.</span> <span class="nav-text">SSR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-js-%EC%84%A4%EC%B9%98-%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">Next.js 설치 하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pages-amp-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">pages &amp; link</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
