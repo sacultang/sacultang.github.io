@@ -19,7 +19,7 @@
     
     
     <url>
-        <loc>https://sacultang.github.io/categories/</loc>
+        <loc>https://sacultang.github.io/tags/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -28,7 +28,7 @@
     
     
     <url>
-        <loc>https://sacultang.github.io/tags/</loc>
+        <loc>https://sacultang.github.io/categories/</loc>
         <lastmod>2022-04-23T12:39:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
