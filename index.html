@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-07 00:40:23" itemprop="dateModified" datetime="2022-06-07T00:40:23+09:00">2022-06-07</time>
+                <time title="Modified: 2022-06-07 16:59:10" itemprop="dateModified" datetime="2022-06-07T16:59:10+09:00">2022-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Next-js-공식문서-따라만들기-1"><a href="#Next-js-공식문서-따라만들기-1" class="headerlink" title="Next.js 공식문서 따라만들기 (1)"></a>Next.js 공식문서 따라만들기 (1)</h1><h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><p>Next.js는 최상위 <code>public</code> 디렉토리에서 static assets를 관리한다  </p>
+          <h1 id="Next-js-공식문서-따라만들기-2"><a href="#Next-js-공식문서-따라만들기-2" class="headerlink" title="Next.js 공식문서 따라만들기 (2)"></a>Next.js 공식문서 따라만들기 (2)</h1><h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><p>Next.js는 최상위 <code>public</code> 디렉토리에서 static assets를 관리한다  </p>
 <h3 id="img-파일-넣기"><a href="#img-파일-넣기" class="headerlink" title="img 파일 넣기"></a>img 파일 넣기</h3><p><code>public</code> 디렉토리 안에 <code>images</code> 디렉토리를 만들고 이미지를 넣어 준다  </p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Link</span> <span class="keyword">from</span> <span class="string">&#x27;next/link&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">FirstPost</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>FirstPost<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;/images/profile.jpg&#x27;</span> <span class="attr">alt</span>=<span class="string">&#x27;&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">FirstPost</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <img src="/2022/06/06/Next-js-2/01.png" class="">
@@ -259,7 +259,28 @@
 <img src="/2022/06/06/Next-js-2/04.png" class="">
 
 <p>헤드 태그 안에 정보들이 들어가 있다</p>
-
+<h2 id="두-가지-형태의-사전-렌더링"><a href="#두-가지-형태의-사전-렌더링" class="headerlink" title="두 가지 형태의 사전 렌더링"></a>두 가지 형태의 사전 렌더링</h2><p>NEXT는 브라우저에 렌더링 할 때 기본적으로 <code>pre-rendering</code>을 한다.<br><code>pre-rendering</code>이란 각 페이지들을 사전에 미리 HTML 문서로 생성하여 가지고 있는 것 그리고 서버로 요청이 들어올 때 알맞은 페이지를 반환해준다.<br>그 중 두가지 형태의 사전렌더링이 있다<br>👉 <code>Static-Generation(SSG)</code> </p>
+<ul>
+<li>HTML을 빌드 타임에 각 페이지별로 생성하고 해당 페이지에 요청이 올 때 미리 생성된 HTML문서를 반환 </li>
+<li>서버에서 페이지가 생성이 되는게 아니라 빌드할때 생성된 문서를 보여주는것이므로 속도가 빠르다</li>
+<li>공식문서에서는 마케팅페이지&#x2F; 블로그게시물&#x2F; 도움말 및 문서 등을 페이지로 사용할때 SSG 사용을 권하고있다</li>
+</ul>
+<p>👉 <code>Server-side Rendering(SSR)</code></p>
+<ul>
+<li>서버로 요청이 올 때마다 해당하는 HTML 문서를 그때 그때 생성하여 반환</li>
+<li>SSR방식은 서버에서 요청을 받을때마다 그에 상응하는 HTML을 생성하여 반환하기 때문에 항상 최신 상태를 유지해야하는 경우가 적합하다 (좋아요 표시라든지)</li>
+</ul>
+<h2 id="getStaticProps"><a href="#getStaticProps" class="headerlink" title="getStaticProps"></a>getStaticProps</h2><p>블로그에 데이터를 추가하고 불러오기</p>
+<p>최상위 경로에 <code>posts</code> directory를 만들고 안에 블로그 게시물을 md문서로 만든다</p>
+<img src="/2022/06/06/Next-js-2/05.png" class="">
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/06/Next-js-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
