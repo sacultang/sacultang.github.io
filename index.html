@@ -160,6 +160,123 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/16/2022-06-16-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/16/2022-06-16-TIL/" class="post-title-link" itemprop="url">2022-06-16-TIL</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-16 02:27:16 / Modified: 03:00:05" itemprop="dateCreated datePublished" datetime="2022-06-16T02:27:16+09:00">2022-06-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-06/" itemprop="url" rel="index"><span itemprop="name">2022.06</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/16/2022-06-16-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/16/2022-06-16-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="date-fns"><a href="#date-fns" class="headerlink" title="date-fns"></a>date-fns</h1><p>미니프로젝트 진행 중 데이터 중 날짜 데이터가 있어서 날짜를 가공하기 위해 date-fns 라이브러리를 사용해보기로 했다</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i date-fns</span><br></pre></td></tr></table></figure>
+
+<h2 id="format"><a href="#format" class="headerlink" title="format()"></a>format()</h2><p>api로 받아오는 데이터는 </p>
+<img src="/2022/06/16/2022-06-16-TIL/01.png" class="">
+
+<p>이런식으로 저장되어있다</p>
+<p>기본적으로 date를 원하는 형식으로 출력할수있는 메소드 <code>format()</code>이 있다<br>format()은 2개의 인수가 필수고 option으로 다른 값들을 넣어 줄 수 있다<br>첫 번째는 변경할 date<br>두 번째는 원하는 format 이다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">format</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(), <span class="string">&#x27;yyyy.MM.dd HH:mm&#x27;</span>)</span><br><span class="line"><span class="comment">// 2022.06.16 02:47</span></span><br></pre></td></tr></table></figure>
+
+<p>받아온 데이터를 <code>yyyy.MM.dd HH:mm</code>형식으로 바꿔보자</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">format</span>(pub_date, <span class="string">&#x27;yyyy.MM.dd HH:mm&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>으로 작성 했더니 error를 뱉어 냈다</p>
+<img src="/2022/06/16/2022-06-16-TIL/02.png" class="">
+
+<p>v2.0.0-beta 부터 문자열을 허용하지 않는다고 하면서 parseISO를 사용해달라고 한다  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">format</span>(<span class="title function_">parseISO</span>(pub_date), <span class="string">&#x27;yyyy.MM.dd HH:mm&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>이렇게 작성해 줬더니 잘 된다.</p>
+<h2 id="differenceInDays-differenceInHours"><a href="#differenceInDays-differenceInHours" class="headerlink" title="differenceInDays() , differenceInHours()"></a>differenceInDays() , differenceInHours()</h2><p>데이터가 작성된 날짜와 현재의 날짜를 비교해서 얼마전에 작성되었는지도 출력해주기 위해 <code>differenceInDays()</code> , <code>differenceInHours()</code> 도 사용해 주었다</p>
+<p>두 메소드 다 비교할 날짜 2개를 인수로 넣어 준다   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="title function_">differenceInHours</span>(</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">2014</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">19</span>, <span class="number">0</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">2014</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">50</span>)</span><br><span class="line">)</span><br><span class="line"><span class="comment">//=&gt; 12</span></span><br></pre></td></tr></table></figure>
+
+<p><code>differenceInDays()</code>를 사용하면 작성된 날짜와 현재 날짜가 같으면 0이 반환 되기 때문에<br><code>differenceInHours()</code>를 사용해 날짜가 같으면 시간으로 표시 해 준다</p>
+<p>함수로 만들어 조건에 맞게 출력할 수 있도록 해준다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">dateFunc</span> = (<span class="params">pub_date</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title function_">differenceInDays</span>(<span class="title function_">parseISO</span>(pub_date), <span class="keyword">new</span> <span class="title class_">Date</span>())) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title function_">differenceInDays</span>(<span class="title function_">parseISO</span>(pub_date), <span class="keyword">new</span> <span class="title class_">Date</span>())) + <span class="string">&#x27; 일 전&#x27;</span></span><br><span class="line">    );</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title function_">differenceInHours</span>(<span class="title function_">parseISO</span>(pub_date), <span class="keyword">new</span> <span class="title class_">Date</span>())) + <span class="string">&#x27; 시간 전&#x27;</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2022/06/16/2022-06-16-TIL/03.png" class="">  
+<img src="/2022/06/16/2022-06-16-TIL/04.png" class="">  
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/14/2022-06-14-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1219,114 +1336,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/25/login-form/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/25/login-form/" class="post-title-link" itemprop="url">login form</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-25 11:16:19 / Modified: 13:10:33" itemprop="dateCreated datePublished" datetime="2022-05-25T11:16:19+09:00">2022-05-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/25/login-form/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/login-form/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="로그인-폼-만들기"><a href="#로그인-폼-만들기" class="headerlink" title="로그인 폼 만들기"></a>로그인 폼 만들기</h1><p>2주차 실습과제</p>
-<ul>
-<li>Form handling width state</li>
-<li>State Handling with useEffect</li>
-<li>State handling with Redux</li>
-<li>component Handling with state</li>
-</ul>
-<p>간단하게 매니저님이 서버를 만들어 주시고 id와 pw를 맞게 입력하면 로그인, 틀릴경우에 에러코드에 맞게 메세지를 출력하는 실습</p>
-<h2 id="로그인-컴포넌트"><a href="#로그인-컴포넌트" class="headerlink" title="로그인 컴포넌트"></a>로그인 컴포넌트</h2><img src="/2022/05/25/login-form/01.png" class="">
-
-<p>input으로 id와 password를 받아 각각 setId와 setPassword로 저장</p>
-<p>저장된 id와 password를 body에 넣어주고,</p>
-<p>axios post요청 할 때 url 주소와 body를 같이 넘겨 주면 된다.</p>
-<p>그리고 loading의 boolean 값으로 로그인버튼의 disable을 조절 해 줄 예정 이므로  </p>
-<p>로그인 버튼이 눌리면 setLoading으로 값을 true로 변경 시켜 준다</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState, useEffect, useRef &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch  &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; loginUser &#125; <span class="keyword">from</span> <span class="string">&#x27;../reducer/userSlice.js&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">LoginComponent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line">  <span class="keyword">const</span> [id, setId] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> [password, setPassword] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [msg, setMsg] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> idInput = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> pwInput = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> body = &#123;</span><br><span class="line">    id,</span><br><span class="line">    password,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">setMsg</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">1500</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;, [msg]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//  로그인 요청</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">getUsers</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//  로그인</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">LoginFunc</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">    e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    <span class="title function_">setLoading</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="title function_">getUsers</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 에러 핸들</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleError</span> = (<span class="params">response</span>) =&gt; &#123;</span><br><span class="line">   </span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// input handle</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleChangeID</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setId</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleChangePW</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setPassword</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>LoginComponent<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;LoginFunc&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&#x27;id&#x27;</span>&gt;</span>ID : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">type</span>=<span class="string">&#x27;text&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">ref</span>=<span class="string">&#123;idInput&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">value</span>=<span class="string">&#123;id&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">id</span>=<span class="string">&#x27;id&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onChange</span>=<span class="string">&#123;handleChangeID&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&#x27;password&#x27;</span>&gt;</span>Password : <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">type</span>=<span class="string">&#x27;password&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">id</span>=<span class="string">&#x27;password&#x27;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">ref</span>=<span class="string">&#123;pwInput&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">value</span>=<span class="string">&#123;password&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onChange</span>=<span class="string">&#123;handleChangePW&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">disabled</span>=<span class="string">&#123;loading&#125;</span> <span class="attr">type</span>=<span class="string">&#x27;submit&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          로그인</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;msg&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">LoginComponent</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/25/login-form/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1396,7 +1405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

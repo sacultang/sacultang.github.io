@@ -160,6 +160,136 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TS-Compiler-extends/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/12/TS-Compiler-extends/" class="post-title-link" itemprop="url">TS Compiler-extends</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-12 16:55:09 / Modified: 21:40:53" itemprop="dateCreated datePublished" datetime="2022-05-12T16:55:09+09:00">2022-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/12/TS-Compiler-extends/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/12/TS-Compiler-extends/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h1><ul>
+<li>tsconfig에서 다른 파일의 설정을 상속받을때 사용한다</li>
+<li>파일(상대) 경로명 : string</li>
+<li>TypeScript 2.1 버전 이상에서만 가능<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./base.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// &quot;strict&quot;: true,  </span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;strict&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="comment">// base.json파일의 설정을 상속받아 strict: true 가 적용 된다</span></span><br></pre></td></tr></table></figure>
+<h1 id="files-include-exclude"><a href="#files-include-exclude" class="headerlink" title="files, include, exclude"></a>files, include, exclude</h1></li>
+<li>프로젝트 안의 어떤 파일을 컴파일 할건지 결정하게 된다</li>
+<li>셋다 설정이 없으면, 전부다 컴바일<h2 id="files"><a href="#files" class="headerlink" title="files"></a>files</h2></li>
+<li>상대 혹은 절대 경로의 리스트 배열이다</li>
+<li>files에 설정이 되어있으면 exclude되어 있어도 컴파일이 된다<h2 id="include-exclude"><a href="#include-exclude" class="headerlink" title="include,exclude"></a>include,exclude</h2></li>
+<li>glob패턴 (마치 .gitignore)</li>
+</ul>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><ul>
+<li>exclude로 제외 되어있으면 컴파일하지 않는다</li>
+</ul>
+<h3 id="exclude"><a href="#exclude" class="headerlink" title="exclude"></a>exclude</h3><ul>
+<li>설정 안하면 4가지(node_modules,bower_components,jspm_packages, &lt;outDir&gt;를 default로 제외한다</li>
+<li>&lt;outDir&gt;은 항상 제외된다 (include에 있어도)</li>
+</ul>
+<h1 id="compileOptions"><a href="#compileOptions" class="headerlink" title="compileOptions"></a>compileOptions</h1><h2 id="typeRoots-types"><a href="#typeRoots-types" class="headerlink" title="typeRoots, types"></a>typeRoots, types</h2><h3 id="types"><a href="#types" class="headerlink" title="@types"></a>@types</h3><ul>
+<li><p>TypeScript 2.0부터 사용 가능해진 내장 type definition 시스템</p>
+</li>
+<li><p>아무 설정 안하면?</p>
+<ul>
+<li>node_modules&#x2F;@types라는 모든 경로를 찾아서 사용</li>
+</ul>
+</li>
+<li><p>typeRoots를 사용하면?</p>
+<ul>
+<li>배열 안에 들어 있는 경로들 아래서만 가져온다</li>
+</ul>
+</li>
+<li><p>types를 사용하면?</p>
+<ul>
+<li>배열 안의 모듈 혹은 .&#x2F;node_modules&#x2F;@types&#x2F; 안의 모듈 이름에서 찾아온다</li>
+<li>[]빈 배열을 넣는 다는건 이 시스템을 이용하지 않겠다는 것</li>
+</ul>
+</li>
+<li><p>typeRoots와 types를 같이 사용하지 않는다</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/12/TS-Compiler-extends/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/TS-Structural-Type-System-vs-Nominal-Type-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,102 +1228,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/03/react-event-handler/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/03/react-event-handler/" class="post-title-link" itemprop="url">컴포넌트 상태 다루기</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-03 16:52:55 / Modified: 20:33:26" itemprop="dateCreated datePublished" datetime="2022-05-03T16:52:55+09:00">2022-05-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/03/react-event-handler/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/react-event-handler/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="컴포넌트-상태-다루기"><a href="#컴포넌트-상태-다루기" class="headerlink" title="컴포넌트 상태 다루기"></a>컴포넌트 상태 다루기</h1><p>DOM : 논리트리<br>컴포넌트 : 엘리먼트의 집합<br>엘리먼트 : 요소  </p>
-<h2 id="useState-hook"><a href="#useState-hook" class="headerlink" title="useState hook"></a>useState hook</h2><ul>
-<li>useState는 현재의 값을 저장하는 기능과 업데이트하는 함수를 쌍으로 제공한다.</li>
-<li>해당 함수는 이벤트 핸들러에서 호출이 가능하다.</li>
-<li>컴포넌트 안에서 useState는 여러 번 선언이 가능하다.</li>
-<li>또한 초기 값으로는 아까처럼 숫자뿐만 아니라 문자, 그리고 배열을 넣는 것도 가능하다.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const [state,setState] = React.useState(state)</span><br><span class="line">// [상태 값 저장 변수,상태 갱신 함수] = React.useState(상태 초기값)</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Btn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [keyword, setKeyword] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> [typing, setTyping] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">const</span> [result, setResult] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleChange</span>(<span class="params">e</span>) &#123;</span><br><span class="line">      <span class="title function_">setKeyword</span>(<span class="function">(<span class="params">cur</span>) =&gt;</span> cur = e.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">      <span class="title function_">setTyping</span>(<span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">setTyping</span>(<span class="literal">false</span>)</span><br><span class="line">      <span class="title function_">setResult</span>(<span class="function">(<span class="params">cur</span>)=&gt;</span> cur = <span class="string">`we find result of <span class="subst">$&#123;keyword&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleChange&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>search<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;typing ? `Looking for ...$&#123;keyword&#125;` : result&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">Btn</span> /&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
-<p>상태 초기값을 가져올때 딜레이가 걸릴수도 있을경우 함수로 작성해 호출을 보장해 줄 수 있다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [keyword, setKeyword] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="function">() =&gt;</span> <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;keyword&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1263,7 +1297,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
