@@ -160,6 +160,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/30/react-movie-app-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/30/react-movie-app-2/" class="post-title-link" itemprop="url">React로 Movie-app 만들어 보기(2)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-30 15:32:52" itemprop="dateCreated datePublished" datetime="2022-05-30T15:32:52+09:00">2022-05-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-06 03:21:30" itemprop="dateModified" datetime="2022-06-06T03:21:30+09:00">2022-06-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/Project/" itemprop="url" rel="index"><span itemprop="name">Project</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/30/react-movie-app-2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/30/react-movie-app-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="05-29-작업내용"><a href="#05-29-작업내용" class="headerlink" title="05.29 작업내용"></a>05.29 작업내용</h2><h3 id="영화-추가-요청"><a href="#영화-추가-요청" class="headerlink" title="영화 추가 요청.."></a>영화 추가 요청..</h3><p>영화 추가요청을 하기 위한 로직을 작성했다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> fetchAsyncMovies = <span class="title function_">createAsyncThunk</span>(</span><br><span class="line">  <span class="string">&#x27;search/fetchAsyncMovies&#x27;</span>,</span><br><span class="line">  <span class="keyword">async</span> (&#123; title, type, year, number &#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> axios</span><br><span class="line">      .<span class="title function_">get</span>(</span><br><span class="line">        <span class="string">`http://www.omdbapi.com/?apikey=<span class="subst">$&#123;OMDB_API_KEY&#125;</span>&amp;s=<span class="subst">$&#123;title&#125;</span>&amp;type=<span class="subst">$&#123;type&#125;</span>&amp;y=<span class="subst">$&#123;year&#125;</span>&amp;page=1`</span></span><br><span class="line">      )</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> res.<span class="property">data</span>)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> error.<span class="property">message</span>);</span><br><span class="line">    <span class="keyword">const</span> &#123; totalResults &#125; = response;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="built_in">parseInt</span>(totalResults, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">const</span> pageLength = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(total / <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if (pageLength &gt; 1) &#123;</span></span><br><span class="line">    <span class="comment">//   for (let page = 2; page &lt; pageLength; page++) &#123;</span></span><br><span class="line">    <span class="comment">//     if (page &gt; number / 10) break;</span></span><br><span class="line">    <span class="comment">//     const response = await axios</span></span><br><span class="line">    <span class="comment">//       .get(</span></span><br><span class="line">    <span class="comment">//         `http://www.omdbapi.com/?apikey=$&#123;OMDB_API_KEY&#125;&amp;s=$&#123;title&#125;&amp;type=$&#123;type&#125;&amp;y=$&#123;year&#125;&amp;page=$&#123;page&#125;`</span></span><br><span class="line">    <span class="comment">//       )</span></span><br><span class="line">    <span class="comment">//       .then((res) =&gt; res.data);</span></span><br><span class="line">    <span class="comment">//     return response;</span></span><br><span class="line">    <span class="comment">//   &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>문제는 처음 요청 했을때 state에 값을 저장해놓고 추가 요청이 들어가야 하는데<br>분리를 할 수가 없다.. 어떻게 해야되나</p>
+<h3 id="버튼-active-활성"><a href="#버튼-active-활성" class="headerlink" title="버튼 active 활성"></a>버튼 active 활성</h3><p>영화 아이템을 클릭해서 상세 페이지로 넘어가면 버튼이 활성화가 되지 않는다<br>path 속성을 따로 만들어 movie와 일치하면 active class가 붙게 했다</p>
+<p><img src="/../images/react-movie-app-2/01.gif"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> navigations = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    <span class="attr">href</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Movie&#x27;</span>,</span><br><span class="line">    <span class="attr">href</span>: <span class="string">&#x27;/movie/tt2294629&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="regexp">/^\/movie/</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Header</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> location = <span class="title function_">useLocation</span>();</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">isMatch</span> = (<span class="params">path</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!path) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> path.<span class="title function_">test</span>(location.<span class="property">pathname</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">header</span> <span class="attr">className</span>=<span class="string">&#x27;header&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;nav nav-pills&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;nav-item&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;navigations.map((nav) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">            return (</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">NavLink</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">to</span>=<span class="string">&#123;nav.href&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">key</span>=<span class="string">&#123;nav.name&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">className</span>=<span class="string">&#123;isMatch(nav.path)</span> ? &#x27;<span class="attr">active</span> <span class="attr">nav-link</span>&#x27; <span class="attr">:</span> &#x27;<span class="attr">nav-link</span>&#x27;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">marginRight:</span> <span class="attr">15</span> &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              &gt;</span></span></span><br><span class="line"><span class="language-xml">                &#123;nav.name&#125;</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            );</span></span><br><span class="line"><span class="language-xml">          &#125;)&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>여기서 react-router-dom 의 useLocation을 사용했는데 location을 콘솔로 찍어보면  </p>
+
+
+<p>pathname이 찍힌다 </p>
+<p>isMatch 함수를 통해 path가 location.pathname에 들어있는지를 true,false로 반환 받는다</p>
+<p>삼항연산자로 active가 붙을지 안붙을지를 작성해준다</p>
+<p><img src="/../images/react-movie-app-2/03.gif"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/30/react-movie-app-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/29/0529-react-styled-component/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1250,109 +1365,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/17/moment-library/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/17/moment-library/" class="post-title-link" itemprop="url">day-library</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-17 16:22:11" itemprop="dateCreated datePublished" datetime="2022-05-17T16:22:11+09:00">2022-05-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-06 03:22:30" itemprop="dateModified" datetime="2022-06-06T03:22:30+09:00">2022-06-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/Library/" itemprop="url" rel="index"><span itemprop="name">Library</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/17/moment-library/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/17/moment-library/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Moment-사용해보기"><a href="#Moment-사용해보기" class="headerlink" title="Moment 사용해보기"></a>Moment 사용해보기</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&#x27;moment-timezone&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useRef, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MomentEx</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> momentDate = <span class="title function_">moment</span>();</span><br><span class="line">  <span class="keyword">const</span> newMomentDate = momentDate.<span class="title function_">add</span>(<span class="number">1</span>, <span class="string">&#x27;week&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> cloneNewMomentDate = newMomentDate.<span class="title function_">clone</span>().<span class="title function_">add</span>(<span class="number">1</span>, <span class="string">&#x27;week&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [day, setDay] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> birthDayRef = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleBirthDayChange</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setDay</span>(<span class="title function_">moment</span>(e.<span class="property">target</span>.<span class="property">value</span>, <span class="string">&#x27;YYYY-MM-DD&#x27;</span>).<span class="title function_">format</span>(<span class="string">&#x27;dddd&#x27;</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Moment<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Immutable Check<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;momentDate.format()&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;newMomentDate.format()&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;cloneNewMomentDate.format()&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Summer Time (New York)<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        2018년 3월 10일 13시에 하루 더하기 <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;moment</span></span><br><span class="line"><span class="language-xml">          .tz(&#x27;2018-03-10 13:00:00&#x27;, &#x27;America/New_York&#x27;)</span></span><br><span class="line"><span class="language-xml">          .add(1, &#x27;day&#x27;)</span></span><br><span class="line"><span class="language-xml">          .format()&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        2018년 3월 10일 13시에 하루 더하기 <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;moment</span></span><br><span class="line"><span class="language-xml">          .tz(&#x27;2018-03-10 13:00:00&#x27;, &#x27;America/New_York&#x27;)</span></span><br><span class="line"><span class="language-xml">          .add(24, &#x27;hour&#x27;)</span></span><br><span class="line"><span class="language-xml">          .format()&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Leap year (korea)<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        2017년 1월 1일에 1년 빼기 <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;moment(&#x27;2017-01-01 &#x27;).subtract(1, &#x27;year&#x27;).format()&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        2017년 1월 1일에 365일 빼기 <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;moment(&#x27;2017-01-01 &#x27;).subtract(365, &#x27;day&#x27;).format()&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span> 한국어로 표기<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;moment(&#x27;07-17-2021&#x27;).format(&#x27;YYYY년 M월 D일&#x27;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>두 날짜 비교<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&#x27;date&#x27;</span> <span class="attr">ref</span>=<span class="string">&#123;birthDayRef&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleBirthDayChange&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>무슨 요일 이었을까?<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;day&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>두 날짜 비교<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>2021-07-17 03:00 와 2021-07-18 02:00는 몇시간 차이인가?<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;moment(&#x27;2021-07-17 03:00&#x27;).diff(moment(&#x27;2021-07-18 02:00&#x27;), &#x27;hours&#x27;)&#125;</span></span><br><span class="line"><span class="language-xml">        시간</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/17/moment-library/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1422,7 +1434,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
