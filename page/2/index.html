@@ -160,6 +160,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/02/Next-js-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/02/Next-js-1/" class="post-title-link" itemprop="url">Next.js 공식문서 따라만들기 (1)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-02 15:43:01" itemprop="dateCreated datePublished" datetime="2022-06-02T15:43:01+09:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-07 19:07:25" itemprop="dateModified" datetime="2022-06-07T19:07:25+09:00">2022-06-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/NextJs/" itemprop="url" rel="index"><span itemprop="name">NextJs</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/02/Next-js-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/02/Next-js-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="next-js-공식문서-따라만들기"><a href="#next-js-공식문서-따라만들기" class="headerlink" title="next.js 공식문서 따라만들기"></a>next.js 공식문서 따라만들기</h1><h2 id="next-js"><a href="#next-js" class="headerlink" title="next.js"></a>next.js</h2><p>nextjs는 React로 만드는 서버사이드 렌더링(Server Side Rendering) 프레임워크</p>
+<h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><p>클라이언트로 전달될 HTML 파일 내용(일부를) 미리 그려서 내려주는 것</p>
+<ul>
+<li>클라이언트 렌더링의 속도를 빠르게 하여, 사용자 체감 속도 증진</li>
+<li>검색 엔진이 JavaScript를 실행하지 않고 크롤링 가능</li>
+</ul>
+<p>✅ 기본적으로 React는 CSR (Client Side Rendering)을 한다.  </p>
+<ul>
+<li>처음 웹사이트를 요청했을때 빈 html을 가져와 javasciprt를 로딩 한다<br>리액트는 index.html의 root div 안의 모든것이 javascript로 그려지기 때문에<br>검색엔진은 웹사이트를 분석하기 힘들다</li>
+</ul>
+<p>실제 React로 만든 사이트를 자바스크립트를 사용하지 않고 load하면 페이지에 아무것도 표시 되지 않는다.</p>
+<p><img src="/../images/next-js/04.gif"></p>
+<p>root div에도 아무것도 그려지지 않는다</p>
+<img src="/2022/06/02/Next-js-1/01.png" class="">
+
+<p>반면 Next.js는 서버측에서 html파일 내용(일부를)미리 그려서 내려주기 때문에 화면이 표시가 된다</p>
+<p><img src="/../images/next-js/05.gif"><br><img src="/../images/next-js/06.gif">  </p>
+<img src="/2022/06/02/Next-js-1/02.png" class="">
+
+<p>👍 크롬 개발자도구에서 javascript사용 중지를 했음에도 html이 그려져 있다</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/02/Next-js-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/30/react-movie-app-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1265,106 +1387,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/18/fetch-data-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/18/fetch-data-error/" class="post-title-link" itemprop="url">error)fetch data error</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-18 00:18:14 / Modified: 00:34:15" itemprop="dateCreated datePublished" datetime="2022-05-18T00:18:14+09:00">2022-05-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/18/fetch-data-error/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/18/fetch-data-error/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="data-받아와서-맵"><a href="#data-받아와서-맵" class="headerlink" title="data 받아와서 맵"></a>data 받아와서 맵</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">DailyList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(</span><br><span class="line">        <span class="string">&#x27;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4b41cea6-0a74-4f33-86b8-718f24260cc3/data.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220517%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220517T145911Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5156d7c9add92e724823ada0a623f7f270b0b051ae0700d5c3eda2da5775bbee&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22data.json%22&amp;x-id=GetObject&#x27;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">const</span> dataArr = res.<span class="property">data</span>;</span><br><span class="line">      <span class="title function_">setData</span>(dataArr);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(dataArr);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">fetchData</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data.map((e) =&gt; e.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ToyProject를 리액트로 만들어보기 위해서 데이터를 먼저 받아와봤다<br>콘솔로도 받아와지는게 잘 찍히는데 출력해보기 위해서 map을 써봤더니 두둥.. 오류?  </p>
-<img src="/2022/05/18/fetch-data-error/01.png" class="">
-
-<img src="/2022/05/18/fetch-data-error/02.png" class="">
-
-<p>검색 해보니 </p>
-<ol>
-<li>컴포넌트의 상태값 (data) 의 시작값은 null이다</li>
-<li>비동기적으로 데이터를 처리할 때, 컴포넌트는 적어도 한 번, 데이터가 불러지기 전에 렌더링 된다<br>이기 때문이다..</li>
-</ol>
-<p>해결법은 논리연산자 &amp;&amp; 을 사용해 조건이 참이면 렌더링 되게 해주면 된다고 한다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">DailyList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(</span><br><span class="line">        <span class="string">&#x27;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4b41cea6-0a74-4f33-86b8-718f24260cc3/data.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220517%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220517T145911Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5156d7c9add92e724823ada0a623f7f270b0b051ae0700d5c3eda2da5775bbee&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22data.json%22&amp;x-id=GetObject&#x27;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">const</span> dataArr = res.<span class="property">data</span>;</span><br><span class="line">      <span class="title function_">setData</span>(dataArr);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(dataArr);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">fetchData</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;data &amp;&amp; data.map((e) =&gt; e.date)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2022/05/18/fetch-data-error/03.png" class="">  
-<p>잘 출력 된다..</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1434,7 +1456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

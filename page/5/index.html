@@ -160,6 +160,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/04/React-ref/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/04/React-ref/" class="post-title-link" itemprop="url">React ref</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-04 14:24:08 / Modified: 14:34:11" itemprop="dateCreated datePublished" datetime="2022-05-04T14:24:08+09:00">2022-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/04/React-ref/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/04/React-ref/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="React-useRef-hook"><a href="#React-useRef-hook" class="headerlink" title="React.useRef hook"></a>React.useRef hook</h1><p>ref로 DOM 다루기<br>리액트를 사용하는 프로젝트에서 가끔씩 DOM을 직접 선택해야 하는 상황이 발생한다.<br>그럴때 리액트에서 ref를 사용한다  </p>
+<blockquote>
+<p>Vanilla js -&gt; document.get<del>&#x2F; documnet.query</del><br>React -&gt; useRef &#x2F; ref</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> inputRef = <span class="title class_">React</span>.<span class="title function_">useRef</span>()</span><br><span class="line">    <span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      inputRef.<span class="property">current</span>.<span class="title function_">focus</span>()</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>useRef()를 inputRef 변수에 넣고, 실제 input에다 ref값으로 설정해준다  </li>
+<li>ref객체의 .current 값은 원하는 DOM을 가르키게 된다</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/04/2022-05-04-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1163,108 +1257,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/2022-05-01-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/01/2022-05-01-TIL/" class="post-title-link" itemprop="url">Object.is()</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-01 15:36:08" itemprop="dateCreated datePublished" datetime="2022-05-01T15:36:08+09:00">2022-05-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-21 15:50:32" itemprop="dateModified" datetime="2022-05-21T15:50:32+09:00">2022-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/01/2022-05-01-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/2022-05-01-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h1><p>Object.is()는 인자로 받는 두 값이 같은지 확인해서 boolean으로 반환한다</p>
-<h2 id="구문"><a href="#구문" class="headerlink" title="구문"></a>구문</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(value1, value2)</span><br><span class="line"></span><br><span class="line"><span class="comment">// true or false</span></span><br></pre></td></tr></table></figure>
-<h2 id="예제"><a href="#예제" class="headerlink" title="예제"></a>예제</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>);     <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="variable language_">window</span>, <span class="variable language_">window</span>);   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>);     <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>([], []);           <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(test, test);       <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="literal">null</span>, <span class="literal">null</span>);       <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 특별한 경우</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="number">0</span>, -<span class="number">0</span>);            <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(-<span class="number">0</span>, -<span class="number">0</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, <span class="number">0</span>/<span class="number">0</span>);         <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1334,7 +1326,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

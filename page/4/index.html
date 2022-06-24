@@ -160,6 +160,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/13/type-compatibility/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/13/type-compatibility/" class="post-title-link" itemprop="url">타입-호환성</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-13 00:40:39 / Modified: 00:40:58" itemprop="dateCreated datePublished" datetime="2022-05-13T00:40:39+09:00">2022-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/13/type-compatibility/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/type-compatibility/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="타입-호환성-Type-Compatibility"><a href="#타입-호환성-Type-Compatibility" class="headerlink" title="타입 호환성 (Type Compatibility)"></a>타입 호환성 (Type Compatibility)</h1><h2 id="서브-타입-1"><a href="#서브-타입-1" class="headerlink" title="서브 타입(1)"></a>서브 타입(1)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sub1 타입은 sup1 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub1</span>: <span class="number">1</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup1</span>: <span class="built_in">number</span> = sub1;</span><br><span class="line">sub1 = sup1 <span class="comment">//error! Type &#x27;number&#x27; is not assignable to type &#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub2 타입은 sup2 타입의 서브 타입이다</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub2</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup2</span>: <span class="built_in">object</span> = sub2; <span class="comment">// sup2에는 sub2를 할당 할 수 있다</span></span><br><span class="line">sub2 = sup2 </span><br><span class="line"><span class="comment">// error! Type &#x27;&#123;&#125;&#x27; is missing the following properties from type &#x27;number[]&#x27;:length, pop, push, concat, and 16 more.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub3 타입은 sup3 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub3</span>: [<span class="built_in">number</span>, <span class="built_in">number</span>] = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup3</span>: <span class="built_in">number</span>[] = sub3; <span class="comment">// sup3에 sub3 을 할당 할 수 있다</span></span><br><span class="line">sub3 = sup3</span><br><span class="line"><span class="comment">// error! Type &#x27;number[]&#x27; is not assignable to type &#x27;[number, number]&#x27;. Target requires 2 element(s) but source may have fewer.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="서브-타입-2"><a href="#서브-타입-2" class="headerlink" title="서브 타입(2)"></a>서브 타입(2)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sub4 타입은 sup4 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub4</span>: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup4</span>: <span class="built_in">any</span> = sub4; <span class="comment">// any는 어떤것도 들어갈 수 있다</span></span><br><span class="line">sub4 = sup4; <span class="comment">// 반대의 경우도 마찬가지</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sub5 타입은 sup5 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub5</span>: <span class="built_in">never</span> = <span class="number">0</span> <span class="keyword">as</span> <span class="built_in">never</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup5</span>: <span class="built_in">number</span> = sub5; <span class="comment">// number에 포함 될 수 있지만 반대의 경우 문제가 된다</span></span><br><span class="line">sub5 = sup5; <span class="comment">// error! Type &#x27;number&#x27; is not assignable to type &#x27;never&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">eat</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sub6 타입은 sup6 타입의 서브 타입이다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub6</span>: <span class="title class_">Dog</span> = <span class="keyword">new</span> <span class="title class_">Dog</span>()</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup6</span>: <span class="title class_">Animal</span> = sub6;</span><br><span class="line">sub6 = sup6; <span class="comment">// error! Property &#x27;eat&#x27; is missing in type &#x27;SubAnimal&#x27; but required in type &#x27;SubDog&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-같거나-서브-타입인-경우-할당이-가능하다-x3D-gt-공변"><a href="#1-같거나-서브-타입인-경우-할당이-가능하다-x3D-gt-공변" class="headerlink" title="1. 같거나 서브 타입인 경우, 할당이 가능하다. &#x3D;&gt; 공변"></a>1. 같거나 서브 타입인 경우, 할당이 가능하다. &#x3D;&gt; 공변</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// primitive type</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub7</span>: <span class="built_in">string</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup7</span>: <span class="built_in">string</span> | <span class="built_in">number</span> = sub7;</span><br><span class="line"></span><br><span class="line"><span class="comment">// object - 각각의 프로퍼티가 대응하는 프로퍼티와 같거나 서브타입이어야 한다.</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub8</span>: &#123; <span class="attr">a</span>: <span class="built_in">string</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125; =&#123;<span class="attr">a</span>: <span class="string">&#x27;&#x27;</span>, <span class="attr">b</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup8</span>: &#123; <span class="attr">a</span>: <span class="built_in">string</span> | <span class="built_in">number</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125; = sub8;</span><br><span class="line"></span><br><span class="line"><span class="comment">// array - object 와 마찬가지</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sub9</span>: <span class="title class_">Array</span>&lt;&#123; <span class="attr">a</span>: <span class="built_in">string</span>; <span class="attr">b</span>:<span class="built_in">number</span>&#125;&gt; =[&#123;<span class="attr">a</span>: <span class="string">&#x27;&#x27;</span>, <span class="attr">b</span>: <span class="number">1</span>&#125;]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">sup9</span>: <span class="title class_">Array</span>&lt;&#123; <span class="attr">a</span>: <span class="built_in">string</span> | <span class="built_in">number</span>; <span class="attr">b</span>: <span class="built_in">number</span>&#125;&gt; = sub8;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/13/type-compatibility/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/12/Typescript-Interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1090,100 +1186,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/04/React-ref/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/04/React-ref/" class="post-title-link" itemprop="url">React ref</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-04 14:24:08 / Modified: 14:34:11" itemprop="dateCreated datePublished" datetime="2022-05-04T14:24:08+09:00">2022-05-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/04/React-ref/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/04/React-ref/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React-useRef-hook"><a href="#React-useRef-hook" class="headerlink" title="React.useRef hook"></a>React.useRef hook</h1><p>ref로 DOM 다루기<br>리액트를 사용하는 프로젝트에서 가끔씩 DOM을 직접 선택해야 하는 상황이 발생한다.<br>그럴때 리액트에서 ref를 사용한다  </p>
-<blockquote>
-<p>Vanilla js -&gt; document.get<del>&#x2F; documnet.query</del><br>React -&gt; useRef &#x2F; ref</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> inputRef = <span class="title class_">React</span>.<span class="title function_">useRef</span>()</span><br><span class="line">    <span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      inputRef.<span class="property">current</span>.<span class="title function_">focus</span>()</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>useRef()를 inputRef 변수에 넣고, 실제 input에다 ref값으로 설정해준다  </li>
-<li>ref객체의 .current 값은 원하는 DOM을 가르키게 된다</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1253,7 +1255,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
