@@ -30,8 +30,10 @@
 <meta property="og:description" content="Final-project 012022.06.25 새벽..   본격적으로 final project가 시작되었다..아직 기획단계라서 디자인도 나오진 않았지만미리 API를 받아 코드를 작성 해 볼 수 있었다..  맨 처음 이 프로젝트를 선택 할 때 많은 데이터를 다룰 수 있어서 선택 했는데럴수가.. 데이터가 너무 많다   검색을 하면 데이터에서 맞는 키워드를 화">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://sacultang.github.io/2022/06/25/Final-Project/01.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/25/Final-Project/02.png">
+<meta property="og:image" content="https://sacultang.github.io/2022/06/25/Final-Project/03.png">
 <meta property="article:published_time" content="2022-06-24T16:43:32.000Z">
-<meta property="article:modified_time" content="2022-06-24T16:48:33.000Z">
+<meta property="article:modified_time" content="2022-06-26T12:23:10.000Z">
 <meta property="article:author" content="OH YJ">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -190,10 +192,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-25 01:43:32 / Modified: 01:48:33" itemprop="dateCreated datePublished" datetime="2022-06-25T01:43:32+09:00">2022-06-25</time>
+              <time title="Created: 2022-06-25 01:43:32" itemprop="dateCreated datePublished" datetime="2022-06-25T01:43:32+09:00">2022-06-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-26 21:23:10" itemprop="dateModified" datetime="2022-06-26T21:23:10+09:00">2022-06-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,7 +245,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Final-project-01"><a href="#Final-project-01" class="headerlink" title="Final-project 01"></a>Final-project 01</h1><h2 id="2022-06-25-새벽"><a href="#2022-06-25-새벽" class="headerlink" title="2022.06.25 새벽.."></a>2022.06.25 새벽..</h2><img src="/2022/06/25/Final-Project/01.png" class="">
+        <h1 id="Final-project-01"><a href="#Final-project-01" class="headerlink" title="Final-project 01"></a>Final-project 01</h1><h3 id="2022-06-25-새벽"><a href="#2022-06-25-새벽" class="headerlink" title="2022.06.25 새벽.."></a>2022.06.25 새벽..</h3><img src="/2022/06/25/Final-Project/01.png" class="">
 
 <ul>
 <li><p>본격적으로 final project가 시작되었다..<br>아직 기획단계라서 디자인도 나오진 않았지만<br>미리 API를 받아 코드를 작성 해 볼 수 있었다..</p>
@@ -246,6 +254,22 @@
 </li>
 </ul>
 <p>검색을 하면 데이터에서 맞는 키워드를 화면에 띄워줘야 하는데<br>데이터양이 많아서 쓰로틀링이 너무 걸린다..<br>어떻게 해결해야 하나<br>저 에러 메세지 조차 모든 데이터를 필터링 한 거도 아니다<br>기업측에서 보내준 데모사이트에서는 바로바로 필터링돼서 화면에 출력 되던데<br>어떻게 하는거지..?</p>
+<p>lodash 라이브러리를 사용해서 filter하면 좀 더 빠르다 해서 해봤는데<br>차이가 있는지 모르겠다 -. - </p>
+<h3 id="2022-06-26"><a href="#2022-06-26" class="headerlink" title="2022.06.26"></a>2022.06.26</h3><ol>
+<li>어찌어찌어찌 키워드를 에러 없이 띄우는데 까지는 성공을 했다</li>
+<li>처음보다는 낫지만 아직 성능이슈가 있다 첫 글자를 입력하면 쓰로틀링이 걸린다</li>
+<li>new Map() 이나 Set()을 이용해서 필터링을 하는 방법을 공부 해봐야겠다</li>
+<li>정규식은 어렵다</li>
+</ol>
+<p>정규식에 변수를 넣기 위해 검색 해보았다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`\s(<span class="subst">$&#123;keyword&#125;</span>)+|(<span class="subst">$&#123;keyword&#125;</span>)+`</span>, <span class="string">&quot;im&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> regex.<span class="title function_">test</span>(item.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+<p>일반적인 자바스크립트 보간법으로 변수를 넣어 줄 수 있다.</p>
+<img src="/2022/06/25/Final-Project/02.png" class="">
+
+<p>첫 시작과 중간에 같은 단어가 있으면 첫 단어를 찾지 못한다는 점이 문제였다</p>
+<img src="/2022/06/25/Final-Project/03.png" class="">
+
+<p><code>|</code>를 이용해서 정규식을 추가해 줄 수 있었다..</p>
 
     </div>
 
@@ -333,7 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Final-project-01"><span class="nav-number">1.</span> <span class="nav-text">Final-project 01</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-06-25-%EC%83%88%EB%B2%BD"><span class="nav-number">1.1.</span> <span class="nav-text">2022.06.25 새벽..</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Final-project-01"><span class="nav-number">1.</span> <span class="nav-text">Final-project 01</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2022-06-25-%EC%83%88%EB%B2%BD"><span class="nav-number">1.0.1.</span> <span class="nav-text">2022.06.25 새벽..</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2022-06-26"><span class="nav-number">1.0.2.</span> <span class="nav-text">2022.06.26</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

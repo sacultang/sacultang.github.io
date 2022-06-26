@@ -9,7 +9,7 @@
     <atom:link href="https://sacultang.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 24 Jun 2022 16:48:33 GMT</pubDate>
+    <pubDate>Sun, 26 Jun 2022 12:23:10 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -20,12 +20,12 @@
       
         
         
-      <description>&lt;h1 id=&quot;Final-project-01&quot;&gt;&lt;a href=&quot;#Final-project-01&quot; class=&quot;headerlink&quot; title=&quot;Final-project 01&quot;&gt;&lt;/a&gt;Final-project 01&lt;/h1&gt;&lt;h2 id=&quot;2022-06-2</description>
+      <description>&lt;h1 id=&quot;Final-project-01&quot;&gt;&lt;a href=&quot;#Final-project-01&quot; class=&quot;headerlink&quot; title=&quot;Final-project 01&quot;&gt;&lt;/a&gt;Final-project 01&lt;/h1&gt;&lt;h3 id=&quot;2022-06-2</description>
         
       
       
       
-      <content:encoded><![CDATA[<h1 id="Final-project-01"><a href="#Final-project-01" class="headerlink" title="Final-project 01"></a>Final-project 01</h1><h2 id="2022-06-25-새벽"><a href="#2022-06-25-새벽" class="headerlink" title="2022.06.25 새벽.."></a>2022.06.25 새벽..</h2><img src="/2022/06/25/Final-Project/01.png" class=""><ul><li><p>본격적으로 final project가 시작되었다..<br>아직 기획단계라서 디자인도 나오진 않았지만<br>미리 API를 받아 코드를 작성 해 볼 수 있었다..</p></li><li><p>맨 처음 이 프로젝트를 선택 할 때 많은 데이터를 다룰 수 있어서 선택 했는데<br>럴수가.. 데이터가 너무 많다</p></li></ul><p>검색을 하면 데이터에서 맞는 키워드를 화면에 띄워줘야 하는데<br>데이터양이 많아서 쓰로틀링이 너무 걸린다..<br>어떻게 해결해야 하나<br>저 에러 메세지 조차 모든 데이터를 필터링 한 거도 아니다<br>기업측에서 보내준 데모사이트에서는 바로바로 필터링돼서 화면에 출력 되던데<br>어떻게 하는거지..?</p>]]></content:encoded>
+      <content:encoded><![CDATA[<h1 id="Final-project-01"><a href="#Final-project-01" class="headerlink" title="Final-project 01"></a>Final-project 01</h1><h3 id="2022-06-25-새벽"><a href="#2022-06-25-새벽" class="headerlink" title="2022.06.25 새벽.."></a>2022.06.25 새벽..</h3><img src="/2022/06/25/Final-Project/01.png" class=""><ul><li><p>본격적으로 final project가 시작되었다..<br>아직 기획단계라서 디자인도 나오진 않았지만<br>미리 API를 받아 코드를 작성 해 볼 수 있었다..</p></li><li><p>맨 처음 이 프로젝트를 선택 할 때 많은 데이터를 다룰 수 있어서 선택 했는데<br>럴수가.. 데이터가 너무 많다</p></li></ul><p>검색을 하면 데이터에서 맞는 키워드를 화면에 띄워줘야 하는데<br>데이터양이 많아서 쓰로틀링이 너무 걸린다..<br>어떻게 해결해야 하나<br>저 에러 메세지 조차 모든 데이터를 필터링 한 거도 아니다<br>기업측에서 보내준 데모사이트에서는 바로바로 필터링돼서 화면에 출력 되던데<br>어떻게 하는거지..?</p><p>lodash 라이브러리를 사용해서 filter하면 좀 더 빠르다 해서 해봤는데<br>차이가 있는지 모르겠다 -. - </p><h3 id="2022-06-26"><a href="#2022-06-26" class="headerlink" title="2022.06.26"></a>2022.06.26</h3><ol><li>어찌어찌어찌 키워드를 에러 없이 띄우는데 까지는 성공을 했다</li><li>처음보다는 낫지만 아직 성능이슈가 있다 첫 글자를 입력하면 쓰로틀링이 걸린다</li><li>new Map() 이나 Set()을 이용해서 필터링을 하는 방법을 공부 해봐야겠다</li><li>정규식은 어렵다</li></ol><p>정규식에 변수를 넣기 위해 검색 해보았다</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`\s(<span class="subst">$&#123;keyword&#125;</span>)+|(<span class="subst">$&#123;keyword&#125;</span>)+`</span>, <span class="string">&quot;im&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> regex.<span class="title function_">test</span>(item.<span class="property">name</span>);</span><br></pre></td></tr></table></figure><p>일반적인 자바스크립트 보간법으로 변수를 넣어 줄 수 있다.</p><img src="/2022/06/25/Final-Project/02.png" class=""><p>첫 시작과 중간에 같은 단어가 있으면 첫 단어를 찾지 못한다는 점이 문제였다</p><img src="/2022/06/25/Final-Project/03.png" class=""><p><code>|</code>를 이용해서 정규식을 추가해 줄 수 있었다..</p>]]></content:encoded>
       
       
       <category domain="https://sacultang.github.io/categories/Web/">Web</category>
