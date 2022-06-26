@@ -160,6 +160,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/React-router-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/01/React-router-dom/" class="post-title-link" itemprop="url">React-router-dom</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-01 20:45:45" itemprop="dateCreated datePublished" datetime="2022-05-01T20:45:45+09:00">2022-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-02 12:50:08" itemprop="dateModified" datetime="2022-05-02T12:50:08+09:00">2022-05-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/01/React-router-dom/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/React-router-dom/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="React-router-dom-v5"><a href="#React-router-dom-v5" class="headerlink" title="React-router-dom v5"></a>React-router-dom v5</h1><ol>
+<li>브라우저에서 최초에 root 경로로 요청을하면,</li>
+<li>React Web App을 내려준다</li>
+<li>내려받은 App 에서 다른 페이지로 이동하는 동작을 수행하면,</li>
+<li>새로운 경로에 맞는 컴포넌트를 보여준다</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i react-router-dom</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cra에 기본 내장된 패키지가 아님</li>
+<li>react-router-dom은 facebook의 공식 패키지가 아니다</li>
+</ul>
+<h2 id="특정-경로에서-보여줄-컴포넌트-준비"><a href="#특정-경로에서-보여줄-컴포넌트-준비" class="headerlink" title="특정 경로에서 보여줄 컴포넌트 준비"></a>특정 경로에서 보여줄 컴포넌트 준비</h2><ul>
+<li>‘&#x2F;‘ &#x3D;&gt; Home 컴포넌트</li>
+<li>‘&#x2F;profile’ &#x3D;&gt; Profile 컴포넌트</li>
+<li>‘&#x2F;about’ &#x3D;&gt; About 컴포넌트</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span>, <span class="title class_">Route</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Profile</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/Profile&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&#x27;./pages/About&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/profile&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;Profile&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#x27;/about&#x27;</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/01/React-router-dom/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/01/2022-05-01-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1182,102 +1297,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/04/23/Game-WORDLE-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/23/Game-WORDLE-1/" class="post-title-link" itemprop="url">Game-WORDLE part.2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-04-23 20:14:50 / Modified: 21:39:33" itemprop="dateCreated datePublished" datetime="2022-04-23T20:14:50+09:00">2022-04-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/04/23/Game-WORDLE-1/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/23/Game-WORDLE-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="키보드-버튼-추가하기"><a href="#키보드-버튼-추가하기" class="headerlink" title="키보드 버튼 추가하기"></a>키보드 버튼 추가하기</h1><p>html구조</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;game-keyboard&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;first-row&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>q<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>w<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>e<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>r<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>t<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>y<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>u<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>i<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>o<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>p<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;secon-row&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>a<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>s<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>d<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>f<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>h<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>j<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>k<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>l<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;thir-row&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn del&quot;</span>&gt;</span>Del<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>z<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>x<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>c<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>v<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>b<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>n<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn text-btn&quot;</span>&gt;</span>m<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;key-btn enter&quot;</span>&gt;</span>Enter<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="버튼-가져오기"><a href="#버튼-가져오기" class="headerlink" title="버튼 가져오기"></a>버튼 가져오기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> buttons = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.game-keyboard .key-btn&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> delBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.del&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> enterBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.enter&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>querySelectorAll로 가져오면 유사배열이기때문에 배열메소드가 안 먹힐때가 있다</p>
-<p>Arry.from()으로 배열로 만들어 준다</p>
-<h2 id="버튼-클릭-이벤트"><a href="#버튼-클릭-이벤트" class="headerlink" title="버튼 클릭 이벤트"></a>버튼 클릭 이벤트</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">buttons.<span class="title function_">map</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">	e.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">btn</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> btnTarget = btn.<span class="property">target</span></span><br><span class="line">		<span class="comment">// event.target 은 누른 버튼이 무엇인지 알려준다</span></span><br><span class="line">		<span class="keyword">let</span> btnText = btn.<span class="property">target</span>.<span class="property">textContent</span></span><br><span class="line">		<span class="comment">// 누른 버튼 안에 들어있는 텍스트를 저장한다</span></span><br><span class="line">		<span class="keyword">let</span> upperCaseBtn = btnText.<span class="title function_">toUpperCase</span>()</span><br><span class="line">		<span class="comment">// html에 버튼을 소문자로 작성 했기때문에 대문자화 해준다</span></span><br><span class="line">		<span class="comment">// 정답 단어가 대문자이기 때문에 비교시 대문자여야 한다</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (btnTarget !== delBtn &amp;&amp; btnTarget !== enterBtn) &#123;</span><br><span class="line">			<span class="comment">// querySelectoAll 로 받아온 버튼에 delete와 enter도 포함 되어있다</span></span><br><span class="line">			<span class="comment">// del 과 enter 버튼을 제외한 나머지 버튼만 동작 하도록 조건을 만들어준다</span></span><br><span class="line">			<span class="keyword">if</span> (tileNum &lt; word.<span class="property">legnth</span>) &#123;</span><br><span class="line">				<span class="keyword">let</span> curTile = rowArr[boardRow].<span class="property">children</span>[tileNum]</span><br><span class="line">				<span class="keyword">if</span> (curTile.<span class="property">textContent</span> === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">					curTile.<span class="property">textContet</span> = upperCaseBtn</span><br><span class="line">					tileNum++</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (btnTarget === delBtn) &#123;</span><br><span class="line">			<span class="keyword">if</span> (tileNum &gt; <span class="number">0</span> &amp;&amp; tileNum &lt;= word.<span class="property">legnth</span>) &#123;</span><br><span class="line">				tileNum--</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">let</span> curTile = rowArr[boardRow].<span class="property">children</span>[tileNum]</span><br><span class="line">			curTile.<span class="property">textContet</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (btnTarget === enterBtn &amp;&amp; tileNum === word.<span class="property">legnth</span>) &#123;</span><br><span class="line">			<span class="title function_">gameCheck</span>()</span><br><span class="line">			bordRow++</span><br><span class="line">			tileNum = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>안쪽의 로직은 키보드로직과 동일하다</p>
-<p>누르는 버튼의 타켓이 del 인지 enter인지 아니면 일반 텍스트 인지만 구분해주면 된다!</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1347,7 +1366,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
