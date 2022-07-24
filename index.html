@@ -160,6 +160,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/" class="post-title-link" itemprop="url">JWT 로그인</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-24 20:28:46 / Modified: 21:43:02" itemprop="dateCreated datePublished" datetime="2022-07-24T20:28:46+09:00">2022-07-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/Project/" itemprop="url" rel="index"><span itemprop="name">Project</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/24/JWT-로그인/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="JWT-로그인-방식"><a href="#JWT-로그인-방식" class="headerlink" title="JWT 로그인 방식"></a>JWT 로그인 방식</h1><p>서버에 로그인을 하면 토큰을 발급해주어<br>사용자가 서비스를 이용할때 이 토큰을 요청에 포함시켜 사용자를 인증한다.<br>근데 이 토큰엔 만료시간이 있다<br>이 프로젝트에서는 이 토큰의 만료시간이 15분이다<br>그래서 토큰이 만료되면 리프레시 토큰으로 다시 새로운 <code>access_token</code>을 발급 받아야 한다  </p>
+<p>오잉…..</p>
+<p><code>access_token</code>이 만료되면.. 리프레시 토큰으로 새롭게 발급 받으라고!?</p>
+<p>일단 로그인할때 <code>response</code> 받은 <code>access_token</code>과 <code>refresh_token</code>을 저장하자  </p>
+<h3 id="시나리오-1"><a href="#시나리오-1" class="headerlink" title="시나리오 1."></a>시나리오 1.</h3><ol>
+<li>로그인 할 때 발급 받은 access_token은 리덕스에, refresh_token은 쿠키에 저장한다</li>
+<li>hoc를 이용해 access_token이 만료되면 새롭게 발급받고 토큰이 필요한 컴포넌트에 props로 넘겨준다</li>
+</ol>
+<p>react-cookie라는 라이브러리를 통해 쿠키에 쉽게 저장 할 수 있었다  </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// settingSessions.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Cookies</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-cookie&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> cookies = <span class="keyword">new</span> <span class="title class_">Cookies</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 로그인 할때 받은 리프레시토큰을 인자로 받아 쿠키에 저장한다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">setRefreshToken</span> = (<span class="params">refreshToken</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">  <span class="keyword">const</span> expireDate = today.<span class="title function_">setDate</span>(today.<span class="title function_">getDate</span>() + <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">set</span>(<span class="string">&quot;refresh_token&quot;</span>, refreshToken, &#123;</span><br><span class="line">    <span class="attr">sameSite</span>: <span class="string">&quot;strict&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="attr">expires</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(expireDate),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 쿠키에 저장된 토큰을 가져온다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getCookieToken</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">get</span>(<span class="string">&quot;refresh_token&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 쿠키에 저장된 토큰을 삭제한다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">removeCookieToken</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">remove</span>(<span class="string">&quot;refresh_token&quot;</span>, &#123; <span class="attr">sameSite</span>: <span class="string">&quot;strict&quot;</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span> &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AccessToken.jsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect, useCallback &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useSelector, useDispatch &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getCookieToken &#125; <span class="keyword">from</span> <span class="string">&quot;@util/settingSessions&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; refreshTokenFunc &#125; <span class="keyword">from</span> <span class="string">&quot;@api/loginApi&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; setAccessTokenAction &#125; <span class="keyword">from</span> <span class="string">&quot;@redux/user/userSlice&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">AccessToken</span> = (<span class="params">SpecificComponent</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">AccessToken</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> accessToken = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">user</span>.<span class="property">accessToken</span>);</span><br><span class="line">    <span class="keyword">const</span> userLogin = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">user</span>.<span class="property">userLogin</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> getCookie = <span class="title function_">useCallback</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> refresh = <span class="keyword">await</span> <span class="title function_">getCookieToken</span>();</span><br><span class="line">      <span class="keyword">const</span> access_token = <span class="keyword">await</span> <span class="title function_">refreshTokenFunc</span>(refresh);</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">dispatch</span>(<span class="title function_">setAccessTokenAction</span>(access_token));</span><br><span class="line">    &#125;, [userLogin]);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (userLogin) &#123;</span><br><span class="line">        <span class="title function_">getCookie</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, []);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">SpecificComponent</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &#123;<span class="attr">...props</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">accessToken</span>=<span class="string">&#123;accessToken&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">userLogin</span>=<span class="string">&#123;userLogin&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">AccessToken</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">AccessToken</span>;</span><br></pre></td></tr></table></figure>
+<p>조건문 작성이 좀 이상하긴 했다.. 유저가 로그인 되어있으면 리프레시 토큰을 호출했으니<br>중간에 조건문 작성을 좀 바꿨었는데 안되서 다른 방식을 택했다…  </p>
+<h3 id="시나리오-2"><a href="#시나리오-2" class="headerlink" title="시나리오 2."></a>시나리오 2.</h3><ol>
+<li><code>axios interceptor</code>를 이용해서 토큰이 만료되면 리프레시토큰으로 다시 호출 해온다</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">clientServer.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="keyword">async</span> (response) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> (error) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">      config,</span><br><span class="line">      <span class="attr">response</span>: &#123; status &#125;,</span><br><span class="line">    &#125; = error;</span><br><span class="line">    <span class="keyword">if</span> (status === <span class="number">401</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (</span><br><span class="line">        error.<span class="property">response</span>.<span class="property">data</span>.<span class="property">msg</span> === <span class="string">&quot;Token has expired&quot;</span> ||</span><br><span class="line">        error.<span class="property">response</span>.<span class="property">data</span>.<span class="property">msg</span> === <span class="string">&quot;Missing Authorization Header&quot;</span></span><br><span class="line">      ) &#123;</span><br><span class="line">        <span class="keyword">const</span> originalRequest = config;</span><br><span class="line">        <span class="keyword">const</span> refreshToken = <span class="keyword">await</span> <span class="title function_">getCookieToken</span>();</span><br><span class="line">        <span class="keyword">const</span> access_token = <span class="keyword">await</span> <span class="title function_">refreshTokenFunc</span>(refreshToken);</span><br><span class="line"></span><br><span class="line">        clientServer.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">common</span>.<span class="property">Authorization</span> = <span class="string">`Bearer <span class="subst">$&#123;access_token&#125;</span>`</span>;</span><br><span class="line">        originalRequest.<span class="property">headers</span>.<span class="property">Authorization</span> = <span class="string">`Bearer <span class="subst">$&#123;access_token&#125;</span>`</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">axios</span>(originalRequest);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><code>interceptor</code>를 이용한 refresh 토큰을 검색해보니 여러 정보가 떴다<br>보면서 작성하긴 했는데 이게 제대로 되는지 사실 애매했다.<br>어떨때는 잘 불러오는데 어떨때는 …. 새로고침을 해줘야 토큰을 다시 불러 올 때도 있었다.<br>이 <code>axios interceptor</code>에 대해서 좀 더 공부해 볼 필요가 있다</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/Final-Project-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1148,108 +1257,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/12/2022-06-12-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/12/2022-06-12-TIL/" class="post-title-link" itemprop="url">2022-06-12-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-06-12 00:35:59 / Modified: 01:32:20" itemprop="dateCreated datePublished" datetime="2022-06-12T00:35:59+09:00">2022-06-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-06/" itemprop="url" rel="index"><span itemprop="name">2022.06</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/06/12/2022-06-12-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/12/2022-06-12-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="검색-요청-최적화"><a href="#검색-요청-최적화" class="headerlink" title="검색 요청 최적화"></a>검색 요청 최적화</h1><p>input에 타이핑을 칠때마다 리렌더링이 되면서 데이터요청이 된다..</p>
-<p>조건문과 setTimeout으로 인풋에 입력이 끝나면 데이터요청을 하도록 작성</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="variable constant_">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [error, setError] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [news, setNews] = useState&lt;<span class="title class_">News</span>[]&gt;([]);</span><br><span class="line">  <span class="keyword">const</span> [hasMore, setHasMore] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [search, setSearch] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> [page, setPage] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 데이터 요청</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">getData</span> = (<span class="params">query: <span class="built_in">string</span>, page: <span class="built_in">number</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setLoading</span>(<span class="literal">true</span>);</span><br><span class="line">    <span class="title function_">setError</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">axios</span>(&#123;</span><br><span class="line">      <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">      <span class="attr">url</span>: <span class="string">`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=<span class="subst">$&#123;API_KEY&#125;</span>`</span>,</span><br><span class="line">      <span class="attr">params</span>: &#123; <span class="attr">q</span>: query, page &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// console.log(res.data.response.docs);</span></span><br><span class="line">        <span class="title function_">setNews</span>(<span class="function">(<span class="params">prevNews</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> [...<span class="keyword">new</span> <span class="title class_">Set</span>([...prevNews, ...res.<span class="property">data</span>.<span class="property">response</span>.<span class="property">docs</span>])];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="title function_">setHasMore</span>(res.<span class="property">data</span>.<span class="property">response</span>.<span class="property">docs</span>.<span class="property">length</span> &gt; <span class="number">0</span>);</span><br><span class="line">        <span class="title function_">setLoading</span>(<span class="literal">false</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (axios.<span class="title function_">isCancel</span>(e)) <span class="keyword">return</span>;</span><br><span class="line">        <span class="title function_">setError</span>(<span class="literal">true</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setNews</span>([]);</span><br><span class="line">  &#125;, [search]);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (search !== <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!loading) &#123;</span><br><span class="line">        <span class="keyword">const</span> timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">getData</span>(search, page);</span><br><span class="line">          <span class="title function_">setPage</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;, <span class="number">1500</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [search, page]);</span><br></pre></td></tr></table></figure>
-
-<p>먼저 데이터요청 함수 <code>getData</code>를 작성해주고<br><code>useEffect</code> 안에서 함수를 호출 한다.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="title function_">getData</span>(search,page)</span><br><span class="line">&#125;,[search,page])</span><br></pre></td></tr></table></figure>
-<p>이렇게 작성하고 나면 문제점 </p>
-<ol>
-<li>돔이 마운트 될때 useEffect가 한번 실행되면서 검색어를 쓰지 않아도 검색이 시작된다는 점.</li>
-<li>setSearch로 인풋에서 value를 받아올때마다 리렌더링이 되면서 타이핑 갯수만큼 검색요청이 일어난다는 점.</li>
-</ol>
-<p><strong>조건문과 setTimeout으로 해결</strong></p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(search !== <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// search가 비어있지 않으면 요청 시작</span></span><br><span class="line">    <span class="keyword">if</span>(!loading) &#123;</span><br><span class="line">      <span class="comment">// loading이 false이면 요청 시작</span></span><br><span class="line">      <span class="keyword">const</span> <span class="title class_">Timer</span> = <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">// setTimeout으로 1.5초 후에 getData() 호출</span></span><br><span class="line">        <span class="title function_">getData</span>(search,page)</span><br><span class="line">      &#125;,<span class="number">1500</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">// cleanUp 으로 clearTimeout</span></span><br><span class="line">      <span class="comment">// cleanUp 을 안해주면 그냥 1.5초후에 타이핑 갯수만큼 요청이 일어난다</span></span><br><span class="line">      <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,[search,page])</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1319,7 +1326,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
