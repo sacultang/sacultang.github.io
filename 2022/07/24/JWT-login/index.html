@@ -25,7 +25,7 @@
   <meta name="description" content="JWT 로그인 방식서버에 로그인을 하면 토큰을 발급해주어사용자가 서비스를 이용할때 이 토큰을 요청에 포함시켜 사용자를 인증한다.근데 이 토큰엔 만료시간이 있다이 프로젝트에서는 이 토큰의 만료시간이 15분이다그래서 토큰이 만료되면 리프레시 토큰으로 다시 새로운 access_token을 발급 받아야 한다   오잉….. access_token이 만료되면.. 리프">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JWT 로그인">
-<meta property="og:url" content="https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/index.html">
+<meta property="og:url" content="https://sacultang.github.io/2022/07/24/JWT-login/index.html">
 <meta property="og:site_name" content="ㅇㅇㅈ Blog">
 <meta property="og:description" content="JWT 로그인 방식서버에 로그인을 하면 토큰을 발급해주어사용자가 서비스를 이용할때 이 토큰을 요청에 포함시켜 사용자를 인증한다.근데 이 토큰엔 만료시간이 있다이 프로젝트에서는 이 토큰의 만료시간이 15분이다그래서 토큰이 만료되면 리프레시 토큰으로 다시 새로운 access_token을 발급 받아야 한다   오잉….. access_token이 만료되면.. 리프">
 <meta property="og:locale" content="en_US">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/">
+<link rel="canonical" href="https://sacultang.github.io/2022/07/24/JWT-login/">
 
 
 <script id="page-configurations">
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-login/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -219,8 +219,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/24/JWT-로그인/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/07/24/JWT-login/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/24/JWT-login/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -475,8 +475,8 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/";
-    this.page.identifier = "2022/07/24/JWT-로그인/";
+    this.page.url = "https://sacultang.github.io/2022/07/24/JWT-login/";
+    this.page.identifier = "2022/07/24/JWT-login/";
     this.page.title = "JWT 로그인";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {

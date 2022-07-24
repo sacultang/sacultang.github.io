@@ -14,8 +14,8 @@
     
     <item>
       <title>JWT 로그인</title>
-      <link>https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/</link>
-      <guid>https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/</guid>
+      <link>https://sacultang.github.io/2022/07/24/JWT-login/</link>
+      <guid>https://sacultang.github.io/2022/07/24/JWT-login/</guid>
       <pubDate>Sun, 24 Jul 2022 11:28:46 GMT</pubDate>
       
       <description>&lt;h1 id=&quot;JWT-로그인-방식&quot;&gt;&lt;a href=&quot;#JWT-로그인-방식&quot; class=&quot;headerlink&quot; title=&quot;JWT 로그인 방식&quot;&gt;&lt;/a&gt;JWT 로그인 방식&lt;/h1&gt;&lt;p&gt;서버에 로그인을 하면 토큰을 발급해주어&lt;br&gt;사용자가 서비스를 이용할때 이 토큰을 요청에 포함시켜 사용자를 인증한다.&lt;br&gt;근데 이 토큰엔 만료시간이 있다&lt;br&gt;이 프로젝트에서는 이 토큰의 만료시간이 15분이다&lt;br&gt;그래서 토큰이 만료되면 리프레시 토큰으로 다시 새로운 &lt;code&gt;access_token&lt;/code&gt;을 발급 받아야 한다  &lt;/p&gt;
@@ -44,7 +44,7 @@
       <category domain="https://sacultang.github.io/tags/React/">React</category>
       
       
-      <comments>https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/#disqus_thread</comments>
+      <comments>https://sacultang.github.io/2022/07/24/JWT-login/#disqus_thread</comments>
       
     </item>
     

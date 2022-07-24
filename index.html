@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-login/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/" class="post-title-link" itemprop="url">JWT 로그인</a>
+            <a href="/2022/07/24/JWT-login/" class="post-title-link" itemprop="url">JWT 로그인</a>
         </h2>
 
         <div class="post-meta">
@@ -214,8 +214,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/24/JWT-로그인/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/07/24/JWT-login/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/24/JWT-login/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -242,7 +242,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// settingSessions.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Cookies</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-cookie&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> cookies = <span class="keyword">new</span> <span class="title class_">Cookies</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 로그인 할때 받은 리프레시토큰을 인자로 받아 쿠키에 저장한다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">setRefreshToken</span> = (<span class="params">refreshToken</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">  <span class="keyword">const</span> expireDate = today.<span class="title function_">setDate</span>(today.<span class="title function_">getDate</span>() + <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">set</span>(<span class="string">&quot;refresh_token&quot;</span>, refreshToken, &#123;</span><br><span class="line">    <span class="attr">sameSite</span>: <span class="string">&quot;strict&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="attr">expires</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(expireDate),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 쿠키에 저장된 토큰을 가져온다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getCookieToken</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">get</span>(<span class="string">&quot;refresh_token&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 쿠키에 저장된 토큰을 삭제한다</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">removeCookieToken</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> cookies.<span class="title function_">remove</span>(<span class="string">&quot;refresh_token&quot;</span>, &#123; <span class="attr">sameSite</span>: <span class="string">&quot;strict&quot;</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span> &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/24/JWT-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB/#more" rel="contents">
+              <a class="btn" href="/2022/07/24/JWT-login/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
