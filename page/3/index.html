@@ -160,6 +160,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/24/2022-05-24-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/24/2022-05-24-TIL/" class="post-title-link" itemprop="url">2022-05-24-TIL</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-24 13:47:34 / Modified: 15:51:25" itemprop="dateCreated datePublished" datetime="2022-05-24T13:47:34+09:00">2022-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/24/2022-05-24-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/24/2022-05-24-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="React-BootStrap-Nav-Link"><a href="#React-BootStrap-Nav-Link" class="headerlink" title="React-BootStrap Nav Link"></a>React-BootStrap Nav Link</h1><p>BootStrap Nav 링크에 React-Router-Dom NavLink 적용하기</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Navbar.Brand</span> <span class="attr">href</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span>React-Bootstrap<span class="tag">&lt;/<span class="name">Navbar.Brand</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NavBarElement</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>이런식으로 부트스랩에서 제공하는 컴포넌트로 nav를 작성하면 href 가 기본적으로 되어 있는데<br>이걸 <code>to=&#39;/&#39;</code> 이런식으로 바꾸면 제대로 작동하지가 않는다<br>그렇다고 href에 주소를 그냥 작성하면 새로고침이 일어나게 된다  </p>
+<h2 id="방법-1"><a href="#방법-1" class="headerlink" title="방법 1"></a>방법 1</h2><p>그냥 react-router-dom의 navlink를 사용하고 클래스로 bootstrap을 적용하는 것<br>그럼 페이지를 이동해도 새로고침이 일어나지 않는다 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavLink</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">className</span>=<span class="string">&#x27;navbar-brand&#x27;</span> <span class="attr">to</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          React-Bootstrap</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NavBarElement</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="방법-2"><a href="#방법-2" class="headerlink" title="방법 2"></a>방법 2</h2><p>as 를 통해 NavLink를 상속 받는것</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavLink</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         <span class="tag">&lt;<span class="name">Navbar.Brand</span> <span class="attr">as</span>=<span class="string">&#123;NavLink&#125;</span> <span class="attr">to</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          React-Bootstrap</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Navbar.Brand</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/24/virtual-keyboard/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1239,127 +1335,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/15/2022-05-15-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/15/2022-05-15-TIL/" class="post-title-link" itemprop="url">Array.reduce()</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-15 20:34:30" itemprop="dateCreated datePublished" datetime="2022-05-15T20:34:30+09:00">2022-05-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-21 15:49:43" itemprop="dateModified" datetime="2022-05-21T15:49:43+09:00">2022-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/15/2022-05-15-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/15/2022-05-15-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Array-reduce"><a href="#Array-reduce" class="headerlink" title="Array reduce()"></a>Array reduce()</h1><p>ruduce를 이요해 객체 데이터에서 특정값 더하기</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [</span><br><span class="line">  &#123;<span class="attr">name</span>:<span class="string">&#x27;Tom&#x27;</span>, <span class="attr">age</span>:<span class="number">20</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">name</span>:<span class="string">&#x27;Anna&#x27;</span>, <span class="attr">age</span>:<span class="number">30</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">name</span>:<span class="string">&#x27;Bobby&#x27;</span>, <span class="attr">age</span>:<span class="number">40</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">name</span>:<span class="string">&#x27;Cole&#x27;</span>, <span class="attr">age</span>:<span class="number">50</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sum = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc,value</span>) =&gt;</span> acc + value.<span class="property">age</span>, <span class="number">0</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br><span class="line"><span class="comment">// 140</span></span><br></pre></td></tr></table></figure>
-<h2 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">groupBy</span> = (<span class="params">data, key</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// data = 객체 배열 데이터</span></span><br><span class="line">  <span class="comment">// key = 분류할 키</span></span><br><span class="line">  <span class="keyword">return</span> data.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, el</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 초기값 &#123;&#125;</span></span><br><span class="line">    <span class="comment">// console.log(el); // data 안에 있는 각각의 객체들</span></span><br><span class="line">    acc[el[key]] = acc[el[key]] || [];</span><br><span class="line"></span><br><span class="line">    acc[el[key]].<span class="title function_">push</span>(el);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>console.log(data)</strong></p>
-<ul>
-<li>객체 배열이 들어온다</li>
-</ul>
-<img src="/2022/05/15/2022-05-15-TIL/01.png" class="">
-
-<p><strong>console.log(el)</strong></p>
-<ul>
-<li>각각의 객체</li>
-</ul>
-<img src="/2022/05/15/2022-05-15-TIL/02.png" class="">
-<ul>
-<li>키를 기준으로 그룹시켜준다 (현재는 type이 key)</li>
-</ul>
-<p><strong>console.log(acc[el[key]])</strong></p>
-<img src="/2022/05/15/2022-05-15-TIL/03.png" class="">
-<h1 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4자 이상만 필터</span></span><br><span class="line">      <span class="keyword">let</span> snacks = [<span class="string">&#x27;새우깡&#x27;</span>, <span class="string">&#x27;프링글스&#x27;</span>, <span class="string">&#x27;감자깡&#x27;</span>, <span class="string">&#x27;꿀꽈배기&#x27;</span>, <span class="string">&#x27;콘칩&#x27;</span>, <span class="string">&#x27;허니버터칩&#x27;</span>]</span><br><span class="line">      <span class="keyword">const</span> result = snacks.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.<span class="property">length</span> &gt; <span class="number">3</span>)</span><br><span class="line">      <span class="comment">// console.log(result)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 18 이상만 필터</span></span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">aboveEighteen</span> = (<span class="params">number</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> number &gt; <span class="number">18</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> numbers = [<span class="number">12</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">33</span>, <span class="number">18</span>, <span class="number">22</span>].<span class="title function_">filter</span>(aboveEighteen)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(numbers) <span class="comment">// [33, 22]</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 짝수만 필터</span></span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">isEven</span> = (<span class="params">number</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> filteredNumbers = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span>, -<span class="number">10</span>, <span class="number">22</span>, <span class="number">900</span>].<span class="title function_">filter</span>(isEven)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(filteredNumbers) <span class="comment">//[0, -10, 22, 900]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 매운 들어 갔을때만 필터</span></span><br><span class="line">      <span class="keyword">let</span> snacksTwo = [<span class="string">&#x27;새우깡&#x27;</span>, <span class="string">&#x27;프링글스&#x27;</span>, <span class="string">&#x27;감자깡&#x27;</span>, <span class="string">&#x27;꿀꽈배기&#x27;</span>, <span class="string">&#x27;콘칩&#x27;</span>, <span class="string">&#x27;허니버터칩&#x27;</span>, <span class="string">&#x27;매운 새우깡&#x27;</span>, <span class="string">&#x27;매운 감자깡&#x27;</span>]</span><br><span class="line">      <span class="keyword">const</span> <span class="title function_">filterItems</span> = (<span class="params">query</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> snacksTwo.<span class="title function_">filter</span>(<span class="function"><span class="params">snack</span> =&gt;</span> snack.<span class="title function_">indexOf</span>(query) &gt; -<span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">filterItems</span>(<span class="string">&#x27;매운&#x27;</span>)) <span class="comment">// [&#x27;매운 새우깡&#x27;, &#x27;매운 감자깡&#x27;]</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 객체 필터하기</span></span><br><span class="line">      <span class="keyword">let</span> students = [</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;james&#x27;</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&#x27;tim&#x27;</span>, <span class="attr">age</span>: <span class="number">40</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&#x27;jhon&#x27;</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">name</span>: <span class="string">&#x27;Anna&#x27;</span>, <span class="attr">age</span>: <span class="number">39</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="number">5</span>, <span class="attr">name</span>: <span class="string">&#x27;bobby&#x27;</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;,</span><br><span class="line">      ]</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> filterStudents = students.<span class="title function_">filter</span>(<span class="function"><span class="params">e</span> =&gt;</span> e.<span class="property">age</span> &gt;= <span class="number">30</span>)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(filterStudents)</span><br><span class="line">      <span class="comment">// 0: &#123;id: 1, name: &#x27;james&#x27;, age: 30&#125;</span></span><br><span class="line">      <span class="comment">// 1: &#123;id: 2, name: &#x27;tim&#x27;, age: 40&#125;</span></span><br><span class="line">      <span class="comment">// 2: &#123;id: 4, name: &#x27;Anna&#x27;, age: 39&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>데이터를 가공할때 reduce와 filter가 많이 쓰이는거 같아서 개념을 확실히 익혀둬야 할거 같다</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1425,7 +1404,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

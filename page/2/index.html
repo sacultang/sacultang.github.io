@@ -160,6 +160,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/14/2022-06-14-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/14/2022-06-14-TIL/" class="post-title-link" itemprop="url">2022-06-14-TIL</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-14 22:55:01 / Modified: 23:02:50" itemprop="dateCreated datePublished" datetime="2022-06-14T22:55:01+09:00">2022-06-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/TIL/2022-06/" itemprop="url" rel="index"><span itemprop="name">2022.06</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/14/2022-06-14-TIL/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/14/2022-06-14-TIL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="객체-배열-true-false-반환"><a href="#객체-배열-true-false-반환" class="headerlink" title="객체 배열 true false 반환"></a>객체 배열 true false 반환</h1><h2 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</h2><p>객체로 이루어진 배열에서 true false 를 반환하는 메소드</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some</a></p>
+</blockquote>
+<p>미니 프로젝트를 하다가 객체로 이루어진 배열에서 true false를 반환 해야 했는데<br>forEach로 하나씩 비교하다 보니 사이드 이펙트가 일어나면서 버그가 생겼다..</p>
+<p>some()을 이용하면 배열을 순환 후 조건에 알맞는 boolean을 반환 한다</p>
+<p>사용법은 filter()와 동일 하나, filter는 새로운 배열을 반환한다는 점이 차이점</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// checks whether an element is even</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">even</span> = (<span class="params">element</span>) =&gt; element % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array.<span class="title function_">some</span>(even));</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>실제 project에서는 여러번 사용이 되어 함수로 만들어 주었다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store에 있는 clipped배열안의 headline값과 내가 입력한 headline의 값을 비교하여 true false를 반환한다</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">clipCheck</span> = (<span class="params">clipped</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> !clipped.<span class="title function_">some</span>(<span class="function">(<span class="params">storeData</span>) =&gt;</span> storeData.<span class="property">headLine</span> === headLine);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/12/2022-06-12-TIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1228,106 +1327,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/05/24/2022-05-24-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/24/2022-05-24-TIL/" class="post-title-link" itemprop="url">2022-05-24-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-05-24 13:47:34 / Modified: 15:51:25" itemprop="dateCreated datePublished" datetime="2022-05-24T13:47:34+09:00">2022-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-05/" itemprop="url" rel="index"><span itemprop="name">2022.05</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/24/2022-05-24-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/24/2022-05-24-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="React-BootStrap-Nav-Link"><a href="#React-BootStrap-Nav-Link" class="headerlink" title="React-BootStrap Nav Link"></a>React-BootStrap Nav Link</h1><p>BootStrap Nav 링크에 React-Router-Dom NavLink 적용하기</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Navbar.Brand</span> <span class="attr">href</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span>React-Bootstrap<span class="tag">&lt;/<span class="name">Navbar.Brand</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NavBarElement</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>이런식으로 부트스랩에서 제공하는 컴포넌트로 nav를 작성하면 href 가 기본적으로 되어 있는데<br>이걸 <code>to=&#39;/&#39;</code> 이런식으로 바꾸면 제대로 작동하지가 않는다<br>그렇다고 href에 주소를 그냥 작성하면 새로고침이 일어나게 된다  </p>
-<h2 id="방법-1"><a href="#방법-1" class="headerlink" title="방법 1"></a>방법 1</h2><p>그냥 react-router-dom의 navlink를 사용하고 클래스로 bootstrap을 적용하는 것<br>그럼 페이지를 이동해도 새로고침이 일어나지 않는다 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavLink</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">className</span>=<span class="string">&#x27;navbar-brand&#x27;</span> <span class="attr">to</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          React-Bootstrap</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NavBarElement</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="방법-2"><a href="#방법-2" class="headerlink" title="방법 2"></a>방법 2</h2><p>as 를 통해 NavLink를 상속 받는것</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavLink</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Navbar</span>, <span class="title class_">Container</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">NavBarElement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Navbar</span> <span class="attr">collapseOnSelect</span> <span class="attr">expand</span>=<span class="string">&#x27;lg&#x27;</span> <span class="attr">bg</span>=<span class="string">&#x27;dark&#x27;</span> <span class="attr">variant</span>=<span class="string">&#x27;dark&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         <span class="tag">&lt;<span class="name">Navbar.Brand</span> <span class="attr">as</span>=<span class="string">&#123;NavLink&#125;</span> <span class="attr">to</span>=<span class="string">&#x27;/&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          React-Bootstrap</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Navbar.Brand</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Navbar</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1393,7 +1396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

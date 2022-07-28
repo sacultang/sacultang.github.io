@@ -160,6 +160,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/28/TS-SVG/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="OH YJ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㅇㅇㅈ Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/28/TS-SVG/" class="post-title-link" itemprop="url">TypeScript Svg Import</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-28 20:55:21 / Modified: 21:08:15" itemprop="dateCreated datePublished" datetime="2022-07-28T20:55:21+09:00">2022-07-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/07/28/TS-SVG/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/28/TS-SVG/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="React-TS-에서-SVG-Import-Error"><a href="#React-TS-에서-SVG-Import-Error" class="headerlink" title="React TS 에서 SVG Import Error"></a>React TS 에서 SVG Import Error</h2><p>JS로 만든 react project를 TS로 변환 하는 과정에서<br>SVG 파일을 Import 하는데 에러가 발생 했다.</p>
+<img src="/2022/07/28/TS-SVG/01.png" class="">
+
+<ol>
+<li>src 디렉토리 안쪽에 <code>custom.d.ts</code>파일을 만들고, 아래와 같이 작성 해준다</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// custom.d.ts </span></span><br><span class="line"></span><br><span class="line">declare <span class="variable language_">module</span> <span class="string">&quot;*.svg&quot;</span> &#123;</span><br><span class="line">  <span class="keyword">import</span> <span class="title class_">React</span> = <span class="built_in">require</span>(<span class="string">&quot;react&quot;</span>);</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ReactComponent</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">React</span>.<span class="property">SVGProps</span>&lt;<span class="title class_">SVGSVGElement</span>&gt;&gt;;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">src</span>: string;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>tsconfig.json</code>에 <code>src/custom.d.ts</code> 를 추가로 작성 해 준다</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src&quot;</span>, <span class="string">&quot;src/custom.d.ts&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Import ~</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ReactComponent</span> <span class="keyword">as</span> <span class="title class_">DeleteIcon</span> &#125; <span class="keyword">from</span> <span class="string">&quot;../../asset/delete.svg&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="SVG-아이콘에-onClick-Event-Type"><a href="#SVG-아이콘에-onClick-Event-Type" class="headerlink" title="SVG 아이콘에 onClick Event Type"></a>SVG 아이콘에 onClick Event Type</h2><img src="/2022/07/28/TS-SVG/02.png" class="">
+
+<p>생각 없이 SVG에 onClick 이벤트 타입으로 버튼 엘리먼트로 줬더니 에러가 떳다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">DeleteIcon</span></span><br><span class="line">  width=<span class="string">&quot;12px&quot;</span></span><br><span class="line">  onClick=&#123;<span class="function">(<span class="params">e: React.MouseEvent</span>) =&gt;</span> &#123;</span><br><span class="line">    e.<span class="title function_">stopPropagation</span>();</span><br><span class="line">    <span class="title function_">deleteTag</span>();</span><br><span class="line">  &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>엘리먼트 타입없이 그냥 MouseEvent만 타입으로 지정해주면 된다!</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/07/24/JWT-login/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,7 +292,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-07-24 20:28:46 / Modified: 21:48:21" itemprop="dateCreated datePublished" datetime="2022-07-24T20:28:46+09:00">2022-07-24</time>
+              <time title="Created: 2022-07-24 20:28:46 / Modified: 21:51:46" itemprop="dateCreated datePublished" datetime="2022-07-24T20:28:46+09:00">2022-07-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1155,109 +1262,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://sacultang.github.io/2022/06/14/2022-06-14-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="OH YJ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ㅇㅇㅈ Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/14/2022-06-14-TIL/" class="post-title-link" itemprop="url">2022-06-14-TIL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-06-14 22:55:01 / Modified: 23:02:50" itemprop="dateCreated datePublished" datetime="2022-06-14T22:55:01+09:00">2022-06-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/TIL/2022-06/" itemprop="url" rel="index"><span itemprop="name">2022.06</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/06/14/2022-06-14-TIL/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/14/2022-06-14-TIL/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="객체-배열-true-false-반환"><a href="#객체-배열-true-false-반환" class="headerlink" title="객체 배열 true false 반환"></a>객체 배열 true false 반환</h1><h2 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some()"></a>Array.prototype.some()</h2><p>객체로 이루어진 배열에서 true false 를 반환하는 메소드</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some</a></p>
-</blockquote>
-<p>미니 프로젝트를 하다가 객체로 이루어진 배열에서 true false를 반환 해야 했는데<br>forEach로 하나씩 비교하다 보니 사이드 이펙트가 일어나면서 버그가 생겼다..</p>
-<p>some()을 이용하면 배열을 순환 후 조건에 알맞는 boolean을 반환 한다</p>
-<p>사용법은 filter()와 동일 하나, filter는 새로운 배열을 반환한다는 점이 차이점</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// checks whether an element is even</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">even</span> = (<span class="params">element</span>) =&gt; element % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array.<span class="title function_">some</span>(even));</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>실제 project에서는 여러번 사용이 되어 함수로 만들어 주었다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store에 있는 clipped배열안의 headline값과 내가 입력한 headline의 값을 비교하여 true false를 반환한다</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">clipCheck</span> = (<span class="params">clipped</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> !clipped.<span class="title function_">some</span>(<span class="function">(<span class="params">storeData</span>) =&gt;</span> storeData.<span class="property">headLine</span> === headLine);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1323,7 +1331,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
